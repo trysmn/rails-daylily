@@ -10,10 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919085053) do
+ActiveRecord::Schema.define(version: 20170919112402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", id: :bigserial, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_categories", id: :bigserial, force: :cascade do |t|
+    t.bigint   "category_id"
+    t.bigint   "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_event_categories_on_category_id", using: :btree
+    t.index ["event_id"], name: "index_event_categories_on_event_id", using: :btree
+  end
+
+  create_table "event_terrains", id: :bigserial, force: :cascade do |t|
+    t.bigint   "terrain_id"
+    t.bigint   "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_terrains_on_event_id", using: :btree
+    t.index ["terrain_id"], name: "index_event_terrains_on_terrain_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "photos"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "number_of_attendees"
+    t.integer  "average_temp"
+    t.integer  "entrance_fee"
+    t.string   "website"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+  end
+
+  create_table "terrains", id: :bigserial, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,4 +83,9 @@ ActiveRecord::Schema.define(version: 20170919085053) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "event_categories", "categories"
+  add_foreign_key "event_categories", "events"
+  add_foreign_key "event_terrains", "events"
+  add_foreign_key "event_terrains", "terrains"
+  add_foreign_key "events", "users"
 end
