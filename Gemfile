@@ -25,3 +25,8 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :development do
+  gem 'better_errors', git: 'https://github.com/charliesome/better_errors.git', branch: 'master'
+  gem "binding_of_caller"
+end
