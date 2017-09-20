@@ -33,7 +33,6 @@
   font-weight: lighter;
   // color: #c9c9c9;
 }
-
 .btn-lg {
   background: none;
   border-radius: 1px;
@@ -44,4 +43,42 @@
 .btn-lg:hover {
   color: white;
   opacity: 0.8;
+}
+.about-card {
+  position: relative;
+  border: 1px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+  border-image-slice: 1;
+  height: 300px;
+  width: 300px;
+  margin: 20px 10px;
+  vertical-align: center;
+  padding-top: 40px;
+}
+h3 {
+  margin-bottom: 100px;
+  font-weight: 100;
+  // background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+  font-size: 35px;
+  background: linear-gradient(to right, #FF512F, #F09819);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+.about-card h5 {
+  font-weight: bold;
+  font-size: 30px;
+}
+.about-card p {
+  font-weight: 100;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 15px;
 }

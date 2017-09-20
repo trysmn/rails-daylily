@@ -1,12 +1,35 @@
-<h1>NEW HOME PAGE, here comes the SEARCH</h1>
+<div class="top-banner">
+  <div class="banner-content text-center">
+    <h1 class="title">Daylily</h1>
+    <h5 class="tag">Discover and experience trip-changing events</h3>
+      <%= simple_form_for :search, html: {class: 'form-inline'}, url: "/events/search" , method: :get do |f| %>
+      <%= f.input :city, label: false, placeholder: "Flying from", input_html: {class: "form-control input-lg"} %>
+      <%= f.input :check_in, label: false, placeholder: "From", input_html: {class: 'datepicker input-lg', value: Date.today.strftime('%d/%m/%Y')} %>
+      <%= f.input :check_out, label: false, placeholder: "To", input_html: {class: 'datepicker input-lg', value: Date.tomorrow.strftime('%d/%m/%Y')} %>
+      <%= f.submit "Search", class: "btn btn-lg" %>
+    <% end %>
+  </div>
+</div>
 
-<% city = ['Amsterdam', 'Paris', 'Barcelona', 'Milan'] %>
-
-<%= form_tag(events_path, method: :get) do %>
-
-  <%= select(:origin, :iata, [['Amsterdam', 'AMS'], ['Paris', 'PAR'], ['Barcelona', 'BCN'], ['Milan', 'MIL']]) %>
-  <%= date_field(:flight, :outbound_date) %>
-  <%= date_field(:flight, :inbound_date) %>
-  <%= submit_tag 'Search' %>
-<% end %>
+<div class="bottom-banner">
+  <div class="banner2-content text-center">
+    <h3>MAKE YOUR TRIP MEMORABLE</h3>
+  </div>
+  <div class="b2-card-container">
+    <div class="row text-center">
+      <div class="about-card col-xs-12 col-sm-6 col-lg-4">
+        <h5>Discover</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="about-card col-xs-12 col-sm-6 col-lg-4">
+        <h5>Discover</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="about-card col-xs-12 col-sm-6 col-lg-4">
+        <h5>Discover</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
