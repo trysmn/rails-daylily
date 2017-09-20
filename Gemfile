@@ -22,6 +22,7 @@ gem 'bootstrap-datepicker-rails'
 #added gems
 gem 'remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+gem 'httparty'
 
 group :development, :test do
   gem 'pry-byebug'
