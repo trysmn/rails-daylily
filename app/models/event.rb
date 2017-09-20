@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  belongs_to :city_airport
+
   has_many :event_terrains
   has_many :terrains, through: :event_terrains
 
