@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920085615) do
+ActiveRecord::Schema.define(version: 20170920144136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20170920085615) do
   create_table "event_categories", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "event_id"
+
+  create_table "city_airports", force: :cascade do |t|
+    t.string   "city_name"
+    t.string   "iata_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_categories", id: :bigserial, force: :cascade do |t|
+    t.bigint   "category_id"
+    t.bigint   "event_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_event_categories_on_category_id", using: :btree
@@ -58,6 +69,8 @@ ActiveRecord::Schema.define(version: 20170920085615) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "address"
+    t.integer  "city_airport_id"
+    t.index ["city_airport_id"], name: "index_events_on_city_airport_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -89,5 +102,6 @@ ActiveRecord::Schema.define(version: 20170920085615) do
   add_foreign_key "event_categories", "events"
   add_foreign_key "event_terrains", "events"
   add_foreign_key "event_terrains", "terrains"
+  add_foreign_key "events", "city_airports"
   add_foreign_key "events", "users"
 end

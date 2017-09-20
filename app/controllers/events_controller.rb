@@ -1,8 +1,15 @@
+require 'amadeus_api_service'
+
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search, :show]
   before_action :set_event, only: [:show, :edit, :update, :delete]
+  def home
+  end
+
   def index
-    @events = Event.all
+    search = AmadeusApiService.new
+    flight_results = search.search_flights(params[:origin][:iata], params[:flight][:outbound_date], params[:flight][:inbound_date])
+    @events = flight_results
   end
 
   def new
@@ -19,6 +26,11 @@ class EventsController < ApplicationController
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def edit
@@ -43,6 +55,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, pictures: []) #Add more!!
+    params.require(:event).permit(:title, :description, :parsed_response, pictures: []) #Add more!!
   end
 end
