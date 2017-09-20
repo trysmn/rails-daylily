@@ -1,20 +1,67 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
       <% @events.each do |event| %>
 
       <div class="col-xs-12 col-sm-6 col-md-4, col-lg-3">
         <div class="card text-center">
             <%= link_to event_path(event), class: "a" do %>
-      <% photo = event.photos? ? (cl_image_path event.photos[0].path, width: 400, height: 400, crop: :fill) : image_path("event_pic_placeholder.jpg", height: 300, width: 400, crop: :fill) %>
+            <% photo = event.photos? ? (cl_image_path event.photos[0].path, width: 400, height: 400, crop: :fill) : image_path("event_pic_placeholder.jpg", height: 300, width: 400, crop: :fill) %>
 
           <div class="card-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= photo %>)"></div>
           <div class="card-category"><p class="event-d"><strong>€<%= event.title %></strong> | <%= event.title %></p></div>
         </div>
-      <% end %>
+        <% end %>
       </div>
       <% end %>
     </div>
+
+  </div> -->
+
+<div class="container">
+  <div class="search-header">
+    <h1 class="result-headline text-center">Make Your Trip Special</h1>
+      <div class="result-line">
+        <div class="result-text">
+          <p>15 Results: From Amsterdam on 30 September to 15 October</p>
+        </div>
+        <div class="result-button">
+          <a href="#" class="btn btn-sm new-search-button"> New Search</a>
+        </div>
+      </div>
   </div>
+  <div class="result-card-container">
+    <div class="row">
+      <div class="result-card col-xs-12 col-md-8 col-md-offset-2 col-lg-6">
+        <div class="result-card-image">
+          <img class="card-img" src="http://diocesisdecucuta.com/diocesis2/wp-content/uploads/2017/08/n2-3.png" alt="">
+        </div>
+        <div class="result-card-details">
+          <div class="result-card-details-left">
+            <h4>BARCELONA</h4>
+            <p>Fiesta de Gracia</p>
+          </div>
+          <div class="result-card-details-right">
+            <p>Flight + Hotel</p>
+            <h4>$150</h4>
+          </div>
+        </div>
+      </div>
+      <div class="result-card col-xs-12 col-md-8 col-md-offset-2 col-lg-6">
+        <div class="result-card-image">
+          <img class="card-img" src="http://www.eurocheapo.com/blog/wp-content/uploads/2014/08/Oktoberfest.jpg" alt="">
+        </div>
+        <div class="result-card-details">
+          <div class="result-card-details-left">
+            <h4>MUNICH</h4>
+            <p>Oktoberfest</p>
+          </div>
+          <div class="result-card-details-right">
+            <p>Flight + Hotel</p>
+            <h4>$375</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
