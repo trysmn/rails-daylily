@@ -1,0 +1,12 @@
+<h1>NEW HOME PAGE, here comes the SEARCH</h1>
+
+<% city = ['Amsterdam', 'Paris', 'Barcelona', 'Milan'] %>
+
+<%= form_tag(events_path, method: :get) do %>
+
+  <%= select(:origin, :iata, [['Amsterdam', 'AMS'], ['Paris', 'PAR'], ['Barcelona', 'BCN'], ['Milan', 'MIL']]) %>
+  <%= date_field(:flight, :outbound_date) %>
+  <%= date_field(:flight, :inbound_date) %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
