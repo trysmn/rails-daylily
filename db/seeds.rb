@@ -42,9 +42,16 @@ event2 = Event.new(
 event1.save!
 event2.save!
 
-puts "Adding terrains and categories to events"
+puts "Adding categories to events"
 
 EventCategory.create!(event_id: Event.first.id, category_id: Category.first.id)
 EventCategory.create!(event_id: Event.first.id, category_id: Category.second.id)
 EventCategory.create!(event_id: Event.last.id, category_id: Category.last.id)
 EventCategory.create!(event_id: Event.last.id, category_id: Category.second.id)
+
+puts "Adding terrains to events"
+
+TerrainCategory.create!(event_id: Event.first.id, terrain_id: Terrain.first.id)
+TerrainCategory.create!(event_id: Event.first.id, terrain_id: Terrain.second.id)
+TerrainCategory.create!(event_id: Event.last.id, terrain_id: Terrain.last.id)
+TerrainCategory.create!(event_id: Event.last.id, terrain_id: Terrain.second.id)
