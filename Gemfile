@@ -18,10 +18,18 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'bootstrap-datepicker-rails'
+gem 'geocoder'
+gem 'coffee-rails'
+gem 'gmaps4rails'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 #added gems
 gem 'remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+gem 'httparty'
 
 group :development, :test do
   gem 'pry-byebug'
