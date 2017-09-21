@@ -1,6 +1,8 @@
 class AmadeusApiService
-  def search_flights(origin, outbound_date, inbound_date)
-    result = HTTParty.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=vTE7KANhuQZ630Qm28BIJ3lSigFrGeus&origin=BOS&destination=LON&departure_date=2017-12-25&number_of_results=1")
+  def search_flights(origin_iata, event_iata, departure_date, return_date)
+    key = "cwfGwLspYv9j5G6IpgJ1B0aUABEPFHcK"
+    url = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=#{key}&origin=#{origin_iata}&destination=#{event_iata}&departure_date=#{departure_date}&return_date=#{return_date}&number_of_results=1"
+    result = HTTParty.get(url)
     pars_res = result.parsed_response
   end
 end
