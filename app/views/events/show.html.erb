@@ -18,11 +18,11 @@
   </div>
 </div>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
+<!-- <div id="map" style="width: 100%; height: 600px;"></div>
+ -->
+<%# content_for(:after_js) do %>
+  <%#= javascript_tag do %>
+    <!-- $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
@@ -34,6 +34,6 @@
           handler.getMap().setZoom(14);
         }
       });
-    });
-  <% end %>
-<% end %>
+    }); -->
+  <%# end %>
+<%# end %>
