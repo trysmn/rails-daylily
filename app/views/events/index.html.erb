@@ -10,6 +10,7 @@
         </div>
       </div>
   </div>
+
   <div class="result-card-container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
@@ -47,8 +48,10 @@
           </div>
         </div>
       </div>
+
       <div class="col-xs-12 col-md-6">
        <div class="result-card">
+
         <div class="result-card-image">
           <img class="card-img" src="http://www.eurocheapo.com/blog/wp-content/uploads/2014/08/Oktoberfest.jpg" alt="">
         </div>
@@ -64,6 +67,9 @@
         </div>
        </div>
       </div>
+
+
+
     </div>
   </div>
   <div class="detail-card-container">
@@ -101,6 +107,11 @@
 
 
 <% @events.each do |event| %>
-  <h2><%= event.title %></h2>
+  <div>
+    <h2><%= event.title %></h2>
+    <h3><%= event.city_airport.city_name %></h3>
+    <p>Flight: <%= @result_hash[event.city_airport.city_name][:flight_api_info] %></p>
+    <p>Hotel: <%= @result_hash[event.city_airport.city_name][:hotel_api_info] %></p>
+    <hr>
+  </div>
 <% end %>
-

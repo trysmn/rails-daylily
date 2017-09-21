@@ -1,21 +1,29 @@
 require 'amadeus_api_service'
 
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :search, :show]
+  skip_before_action :authenticate_user!, only: [:home, :index, :search, :show]
   before_action :set_event, only: [:show, :edit, :update, :delete]
   def home
+    @city_airports = CityAirport.all
   end
 
   def index
     @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: params[:search][:departure], return: params[:search][:return]})
     search = AmadeusApiService.new
-    @array = []
+    origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
+    cities = []
     @events.each do |event|
-      flight_res = {}
-      city = event.city_airport.city_name
-      iata = event.city_airport.iata_code
-      res = search.search_flights(params[:search][:origin_city], params[:search][:departure], params[:search][:return])
-      @array << flight_res = {city => res}
+      if event.city_airport != origin_city_obj
+        cities << event.city_airport
+      end
+    end
+    uniq_cities = cities.uniq
+    @result_hash = {}
+    uniq_cities.each do |event|
+      city = event.city_name
+      iata = event.iata_code
+      res = search.search_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+      @result_hash[city] = {flight_api_info: res, hotel_api_info: "coming"}
     end
   end
 
@@ -63,5 +71,10 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description, :parsed_response, pictures: []) #Add more!!
+  end
+
+  def parsing_date(d)
+    new_date = Date.strptime(d,'%d/%m/%Y')
+    return new_date.strftime("%Y-%m-%d")
   end
 end
