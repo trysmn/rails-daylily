@@ -10,10 +10,14 @@
           <p class="description-text">
             <%= @event.description %>
           </p>
-
+          <p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
+          <p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
+          <p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
+          <p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
+          <p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
         </div>
-
       </div>
+
     </div>
   </div>
 </div>
