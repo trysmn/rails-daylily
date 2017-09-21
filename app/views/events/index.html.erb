@@ -46,3 +46,13 @@
   </div>
 </div>
 
+
+
+<% @events.each do |event| %>
+  <h2><%= event.title %></h2>
+<% end %>
+
+<h3><%= @event_flights %></h3>
+<h3>FLight: € <%= @array.first['Barcelona']['results'][0]['fare']['total_price'] %></h3>
+
+

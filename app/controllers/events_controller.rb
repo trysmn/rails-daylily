@@ -7,9 +7,16 @@ class EventsController < ApplicationController
   end
 
   def index
+    @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: params[:flight][:outbound_date], return: params[:flight][:inbound_date]})
     search = AmadeusApiService.new
-    flight_results = search.search_flights(params[:origin][:iata], params[:flight][:outbound_date], params[:flight][:inbound_date])
-    @events = flight_results
+    @array = []
+    @events.each do |event|
+      flight_res = {}
+      city = event.city_airport.city_name
+      iata = event.city_airport.iata_code
+      res = search.search_flights(params[:origin][:iata], params[:flight][:outbound_date], params[:flight][:inbound_date])
+      @array << flight_res = {city => res}
+    end
   end
 
   def new
