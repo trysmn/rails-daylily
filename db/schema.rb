@@ -21,10 +21,6 @@ ActiveRecord::Schema.define(version: 20170920144136) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "event_categories", force: :cascade do |t|
-    t.integer  "category_id"
-    t.integer  "event_id"
-
   create_table "city_airports", force: :cascade do |t|
     t.string   "city_name"
     t.string   "iata_code"
@@ -32,9 +28,9 @@ ActiveRecord::Schema.define(version: 20170920144136) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "event_categories", id: :bigserial, force: :cascade do |t|
-    t.bigint   "category_id"
-    t.bigint   "event_id"
+  create_table "event_categories", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "event_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_event_categories_on_category_id", using: :btree
