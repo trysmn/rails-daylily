@@ -1,5 +1,7 @@
 .container {
   display: center;
+  background: white;
+  width: 100%;
 }
 .travel-card {
   border: 1px solid transparent;
@@ -12,25 +14,27 @@
   width: 425px;
   font-size: 15px;
   margin: 30px 30px;
+  background: white;
 }
 .btn-medium {
-  background: linear-gradient(to right, #F09819, #FF512F);
+  background: linear-gradient(to right, #FF512F, #F09819);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;  padding: 10px 15px;
-  border-radius: 75px;
+  border-radius: 25px;
   font-weight: lighter;
-  opacity: 0.6;
+  opacity: 1;
   border: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
   padding: 10px 25px;
+  font-weight: 500;
+  letter-spacing: 1.5;
 }
 .btn-medium:hover {
-  opacity: 1;
+  opacity: 0.6;
   text-decoration: none;
-  color: #999999;
 }
 .show-travel-details {
   justify-content: center;
@@ -76,6 +80,10 @@
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
+  font-weight: 300;
+}
+.show-return {
+  font-weight: 300;
 }
 .show-checkin {
   padding: 30px;
@@ -84,9 +92,11 @@
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
+  font-weight: 300;
 }
 .show-checkout {
   padding: 30px;
+  font-weight: 300;
 }
 .city {
   display: inline-block;
