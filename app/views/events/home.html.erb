@@ -2,10 +2,10 @@
   <div class="banner-content text-center">
     <h1 class="title">Daylily</h1>
     <h5 class="tag">Discover and experience trip-changing events</h3>
-      <%= simple_form_for :search, html: {class: 'form-inline'}, url: "/events/search" , method: :get do |f| %>
-      <%= f.input :city, label: false, placeholder: "Flying from", input_html: {class: "form-control input-lg"} %>
-      <%= f.input :check_in, label: false, placeholder: "From", input_html: {class: 'datepicker input-lg', value: Date.today.strftime('%d/%m/%Y')} %>
-      <%= f.input :check_out, label: false, placeholder: "To", input_html: {class: 'datepicker input-lg', value: Date.tomorrow.strftime('%d/%m/%Y')} %>
+      <%= simple_form_for :search, html: {class: 'form-inline'}, url: "/events" , method: :get do |f| %>
+      <%= f.input :origin_city, label: false, placeholder: "Flying from", input_html: {class: "form-control input-lg"} %>
+      <%= f.input :departure, label: false, placeholder: "From", input_html: {class: 'datepicker input-lg', value: Date.today.strftime('%d/%m/%Y')} %>
+      <%= f.input :return, label: false, placeholder: "To", input_html: {class: 'datepicker input-lg', value: Date.tomorrow.strftime('%d/%m/%Y')} %>
       <%= f.submit "Search", class: "btn btn-lg" %>
     <% end %>
   </div>
