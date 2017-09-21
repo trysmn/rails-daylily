@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+  display: center;
 }
 .travel-card {
   border: 1px solid transparent;
@@ -25,6 +25,7 @@
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
+  padding: 10px 25px;
 }
 .btn-medium:hover {
   opacity: 1;
@@ -49,6 +50,7 @@
   float: left;
 }
 .show-travel-header{
+  margin: 0 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
@@ -57,16 +59,16 @@
   border-image-slice: 1;
 }
 .show-travel-subheader {
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 30px;
 }
 .travel-price {
-  margin: 30px;
+  margin: 30px 20px;
   border-top: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
-  border-image-slice: 1;
+  border-image-slice: 10;
 }
 .show-departure {
   border-right: 1px solid transparent;
@@ -76,11 +78,15 @@
   border-image-slice: 1;
 }
 .show-checkin {
+  padding: 30px;
   border-right: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
+}
+.show-checkout {
+  padding: 30px;
 }
 .city {
   display: inline-block;
