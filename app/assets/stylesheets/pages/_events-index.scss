@@ -6,6 +6,56 @@
 
 .result-card {
   margin: 20px 0px;
+  position: relative;
+  overflow: hidden;
+  height: 325px;
+
+    &:hover .result-hover-card {
+    position: absolute;
+    top: 0;
+    background: #fff;
+    height: 325px;
+    transition: top .5s;
+    border: 1px solid transparent;
+    -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+    -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+    border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+    border-image-slice: 1;
+  }
+}
+
+.result-hover-card {
+  top:100%;
+}
+
+.result-hover-description {
+  font-weight: 100;
+  font-size: 15px;
+  text-align: left;
+  padding: 10px;
+}
+
+.result-hover-card-details {
+  position: relative;
+  border-bottom: 1px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+  border-image-slice: 1;
+  height: 75px;
+}
+
+.book-button {
+  border-bottom: 1px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+  border-image-slice: 1;
+  font-style: light;
+  font-size: 18px;
+  background: linear-gradient(to right, #F09819, #FF512F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .result-card-details {
@@ -33,6 +83,7 @@
 .result-card-details-left p {
   font-weight: 100;
   font-size: 13px;
+  text-align: left;
 }
 
 .result-card-details-right {
@@ -53,10 +104,8 @@
   font-size: 13px;
 }
 
-
 .search-header h1 {
   font-style: light;
-  // background: -webkit-linear-gradient(to right, #F09819, #FF512F);
   font-size: 48px;
   background: linear-gradient(to right, #F09819, #FF512F);
   -webkit-background-clip: text;
@@ -90,5 +139,4 @@
  .result-headline {
   margin: 50px;
  }
-
 
