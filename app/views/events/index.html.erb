@@ -49,10 +49,15 @@
 
 
 <% @events.each do |event| %>
-  <h2><%= event.title %></h2>
+  <div>
+    <h2><%= event.title %></h2>
+    <h3><%= event.city_airport.city_name %></h3>
+    <h3>FLight: € <%= @array.first[event.city_airport.city_name]['results'][0]['fare']['total_price'] %></h3>
+    <hr>
+  </div>
 <% end %>
 
 
-<h3>FLight: € <%= @array.first['Barcelona']['results'][0]['fare']['total_price'] %></h3>
+
 
 

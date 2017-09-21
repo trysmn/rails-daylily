@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search, :show]
   before_action :set_event, only: [:show, :edit, :update, :delete]
   def home
+    @city_airports = CityAirport.all
   end
 
   def index
@@ -14,7 +15,7 @@ class EventsController < ApplicationController
       flight_res = {}
       city = event.city_airport.city_name
       iata = event.city_airport.iata_code
-      res = search.search_flights(params[:search][:origin_city], params[:search][:departure], params[:search][:return])
+      res = search.search_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
       @array << flight_res = {city => res}
     end
   end
@@ -63,5 +64,10 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description, :parsed_response, pictures: []) #Add more!!
+  end
+
+  def parsing_date(d)
+    new_date = Date.strptime(d,'%d/%m/%Y')
+    return new_date.strftime("%Y-%m-%d")
   end
 end
