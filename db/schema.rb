@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170920144136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", id: :bigserial, force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,18 +28,18 @@ ActiveRecord::Schema.define(version: 20170920144136) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "event_categories", id: :bigserial, force: :cascade do |t|
-    t.bigint   "category_id"
-    t.bigint   "event_id"
+  create_table "event_categories", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "event_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_event_categories_on_category_id", using: :btree
     t.index ["event_id"], name: "index_event_categories_on_event_id", using: :btree
   end
 
-  create_table "event_terrains", id: :bigserial, force: :cascade do |t|
-    t.bigint   "terrain_id"
-    t.bigint   "event_id"
+  create_table "event_terrains", force: :cascade do |t|
+    t.integer  "terrain_id"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_terrains_on_event_id", using: :btree
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170920144136) do
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
-  create_table "terrains", id: :bigserial, force: :cascade do |t|
+  create_table "terrains", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
