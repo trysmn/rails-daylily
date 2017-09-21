@@ -1,4 +1,6 @@
 require 'amadeus_api_service'
+require 'open-uri'
+require 'nokogiri'
 
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :search, :show]
@@ -10,6 +12,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: params[:search][:departure], return: params[:search][:return]})
     search = AmadeusApiService.new
+    @array = []
     origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
     cities = []
     @events.each do |event|
@@ -41,6 +44,56 @@ class EventsController < ApplicationController
   end
 
   def show
+    months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    start_month = months[@event.start_date.mon - 1].downcase
+
+    city_airport_id = @event.city_airport_id
+    city_name = CityAirport.find(city_airport_id).city_name
+
+    # Scraping for Temperature:
+    temp_url = "https://www.currentresults.com/Weather/Europe/Cities/temperature-#{start_month}.php"
+
+    temp_html_file = open(temp_url).read
+    temp_html_doc = Nokogiri::HTML(temp_html_file)
+
+    temp_html_doc.search('.articletable.tablecol-3-left.revcolr tbody tr').each do |td|
+      if td.text.split("\n")[3].split(",").include?(city_name)
+        @temps_array = []
+        @temps_array << td.text.split("\n")[4]
+        @temps_array << td.text.split("\n")[5]
+      end
+    end
+    # Done
+
+    # Scraping for Precipitation:
+    precip_url = "https://www.currentresults.com/Weather/Europe/Cities/precipitation-#{start_month}.php"
+
+    precip_html_file = open(precip_url).read
+    precip_html_doc = Nokogiri::HTML(precip_html_file)
+
+    precip_html_doc.search('.articletable.tablecol-2-left.revcolr tbody tr').each do |td|
+      if td.text.split("\n")[2].split(",").include?(city_name)
+        @precips_array = []
+        @precips_array << td.text.split("\n")[1]
+        @precips_array << td.text.split("\n")[4]
+      end
+    end
+    # Done
+
+    # Scraping for Sunshine:
+    sun_url = "https://www.currentresults.com/Weather/Europe/Cities/sunshine-average-#{start_month}.php"
+
+    sun_html_file = open(sun_url).read
+    sun_html_doc = Nokogiri::HTML(sun_html_file)
+
+    sun_html_doc.search('.articletable.tablecol-1-left.revcolr tbody tr').each do |td|
+      if td.text.split("\n")[1].split(",").include?(city_name)
+        @sun_array = []
+        @sun_array << td.text.split("\n")[2]
+      end
+    end
+    # Done
+
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
@@ -64,7 +117,15 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  private
+ # def weather_dest
+ #    options = { units: "metric", APPID: "7717aa9c039af9baf7714dd430b8f3f6"}
+ #    result = OpenWeather::Forecast.city("Milan", options)
+
+ #    return result
+ # end
+
+ private
+
   def set_event
     @event = Event.find(params[:id])
   end

@@ -1,3 +1,5 @@
+require 'open_weather'
+
 class AmadeusApiService
   def search_flights(origin_iata, event_iata, departure_date, return_date)
     key = "cwfGwLspYv9j5G6IpgJ1B0aUABEPFHcK"
@@ -5,4 +7,5 @@ class AmadeusApiService
     result = HTTParty.get(url)
     pars_res = result.parsed_response
   end
+
 end

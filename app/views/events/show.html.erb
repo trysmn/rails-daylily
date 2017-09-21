@@ -105,7 +105,11 @@
   </div>
 </div>
 
-
+<p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
+<p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
+<p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
+<p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
+<p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
 
 
 
@@ -130,13 +134,12 @@
          <!--  <h1> --><%#= @event.title %><!-- </h1> -->
 <!--
           <h4>About this event</h4>
-          <p class="description-text"> -->
+          <p class="description-text">
             <%#= @event.description %>
- <!--          </p>
-
+          </p>
         </div>
-
       </div>
+
     </div>
   </div>
 </div> -->
@@ -148,7 +151,7 @@
     <!-- $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        markers = handler.addMarkers(<%#= raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         if (markers.length == 0) {
