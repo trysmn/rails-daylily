@@ -52,7 +52,8 @@
   <div>
     <h2><%= event.title %></h2>
     <h3><%= event.city_airport.city_name %></h3>
-    <h3>FLight: € <%= @array.first[event.city_airport.city_name]['results'][0]['fare']['total_price'] %></h3>
+    <p>Flight: <%= @result_hash[event.city_airport.city_name][:flight_api_info] %></p>
+    <p>Hotel: <%= @result_hash[event.city_airport.city_name][:hotel_api_info] %></p>
     <hr>
   </div>
 <% end %>
