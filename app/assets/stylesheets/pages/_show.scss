@@ -23,7 +23,7 @@ body {
   background: white;
   margin: 20px;
 }
-.btn-medium {
+.btn-lg {
   background: linear-gradient(to right, #FF512F, #F09819);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;  padding: 10px 15px;
@@ -45,11 +45,11 @@ body {
 }
 .show-travel-header {
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .show-travel-subheader {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
 }
 .show-travel-details {
   justify-content: center;
@@ -82,7 +82,7 @@ body {
 .travel-price {
   padding-top: 20px;
   font-size: 30px;
-  margin: 25px 20px;
+  margin: 20px 20px;
   border-top: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
@@ -180,3 +180,7 @@ a:hover {
   font-size: 16px;
   opacity: 0.8;
 }
+ .result-headline {
+  margin: 30px;
+  font-weight: 300;
+ }
