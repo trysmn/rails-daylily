@@ -10,8 +10,7 @@
         <div class="show-travel-header">
           <p>FLIGHT</p>
         </div>
-<!--         <hr>
- -->    <div class="show-travel-subheader">
+<div class="show-travel-subheader">
           <div class="city city-left">
             <p>BCN</p>
           </div>
@@ -56,16 +55,14 @@
  -->            </div>
           </div>
         </div>
-
-<!--         <div class="show-travel-summary">
- -->          <div class="travel-price">
+ <div class="travel-price">
             <p>€375</p>
           </div>
           <div class="travel-book">
-            <a href="#" class="btn btn-lg book-button">BOOK</a>
+            <a href="#" class="btn btn-medium">BOOK</a>
           </div>
-<!--         </div>
- -->      </div>
+
+        </div>
         </div>
 
     <div class="col-xs-12 col-md-6" style="padding-right: 0">
@@ -99,7 +96,7 @@
             <p>€500</p>
           </div>
           <div class="travel-book">
-            <a href="#" class="btn btn-lg book-button">BOOK</a>
+            <a href="#" class="btn btn-medium">BOOK</a>
           </div>
         </div>
       </div>
@@ -144,46 +141,59 @@
 
 
 
-
-
-<!-- <p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
+<p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
 <p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
 <p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
 <p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
-<p>Expected hours of sunshine this month: <%= @sun_array[0] %></p> -->
+<p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="wrapper-white">
+<div class="wrapper-white">
   <div class="container">
     <div class="row">
 
       <div class="col-xs-12 col-md-6 col-md-offset-1">
-        <div class="description-card"> -->
-         <!--  <h1> --><%#= @event.title %><!-- </h1> -->
-<!--
+        <div class="description-card">
+          <h1> <%= @event.title %> </h1>
+
           <h4>About this event</h4>
           <p class="description-text">
-            <%#= @event.description %>
+            <%= @event.description %>
           </p>
         </div>
       </div>
 
     </div>
   </div>
-</div> -->
+</div>
+
+
+
+<div style="text-align: center; margin: 5px;">
+  <p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
+  <p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
+  <p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
+  <p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
+  <p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
+
+  <hr>
+
+  <% @event.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <div id="map" style="width: 100%; height: 600px;"></div>
  -->
