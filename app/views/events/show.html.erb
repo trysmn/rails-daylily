@@ -1,6 +1,7 @@
 <div class="container">
+<div class="show-container">
   <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6" style="padding-left: 0">
 
       <div class="travel-card">
         <div class="show-travel-header">
@@ -55,7 +56,7 @@
 
 <!--         <div class="show-travel-summary">
  -->          <div class="travel-price">
-            <h5>€375</h5>
+            <p>€375</p>
           </div>
           <div class="travel-book">
             <a href="#" class="btn-medium">BOOK NOW</a>
@@ -64,7 +65,7 @@
  -->      </div>
         </div>
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6" style="padding-right: 0">
       <div class="travel-card">
         <div class="show-travel-header">
           <h5>HOTEL</h5>
@@ -92,7 +93,7 @@
 
         <div class="show-travel-summary">
           <div class="travel-price">
-            <h5>€500</h5>
+            <p>€500</p>
           </div>
           <div class="travel-book">
             <a href="#" class="btn-medium">BOOK NOW</a>
@@ -103,13 +104,50 @@
 
     </div>
   </div>
+
+<div class="show-container">
+  <div class="detail-card-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 no-padding">
+        <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
+      </div>
+      <div class="col-xs-12 col-md-6 no-padding">
+        <div class="detail-description">
+          <h5>Fiesta de Gracia</h5>
+          <p>The biggest street festival in Barcelona is the Gracia festival every year in mid August called the Festa Major de Gracia and also often called the Fiesta de Gracia.  Around 17 streets are decorate by the residents. There are hundreds of activities most of which are for local residents, but tourists and visitors are welcome to the concerts and parades.</p>
+          <a href="#"><strong>Visit website</strong></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 no-padding">
+        <div class="detail-info">
+          <div class="detail-info-1">
+            <div><p><strong>Date:</strong> 12 October</p></div>
+            <div><p><strong>Fee:</strong> Free</p></div>
+            <div><p><strong>Avg. Temp:</strong> 30C</p></div>
+          </div>
+          <div class="detail-info-2">
+            <div><p><strong>Time:</strong> 20h</p></div>
+            <div><p><strong>Location:</strong> Gracia</p></div>
+            <div><p><strong>Attendees:</strong> +1m</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
-<p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
+
+
+
+
+<!-- <p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
 <p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
 <p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
 <p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
-<p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
+<p>Expected hours of sunshine this month: <%= @sun_array[0] %></p> -->
 
 
 

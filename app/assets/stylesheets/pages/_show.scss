@@ -1,8 +1,15 @@
-.container {
-  display: flex;
+
+// hotel and flight booking cards below
+
+body {
   background: white;
-  width: 100%;
-  justify: space-around;
+}
+.show-container {
+  // display: flex;
+  margin-top: 30px;
+  background: white;
+  // display: flex;
+
 }
 .travel-card {
   border: 1px solid transparent;
@@ -12,10 +19,12 @@
     border-image-slice: 1;
   padding: 20px 15px;
   height: 475px;
-  width: 425px;
+  // width: 425px;
   font-size: 15px;
-  margin: 30px 30px;
+  // margin: 30px;
   background: white;
+  // justify: space-between;
+  margin: 20px;
 }
 .btn-medium {
   background: linear-gradient(to right, #FF512F, #F09819);
@@ -102,4 +111,69 @@
 .city {
   display: inline-block;
   justify: space-around;
+}
+
+// event description card below
+
+.detail-card-container {
+  margin: 20px;
+  font-size: 15px;
+}
+.detail-image {
+  margin-right: 0px;
+}
+.detail-description {
+    font-weight: 300;
+    font-size: 15px;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid transparent;
+    -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+    -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+    border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+    border-image-slice: 1;
+    border-left: none;
+    // margin-left: 0px;
+    height: 250px;
+    line-height: 25px;
+}
+.detail-description h5 {
+  font-weight: 500;
+}
+.no-padding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.detail-info {
+  border: 1px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+  border-image-slice: 1;
+  border-top: none;
+  padding: 10px;
+  font-weight: 300;
+}
+.detail-info-1 {
+  display: flex;
+  justify-content: space-between;
+}
+.detail-info-2 {
+  display: flex;
+  justify-content: space-between;
+}
+.travel-price {
+  padding-top: 20px;
+  font-size: 30px;
+}
+a {
+  text-decoration: none;
+  color: black;
+  opacity: 1;
+}
+a:hover {
+  text-decoration: none;
+  color: #FF512F;
+  font-size: 16px;
+  opacity: 0.8;
 }
