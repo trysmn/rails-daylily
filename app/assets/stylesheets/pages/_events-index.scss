@@ -29,8 +29,9 @@
 }
 
 .result-hover-description {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 15px;
+  line-height: 27px;
   text-align: left;
   padding: 10px;
 }
@@ -77,11 +78,11 @@
 .result-card-details-left h4 {
   font-weight: bold;
   font-size: 18px;
-  letter-spacing: 2px;
+  // letter-spacing: 2px;
 }
 
 .result-card-details-left p {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 13px;
   text-align: left;
 }
@@ -100,7 +101,7 @@
 }
 
 .result-card-details-right p {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 13px;
 }
 
@@ -130,6 +131,7 @@
 .result-text {
   margin-bottom: 20px;
   font-size: 15px;
+  font-weight: 300;
 }
 
 .result-button {
@@ -142,5 +144,6 @@
 
  .result-headline {
   margin: 30px;
+  font-weight: 300;
  }
 
