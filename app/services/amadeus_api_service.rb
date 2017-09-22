@@ -68,7 +68,9 @@ class AmadeusApiService
         "code": event_iata
       }
     }.to_json
-    return response.parsed_response
+
+    hotels_hash = response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+    return hotels_hash.first
   end
 
   # def search_flights(origin_iata, event_iata, departure_date, return_date)

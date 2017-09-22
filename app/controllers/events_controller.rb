@@ -47,7 +47,6 @@ class EventsController < ApplicationController
       flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
       @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
     end
-    raise
   end
 
   def new
