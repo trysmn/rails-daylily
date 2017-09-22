@@ -1,18 +1,16 @@
 
 
-// hotel and flight booking cards below
+// booking cards below
 
 body {
   background: white;
 }
 .show-container {
-  // display: flex;
   margin-top: 30px;
   background: white;
-  // display: flex;
+  margin: 0 80px;
 
 }
-
 .travel-card {
   border: 1px solid transparent;
     -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
@@ -21,11 +19,8 @@ body {
     border-image-slice: 1;
   padding: 20px 15px;
   height: 475px;
-  // width: 425px;
   font-size: 15px;
-  // margin: 30px;
   background: white;
-  // justify: space-between;
   margin: 20px;
 }
 .btn-medium {
@@ -48,15 +43,21 @@ body {
   opacity: 0.6;
   text-decoration: none;
 }
+.show-travel-header {
+  font-size: 30px;
+  font-weight: 500;
+}
+.show-travel-subheader {
+  font-size: 20px;
+  font-weight: 400;
+}
 .show-travel-details {
   justify-content: center;
   display: flex;
 }
-
 .flex-item {
   width: 300px;
 }
-
 .show-travel-details .show-departure .show-return {
   flex-direction: column;
 }
@@ -79,7 +80,9 @@ body {
   padding-bottom: 30px;
 }
 .travel-price {
-  margin: 30px 20px;
+  padding-top: 20px;
+  font-size: 30px;
+  margin: 25px 20px;
   border-top: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
@@ -121,9 +124,6 @@ body {
   margin: 20px;
   font-size: 15px;
 }
-.detail-image {
-  margin-right: 0px;
-}
 .detail-description {
     font-weight: 300;
     font-size: 15px;
@@ -135,11 +135,11 @@ body {
     border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
     border-image-slice: 1;
     border-left: none;
-    // margin-left: 0px;
     height: 250px;
-    line-height: 25px;
+    line-height: 27px;
 }
-.detail-description h5 {
+.description-header {
+  font-size: 20px;
   font-weight: 500;
 }
 .no-padding {
@@ -153,20 +153,21 @@ body {
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
   border-top: none;
-  padding: 10px;
   font-weight: 300;
 }
 .detail-info-1 {
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
   display: flex;
   justify-content: space-between;
 }
 .detail-info-2 {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: -10px;
   display: flex;
   justify-content: space-between;
-}
-.travel-price {
-  padding-top: 20px;
-  font-size: 30px;
 }
 a {
   text-decoration: none;
