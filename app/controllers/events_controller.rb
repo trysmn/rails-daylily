@@ -43,10 +43,11 @@ class EventsController < ApplicationController
     uniq_cities.each do |event|
       city = event.city_name
       iata = event.iata_code
+      hotels_res = search.apitude_hotelbeds(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
       flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-      hotel_res = search.search_hotels(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-      @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotel_res}
+      @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
     end
+    raise
   end
 
   def new
