@@ -1,16 +1,15 @@
 <div class="container">
   <div class="search-header">
     <h1 class="result-headline text-center">Make Your Trip Special</h1>
-      <div class="result-line">
-        <div class="result-text">
-          <p>15 Results: From Amsterdam on 30 September to 15 October</p>
-        </div>
-        <div class="result-button">
-          <a href="#" class="btn btn-sm new-search-button"> New Search</a>
-        </div>
+    <div class="result-line">
+      <div class="result-text">
+        <p>15 Results: From Amsterdam on 30 September to 15 October</p>
       </div>
+      <div class="result-button">
+        <a href="#" class="btn btn-sm new-search-button"> New Search</a>
+      </div>
+    </div>
   </div>
-
   <div class="result-card-container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
@@ -48,10 +47,8 @@
           </div>
         </div>
       </div>
-
       <div class="col-xs-12 col-md-6">
        <div class="result-card">
-
         <div class="result-card-image">
           <img class="card-img" src="http://www.eurocheapo.com/blog/wp-content/uploads/2014/08/Oktoberfest.jpg" alt="">
         </div>
@@ -67,51 +64,9 @@
         </div>
        </div>
       </div>
-
-
-
-    </div>
-  </div>
-  <div class="detail-card-container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6 no-padding">
-        <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
-      </div>
-      <div class="col-xs-12 col-md-6 no-padding">
-        <div class="detail-description">
-          <h4>Fiesta de Gracia</h4>
-          <p>The biggest street festival in Barcelona is the Gracia festival every year in mid August called the Festa Major de Gracia and also often called the Fiesta de Gracia.  Around 17 streets are decorate by the residents. There are hundreds of activities most of which are for local residents, but tourists and visitors are welcome to the concerts and parades. The Festa de Gracia is about Catalan traditions like parades, giants, castle building and fireruns, but most of all it is a shining...</p>
-          <a href="#" class="btn btn-sm new-search-button">Visit website</a>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 no-padding">
-        <div class="detail-info">
-          <div class="detail-info-1">
-            <div>Date: 12 October</div>
-            <div>Fee: Free</div>
-            <div>Avg. Temp: 30C</div>
-          </div>
-          <div class="detail-info-2">
-            <div>Time: 20h</div>
-            <div>Location: Gracia</div>
-            <div>Attendees: +1m</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
 
 
-<% @events.each do |event| %>
-  <div>
-    <h2><%= event.title %></h2>
-    <h3><%= event.city_airport.city_name %></h3>
-    <p>Flight: <%= @result_hash[event.city_airport.city_name][:flight_api_info] %></p>
-    <p>Hotel: <%= @result_hash[event.city_airport.city_name][:hotel_api_info] %></p>
-    <hr>
-  </div>
-<% end %>
