@@ -105,44 +105,54 @@
   </div>
 </div>
 
-<p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
-<p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
-<p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
-<p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
-<p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="wrapper-white">
+<div class="wrapper-white">
   <div class="container">
     <div class="row">
 
       <div class="col-xs-12 col-md-6 col-md-offset-1">
-        <div class="description-card"> -->
-         <!--  <h1> --><%#= @event.title %><!-- </h1> -->
-<!--
+        <div class="description-card">
+          <h1> <%= @event.title %> </h1>
+
           <h4>About this event</h4>
           <p class="description-text">
-            <%#= @event.description %>
+            <%= @event.description %>
           </p>
         </div>
       </div>
 
     </div>
   </div>
-</div> -->
+</div>
+
+
+
+<div style="text-align: center; margin: 5px;">
+  <p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
+  <p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
+  <p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
+  <p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
+  <p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
+
+  <hr>
+
+  <% @event.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <div id="map" style="width: 100%; height: 600px;"></div>
  -->

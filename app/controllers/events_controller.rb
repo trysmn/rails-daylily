@@ -34,9 +34,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(flat_params)
-    if event.save
-      redirect_to event_path(event)
+    @event = Event.new(event_params)
+    @event.status = "pending"
+    if @event.save
+      @event.status = "approved"
+      redirect_to event_path(@event)
     else
       render :new
     end
@@ -130,7 +132,11 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :parsed_response, pictures: []) #Add more!!
+    params.require(:event).permit(:title, :description, :parsed_response, :start_date, :end_date, :start_time, :end_time, :number_of_attendees, :average_temp, :entrance_fee, :website, :user_id, :address, :city_airport_id, photos: []) #Add more!!
+  end
+
+  def airport_params
+    params.require(:event).permit(:address)
   end
 
   def parsing_date(d)
