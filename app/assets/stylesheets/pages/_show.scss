@@ -1,5 +1,15 @@
-.container {
-  display: flex;
+
+
+// booking cards below
+
+body {
+  background: white;
+}
+.show-container {
+  margin-top: 30px;
+  background: white;
+  margin: 0 80px;
+
 }
 .travel-card {
   border: 1px solid transparent;
@@ -9,37 +19,45 @@
     border-image-slice: 1;
   padding: 20px 15px;
   height: 475px;
-  width: 425px;
   font-size: 15px;
-  margin: 30px 30px;
+  background: white;
+  margin: 20px;
 }
-.btn-medium {
-  background: linear-gradient(to right, #F09819, #FF512F);
+.btn-lg {
+  background: linear-gradient(to right, #FF512F, #F09819);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;  padding: 10px 15px;
-  border-radius: 75px;
+  border-radius: 25px;
   font-weight: lighter;
-  opacity: 0.6;
+  opacity: 1;
   border: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
+  padding: 10px 25px;
+  font-weight: 500;
+  letter-spacing: 1.5;
 }
 .btn-medium:hover {
-  opacity: 1;
+  opacity: 0.6;
   text-decoration: none;
-  color: #999999;
+}
+.show-travel-header {
+  font-size: 30px;
+  font-weight: 400;
+}
+.show-travel-subheader {
+  font-size: 20px;
+  font-weight: 300;
 }
 .show-travel-details {
   justify-content: center;
   display: flex;
 }
-
 .flex-item {
   width: 300px;
 }
-
 .show-travel-details .show-departure .show-return {
   flex-direction: column;
 }
@@ -49,6 +67,7 @@
   float: left;
 }
 .show-travel-header{
+  margin: 0 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
@@ -57,16 +76,18 @@
   border-image-slice: 1;
 }
 .show-travel-subheader {
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 30px;
 }
 .travel-price {
-  margin: 30px;
+  padding-top: 20px;
+  font-size: 30px;
+  margin: 20px 20px;
   border-top: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
-  border-image-slice: 1;
+  border-image-slice: 10;
 }
 .show-departure {
   border-right: 1px solid transparent;
@@ -74,15 +95,92 @@
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
+  font-weight: 300;
+}
+.show-return {
+  font-weight: 300;
 }
 .show-checkin {
+  padding: 30px;
   border-right: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
+  font-weight: 300;
+}
+.show-checkout {
+  padding: 30px;
+  font-weight: 300;
 }
 .city {
   display: inline-block;
   justify: space-around;
 }
+
+// event description card below
+
+.detail-card-container {
+  margin: 20px;
+  font-size: 15px;
+}
+.detail-description {
+    font-weight: 300;
+    font-size: 15px;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid transparent;
+    -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+    -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+    border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+    border-image-slice: 1;
+    border-left: none;
+    height: 250px;
+    line-height: 27px;
+}
+.description-header {
+  font-size: 20px;
+  font-weight: 500;
+}
+.no-padding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.detail-info {
+  border: 1px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
+  border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
+  border-image-slice: 1;
+  border-top: none;
+  font-weight: 300;
+}
+.detail-info-1 {
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.detail-info-2 {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: -10px;
+  display: flex;
+  justify-content: space-between;
+}
+a {
+  text-decoration: none;
+  color: black;
+  opacity: 1;
+}
+a:hover {
+  text-decoration: none;
+  color: #FF512F;
+  font-size: 16px;
+  opacity: 0.8;
+}
+ .result-headline {
+  margin: 30px;
+  font-weight: 300;
+ }

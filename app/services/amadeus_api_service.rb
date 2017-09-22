@@ -1,3 +1,5 @@
+require 'open_weather'
+
 class AmadeusApiService
   def google_flights(origin_iata, event_iata, departure_date, return_date)
     response = HTTParty.post'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCdvJJfgginvRdJ0rJuFSIUh6lQqjLHeDo',
@@ -24,6 +26,7 @@ class AmadeusApiService
                   :headers => { 'Content-Type' => 'application/json' }
     return response
   end
+
 
   def apitude_hotelbeds(event_iata, check_in_date, check_out_date)
     start_date = Date.parse(check_in_date)

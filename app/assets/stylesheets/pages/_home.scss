@@ -10,6 +10,9 @@
   -webkit-box-align: center;
   -webkit-box-pack: center;
 }
+.top-banner h1 {
+  font-weight: 400;
+}
 .banner-content {
   font-family: 'Roboto', sans-serif;
   color: white;
@@ -24,14 +27,14 @@
 }
 .tag {
   font-size: 30px;
-  font-weight: lighter;
+  font-weight: 100;
   padding-bottom: 30px;
 }
 .input-lg {
   border-radius: 1px;
   font-size: 18px;
-  font-weight: lighter;
-  // color: #c9c9c9;
+  font-weight: 300;
+  color: #c9c9c9;
 }
 .btn-lg {
   background: none;
@@ -57,11 +60,10 @@
   vertical-align: center;
   padding-top: 40px;
 }
-h3 {
+.bottom-banner-header {
   margin-bottom: 100px;
-  font-weight: 100;
+  font-weight: 200;
   // background: -webkit-linear-gradient(to right, #F09819, #FF512F);
-  font-size: 35px;
   background: linear-gradient(to right, #FF512F, #F09819);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -72,9 +74,10 @@ h3 {
   align-items: center;
   text-align: center;
 }
-.about-card h5 {
-  font-weight: bold;
+.about-card .about-header {
+  font-weight: 400;
   font-size: 30px;
+  margin-bottom: 30px;
 }
 .about-card p {
   font-weight: 100;
@@ -82,3 +85,4 @@ h3 {
   text-align: center;
   padding: 0 15px;
 }
+
