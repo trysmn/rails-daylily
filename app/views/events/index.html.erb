@@ -1,17 +1,17 @@
 <div class="container">
   <div class="search-header">
-  <div class="result-header text-center">
-    <%= image_tag("logo-color.gif", height: 109, width: 150) %>
-    <h1 class="result-headline">Make Your Trip Special</h1>
-  </div>
-    <div class="result-line">
-      <div class="result-text">
-        <p>15 Results: From Amsterdam on 30 September to 15 October</p>
-      </div>
-      <div class="result-button">
-        <a href="#" class="btn btn-sm new-search-button"> New Search</a>
-      </div>
+    <div class="result-header text-center">
+      <%= image_tag("logo-color.gif", height: 109, width: 150) %>
+      <h1 class="result-headline">Make Your Trip Special</h1>
     </div>
+      <div class="result-line">
+        <div class="result-text">
+          <p>15 Results: From Amsterdam on 30 September to 15 October</p>
+        </div>
+        <div class="result-button">
+          <a href="#" class="btn btn-sm new-search-button"> New Search</a>
+        </div>
+      </div>
   </div>
   <div class="result-card-container">
     <div class="row">
@@ -45,7 +45,7 @@
               <p class="result-hover-description">The biggest street festival in Barcelona is the Gracia festival every year in mid August called the Festa Major de Gracia and also often called the Fiesta de Gracia.  Around 17 streets are decorate by the residents. There are hundreds of activities most of which are for local residents, but tourists and visitors are welcome to the concerts and parades. <!-- The Festa de Gracia is about Catalan traditions like parades, giants, castle building and fireruns, but most of all it is a shining... --></p>
             </div>
             <div>
-              <a href="#" class="btn btn-lg book-button">BOOK</a>
+              <a href="events/<%= Event.first.id %>" class="btn btn-lg book-button">BOOK</a>
             </div>
           </div>
         </div>
@@ -65,25 +65,26 @@
             <h4>€375</h4>
           </div>
         </div>
-       </div>
+        <div class="result-hover-card">
+            <div class="result-hover-card-details">
+              <div class="result-card-details-left">
+                <h4>Munich</h4>
+                <p>Oktoberfest</p>
+              </div>
+              <div class="result-card-details-right">
+                <p>Flight + Hotel</p>
+                <h4>$375</h4>
+              </div>
+            </div>
+            <div>
+              <p class="result-hover-description">The world's largest Volksfest. Held annually in Munich, Bavaria, Germany, it is a 16- to 18-day folk festival running from mid or late September to the first weekend in October, with more than 6 million people from around the world attending the event every year. The Oktoberfest is an important part of Bavarian culture, having been held since the year 1810. </p>
+            </div>
+            <div>
+              <a href="events/<%= Event.second.id %>" class="btn btn-lg book-button">BOOK</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-<% @events.each do |event| %>
-  <div>
-    <h2><%= event.title %></h2>
-    <h3><%= event.city_airport.city_name %></h3>
-    <h4>Carrier: <%= @result_hash[event.city_airport.city_name][:flight_api_info]['trips']['data']['carrier'][0]['name'] %></h4>
-    <h5>Flight_cost: <%= @result_hash[event.city_airport.city_name][:flight_api_info]['trips']['tripOption'][0]['pricing'][0]['saleTotal'] %></h5>
-    <h4>Hotel: <%= @result_hash[event.city_airport.city_name][:hotel_api_info]['name'] %></h4>
-    <h5>Price for stay: € <%= @result_hash[event.city_airport.city_name][:hotel_api_info]['minRate'] %></h5>
-    <hr>
-  </div>
-<% end %>
-
-
-
