@@ -2,7 +2,8 @@ require 'open_weather'
 
 class AmadeusApiService
   def google_flights(origin_iata, event_iata, departure_date, return_date)
-    response = HTTParty.post'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCdvJJfgginvRdJ0rJuFSIUh6lQqjLHeDo',
+    api_key = ENV['GOOGLE_FLIGHTS_KEY']
+    response = HTTParty.post"https://www.googleapis.com/qpxExpress/v1/trips/search?key=#{api_key}",
                :body =>  {
                    request: {
                      passengers: {
@@ -36,7 +37,7 @@ class AmadeusApiService
 
     response = HTTParty.post'http://testapi.hotelbeds.com/hotel-api/1.0/hotels',
     :headers =>{
-      "Api-Key": "gfhpht2ffsfejd88g7pcnexe",
+      "Api-Key": ENV['HOTELBEDS_API_KEY'],
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
@@ -77,16 +78,14 @@ class AmadeusApiService
   end
 
   # def search_flights(origin_iata, event_iata, departure_date, return_date)
-  #   key = 'cwfGwLspYv9j5G6IpgJ1B0aUABEPFHcK' #Fransesco
-  #   # key = 'vTE7KANhuQZ630Qm28BIJ3lSigFrGeus' #WJ
+  #   key = ENV['AMADEUS_FLIGHT_API_FRANSECO'] #Fransesco
   #   url = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=#{key}&origin=#{origin_iata}&destination=#{event_iata}&departure_date=#{departure_date}&return_date=#{return_date}&number_of_results=1"
   #   result = HTTParty.get(url)
   #   pars_res = result.parsed_response
   # end
 
   # def search_hotels(event_iata, check_in_date, check_out_date)
-  #   key = 'cwfGwLspYv9j5G6IpgJ1B0aUABEPFHcK' #Fransesco
-  #   # key = 'vTE7KANhuQZ630Qm28BIJ3lSigFrGeus' #WJ
+  #   key = ENV['AMADEUS_FLIGHT_API_FRANSECO'] #Fransesco
   #   # url = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=#{key}&location=#{event_iata}&check_in=#{check_in_date}&check_out=#{check_out_date}&number_of_results=1"
   #   url = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=vTE7KANhuQZ630Qm28BIJ3lSigFrGeus&location=BCN&check_in=2017-12-15&check_out=2017-12-16&radius=50&number_of_results=1"
   #   hotel_result = HTTParty.get(url)
@@ -94,7 +93,7 @@ class AmadeusApiService
   # end
 
   # def hotwire_hotels
-  #   key = 'xb3z5rkwbtxxu9nu6qxhd83y'
+  #   key = ENV['HOTWIRE_HOTEL_API_KEY']
   #   # url = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=#{key}&location=#{event_iata}&check_in=#{check_in_date}&check_out=#{check_out_date}&number_of_results=1"
   #   url = "http://api.hotwire.com/v1/search/hotel?apikey=xb3z5rkwbtxxu9nu6qxhd83y&dest=San%20Francisco,%20Ca.&rooms=1&adults=2&children=0&startdate=01/20/2018&enddate=01/23/2018"
   #   hotel_result = HTTParty.get(url)
@@ -110,7 +109,7 @@ class AmadeusApiService
   #       leaveDate: "2014-09-30"
   #     }.to_json,
   #     :headers => {
-  #       :'X-Auth-Token' => '81580322-fa8c',
+  #       :'X-Auth-Token' => ENV['ALLMYLES_HOTEL_API_KEY'],
   #       :Cookie => '122432-sa0-2312-439',
   #       :content_type => 'application/json'
   #     }
