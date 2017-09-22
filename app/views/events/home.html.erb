@@ -1,11 +1,12 @@
 <div class="top-banner">
   <div class="banner-content text-center">
+  <%= image_tag("logo-white.gif", height: 145, width: 200) %>
     <h1 class="title">Daylily</h1>
-    <h5 class="tag">Discover and experience trip-changing events</h3>
+    <h3 class="tag">Make your trip special</h3>
       <%= simple_form_for :search, html: {class: 'form-inline'}, url: "/events" , method: :get do |f| %>
-      <%= f.input :origin_iata, collection: CityAirport.all.order(:city_name), value_method: :iata_code, label_method: :city_name, label: false, placeholder: "Flying from", input_html: {class: "form-control input-lg"} %>
-      <%= f.input :departure, label: false, placeholder: "From", input_html: {class: 'datepicker input-lg', value: Date.today.strftime('%d/%m/%Y')} %>
-      <%= f.input :return, label: false, placeholder: "To", input_html: {class: 'datepicker input-lg', value: Date.tomorrow.strftime('%d/%m/%Y')} %>
+      <%= f.input :origin_iata, collection: CityAirport.all.order(:city_name), value_method: :iata_code, label_method: :city_name, label: false, placeholder: "Flying from", input_html: {class: "input-lg"} %>
+      <%= f.input :departure, label: false, input_html: {class: 'datepicker input-lg', value: Date.today.strftime('%d/%m/%Y')} %>
+      <%= f.input :return, label: false, input_html: {class: 'datepicker input-lg', value: Date.tomorrow.strftime('%d/%m/%Y')} %>
       <%= f.submit "Search", class: "btn btn-lg" %>
     <% end %>
   </div>
@@ -13,20 +14,20 @@
 
 <div class="bottom-banner">
   <div class="banner2-content text-center">
-    <h3>MAKE YOUR TRIP MEMORABLE</h3>
+    <h1 class="bottom-banner-header">MAKE YOUR TRIP SPECIAL</h1>
   </div>
   <div class="b2-card-container">
     <div class="row text-center">
       <div class="about-card col-xs-12 col-sm-6 col-lg-4">
-        <h5>Discover</h5>
+        <p class="about-header">Discover</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
       </div>
       <div class="about-card col-xs-12 col-sm-6 col-lg-4">
-        <h5>Discover</h5>
+        <p class="about-header">Experience</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
       </div>
       <div class="about-card col-xs-12 col-sm-6 col-lg-4">
-        <h5>Discover</h5>
+        <p class="about-header">Share</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
       </div>
     </div>

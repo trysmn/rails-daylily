@@ -29,8 +29,9 @@
 }
 
 .result-hover-description {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 15px;
+  line-height: 27px;
   text-align: left;
   padding: 10px;
 }
@@ -77,11 +78,10 @@
 .result-card-details-left h4 {
   font-weight: bold;
   font-size: 18px;
-  letter-spacing: 2px;
 }
 
 .result-card-details-left p {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 13px;
   text-align: left;
 }
@@ -100,17 +100,17 @@
 }
 
 .result-card-details-right p {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 13px;
 }
 
-.search-header h1 {
-  font-style: light;
-  font-size: 48px;
-  background: linear-gradient(to right, #F09819, #FF512F);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+// .search-header h1 {
+//   font-style: 100;
+//   font-size: 48px;
+//   background: linear-gradient(to right, #F09819, #FF512F);
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }
 
 .search-header p {
   opacity: 0.6;
@@ -130,13 +130,18 @@
 .result-text {
   margin-bottom: 20px;
   font-size: 15px;
+  font-weight: 300;
 }
 
 .result-button {
   margin-left: 15px;
 }
 
- .result-headline {
-  margin: 50px;
- }
+.result-header {
+  margin-top: 15px;
+}
 
+ .result-headline {
+  margin: 30px;
+  font-weight: 300;
+ }

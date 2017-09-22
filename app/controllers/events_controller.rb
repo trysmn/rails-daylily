@@ -9,6 +9,27 @@ class EventsController < ApplicationController
     @city_airports = CityAirport.all
   end
 
+  # def index
+  #   @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: params[:search][:departure], return: params[:search][:return]})
+  #   search = AmadeusApiService.new
+  #   origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
+  #   cities = []
+  #   @events.each do |event|
+  #     if event.city_airport != origin_city_obj
+  #       cities << event.city_airport
+  #     end
+  #   end
+  #   uniq_cities = cities.uniq
+  #   @result_hash = {}
+  #   uniq_cities.each do |event|
+  #     city = event.city_name
+  #     iata = event.iata_code
+  #     res = search.search_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+  #     hotel_res = search.search_hotels(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+  #     @result_hash[city] = {flight_api_info: res, hotel_api_info: hotel_res}
+  #   end
+  # end
+
   def index
     @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: Date.strptime(params[:search][:departure],'%d/%m/%Y'), return: Date.strptime(params[:search][:return],'%d/%m/%Y')})
     search = AmadeusApiService.new
@@ -24,8 +45,9 @@ class EventsController < ApplicationController
     uniq_cities.each do |event|
       city = event.city_name
       iata = event.iata_code
-      res = search.search_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-      @result_hash[city] = {flight_api_info: res, hotel_api_info: "coming"}
+      hotels_res = search.apitude_hotelbeds(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+      flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+      @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
     end
   end
 

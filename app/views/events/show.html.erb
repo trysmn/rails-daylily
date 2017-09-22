@@ -1,19 +1,22 @@
+  <div class="result-header text-center">
+    <%= image_tag("logo-color.gif", height: 109, width: 150) %>
+    <h1 class="result-headline">Make Your Trip Special</h1>
 <div class="container">
+<div class="show-container">
   <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6" style="padding-left: 0">
 
       <div class="travel-card">
         <div class="show-travel-header">
-          <h5>FLIGHT</h5>
+          <p>FLIGHT</p>
         </div>
-<!--         <hr>
- -->    <div class="show-travel-subheader">
+<div class="show-travel-subheader">
           <div class="city city-left">
-            <h5>BCN</h5>
+            <p>BCN</p>
           </div>
           <i class="fa fa-exchange" aria-hidden="true"></i>
           <div class="city city-right">
-            <h5>BER</h5>
+            <p>BER</p>
           </div>
         </div>
 
@@ -52,26 +55,24 @@
  -->            </div>
           </div>
         </div>
-
-<!--         <div class="show-travel-summary">
- -->          <div class="travel-price">
-            <h5>€375</h5>
+ <div class="travel-price">
+            <p>€375</p>
           </div>
           <div class="travel-book">
-            <a href="#" class="btn-medium">BOOK NOW</a>
+            <a href="#" class="btn btn-medium">BOOK</a>
           </div>
-<!--         </div>
- -->      </div>
+
+        </div>
         </div>
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6" style="padding-right: 0">
       <div class="travel-card">
         <div class="show-travel-header">
-          <h5>HOTEL</h5>
+          <p>HOTEL</p>
         </div>
 
         <div class="show-travel-subheader text-center">
-          <h5>Corinthia Hotel</h5>
+          <p>Corinthia Hotel</p>
         </div>
 
         <div class="show-travel-details">
@@ -92,10 +93,10 @@
 
         <div class="show-travel-summary">
           <div class="travel-price">
-            <h5>€500</h5>
+            <p>€500</p>
           </div>
           <div class="travel-book">
-            <a href="#" class="btn-medium">BOOK NOW</a>
+            <a href="#" class="btn btn-medium">BOOK</a>
           </div>
         </div>
       </div>
@@ -103,8 +104,48 @@
 
     </div>
   </div>
+
+<div class="show-container">
+  <div class="detail-card-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-5 no-padding">
+        <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
+      </div>
+      <div class="col-xs-12 col-md-7 no-padding">
+        <div class="detail-description">
+          <p class=description-header>Fiesta de Gracia</p>
+          <p>The biggest street festival in Barcelona is the Gracia festival every year in mid August called the Festa Major de Gracia and also often called the Fiesta de Gracia.  Around 17 streets are decorate by the residents. There are hundreds of activities most of which are for local residents, but tourists and visitors are welcome to the concerts and parades.</p>
+          <a href="#"><strong>Visit website</strong></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 no-padding">
+        <div class="detail-info">
+          <div class="detail-info-1">
+            <div><p><strong>Date:</strong> 12 October</p></div>
+            <div><p><strong>Fee:</strong> Free</p></div>
+            <div><p><strong>Avg. Temp:</strong> 30C</p></div>
+          </div>
+          <div class="detail-info-2">
+            <div><p><strong>Time:</strong> 20h</p></div>
+            <div><p><strong>Location:</strong> Gracia</p></div>
+            <div><p><strong>Attendees:</strong> +1m</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
+
+
+<p>Max Temperature: <%= @temps_array[0] %>&#8451;</p>
+<p>Min Temperature: <%= @temps_array[1] %>&#8451;</p>
+<p>Number of days of precipitation this month: <%= @precips_array[0] %></p>
+<p>Expected Precipitation this month: <%= @precips_array[1] %>mm</p>
+<p>Expected hours of sunshine this month: <%= @sun_array[0] %></p>
 
 <div class="wrapper-white">
   <div class="container">
