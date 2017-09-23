@@ -1,7 +1,7 @@
 <div class="container">
   <div class="search-header">
     <div class="result-header text-center">
-      <%= image_tag("logo-color.gif", height: 109, width: 150) %>
+      <%= link_to image_tag("logo-color.gif", height: 109, width: 150), root_path %>
       <h1 class="result-headline">Make Your Trip Special</h1>
     </div>
       <div class="result-line">
@@ -9,7 +9,8 @@
           <p>15 Results: From Amsterdam on 30 September to 15 October</p>
         </div>
         <div class="result-button">
-          <a href="#" class="btn btn-sm new-search-button"> New Search</a>
+          <%= link_to "New Search", root_path, class: "btn btn-sm new-search-button" %>
+          <!-- <a href="" class="btn btn-sm new-search-button"> New Search</a> -->
         </div>
       </div>
   </div>
@@ -50,6 +51,8 @@
           </div>
         </div>
       </div>
+
+
       <div class="col-xs-12 col-md-6">
        <div class="result-card">
         <div class="result-card-image">
@@ -86,5 +89,49 @@
         </div>
       </div>
     </div>
+
+    <div class="row"> <!-- This row shouldn't be here -->
+      <% @events.each do |event| %>
+        <div class="col-xs-12 col-md-6">
+          <div class="result-card">
+            <div class="result-card-image">
+              <img class="card-img" src="http://yourworldcalendar.com/wp-content/uploads/2015/09/human-building.jpg" alt="">
+            </div>
+            <div class="result-card-details">
+              <div class="result-card-details-left">
+                <h4><%= event.city_airport.city_name %></h4>
+                <p><%= event.title %></p>
+              </div>
+              <div class="result-card-details-right">
+                <p>Flight + Hotel</p>
+                <% hotel_price =  @result_hash[event.city_airport.city_name][:hotel_api_info]['minRate'] %>
+                <% flight_price_string = @result_hash[event.city_airport.city_name][:flight_api_info]['trips']['tripOption'][0]['pricing'][0]['saleTotal'] %>
+                <% price_flight = flight_price_string.slice! "EUR" %>
+                <h4>€ <%= price_flight.to_f + hotel_price.to_f %></h4>
+              </div>
+            </div>
+            <div class="result-hover-card">
+              <div class="result-hover-card-details">
+                <div class="result-card-details-left">
+                  <h4><%= event.city_airport.city_name %></h4>
+                  <p><%= event.title %></p>
+                </div>
+                <div class="result-card-details-right">
+                  <p>Flight + Hotel</p>
+                  <h4>€ <%= price_flight.to_f + hotel_price.to_f %></h4>
+                </div>
+              </div>
+              <div>
+                <p class="result-hover-description"><%= truncate(event.description, :length => 360) %></p>
+              </div>
+              <div>
+                <%= link_to "BOOK", event_path(event), class: "btn btn-lg book-button" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>

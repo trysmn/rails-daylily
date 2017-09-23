@@ -31,24 +31,24 @@ class EventsController < ApplicationController
   # end
 
   def index
-    # @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: Date.strptime(params[:search][:departure],'%d/%m/%Y'), return: Date.strptime(params[:search][:return],'%d/%m/%Y')})
-    # search = AmadeusApiService.new
-    # origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
-    # cities = []
-    # @events.each do |event|
-    #   if event.city_airport != origin_city_obj
-    #     cities << event.city_airport
-    #   end
-    # end
-    # uniq_cities = cities.uniq
-    # @result_hash = {}
-    # uniq_cities.each do |event|
-    #   city = event.city_name
-    #   iata = event.iata_code
-    #   hotels_res = search.apitude_hotelbeds(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-    #   flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-    #   @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
-    # end
+    @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: Date.strptime(params[:search][:departure],'%d/%m/%Y'), return: Date.strptime(params[:search][:return],'%d/%m/%Y')})
+    search = AmadeusApiService.new
+    origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
+    cities = []
+    @events.each do |event|
+      if event.city_airport != origin_city_obj
+        cities << event.city_airport
+      end
+    end
+    uniq_cities = cities.uniq
+    @result_hash = {}
+    uniq_cities.each do |event|
+      city = event.city_name
+      iata = event.iata_code
+      hotels_res = search.apitude_hotelbeds(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+      flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+      @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
+    end
   end
 
   def new
@@ -71,7 +71,7 @@ class EventsController < ApplicationController
     start_month = months[@event.start_date.mon - 1].downcase
 
     city_airport_id = @event.city_airport_id
-    city_name = CityAirport.find(city_airport_id).city_name
+    @city_name = CityAirport.find(city_airport_id).city_name
 
     # Scraping for Temperature:
     temp_url = "https://www.currentresults.com/Weather/Europe/Cities/temperature-#{start_month}.php"
@@ -80,7 +80,7 @@ class EventsController < ApplicationController
     temp_html_doc = Nokogiri::HTML(temp_html_file)
 
     temp_html_doc.search('.articletable.tablecol-3-left.revcolr tbody tr').each do |td|
-      if td.text.split("\n")[3].split(",").include?(city_name)
+      if td.text.split("\n")[3].split(",").include?(@city_name)
         @temps_array = []
         @temps_array << td.text.split("\n")[4]
         @temps_array << td.text.split("\n")[5]
@@ -95,7 +95,7 @@ class EventsController < ApplicationController
     precip_html_doc = Nokogiri::HTML(precip_html_file)
 
     precip_html_doc.search('.articletable.tablecol-2-left.revcolr tbody tr').each do |td|
-      if td.text.split("\n")[2].split(",").include?(city_name)
+      if td.text.split("\n")[2].split(",").include?(@city_name)
         @precips_array = []
         @precips_array << td.text.split("\n")[1]
         @precips_array << td.text.split("\n")[4]
@@ -110,7 +110,7 @@ class EventsController < ApplicationController
     sun_html_doc = Nokogiri::HTML(sun_html_file)
 
     sun_html_doc.search('.articletable.tablecol-1-left.revcolr tbody tr').each do |td|
-      if td.text.split("\n")[1].split(",").include?(city_name)
+      if td.text.split("\n")[1].split(",").include?(@city_name)
         @sun_array = []
         @sun_array << td.text.split("\n")[2]
       end
