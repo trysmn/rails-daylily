@@ -9,7 +9,13 @@
   justify-content: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  padding-bottom: 200px;
+  opacity: 0.9;
+  .glyphicon {
+    color: white;
+    text-decoration: none;
+    padding-top: 200px;
+    font-size: 60px;
+  }
 }
 .top-banner h1 {
   font-weight: 400;
@@ -63,14 +69,12 @@
   border-image-slice: 1;
   height: 300px;
   width: 300px;
-  margin: 20px 10px;
   vertical-align: center;
   padding-top: 40px;
 }
 .bottom-banner-header {
   margin-bottom: 100px;
   font-weight: 200;
-  // background: -webkit-linear-gradient(to right, #F09819, #FF512F);
   background: linear-gradient(to right, #FF512F, #F09819);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -80,17 +84,19 @@
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .about-card .about-header {
   font-weight: 400;
   font-size: 30px;
   margin-bottom: 30px;
+
 }
 .about-card p {
   font-weight: 100;
   font-size: 20px;
   text-align: center;
-  padding: 0 15px;
 }
 
 .learn-more {
@@ -112,3 +118,4 @@
     bottom: 4px;
     right: 4px;
 }
+
