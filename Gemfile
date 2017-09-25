@@ -34,6 +34,7 @@ end
 gem 'remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'httparty'
+gem 'social-share-button'
 
 
 group :development, :test do
