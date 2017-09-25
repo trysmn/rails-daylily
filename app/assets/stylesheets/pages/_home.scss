@@ -9,7 +9,13 @@
   justify-content: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  padding-bottom: 200px;
+  .glyphicon {
+    color: white;
+    text-decoration: none;
+    padding-top: 200px;
+    font-size: 60px;
+  }
+
 }
 .top-banner h1 {
   font-weight: 400;
@@ -68,7 +74,6 @@
 .bottom-banner-header {
   margin-bottom: 100px;
   font-weight: 200;
-  // background: -webkit-linear-gradient(to right, #F09819, #FF512F);
   background: linear-gradient(to right, #FF512F, #F09819);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -88,9 +93,4 @@
   font-weight: 100;
   font-size: 20px;
   text-align: center;
-  padding: 0 15px;
-}
-
-.learn-more {
-  align-self: flex-end;
 }
