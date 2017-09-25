@@ -47,15 +47,13 @@
                     <p><strong><%= carrier_to %><%= flight_number_to %></strong></p>
                   </div>
                   <div class="box">
-                    <p><strong>30 Oct <!-- 2017 --></strong></p>
+                    <p><strong><%= flight_return_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
                   </div>
                   <div class="box">
-                    <p class="Departure"><strong>Departs</strong> 20:00</p>
-                    <!-- <p>20:00</p> -->
+                    <p class="Departure"><strong>Departs</strong> <%= flight_return_departure_time.to_datetime.strftime("%H:%M") %></p>
                   </div>
                   <div class="box">
-                    <p class="Arrival"><strong>Arrives</strong> 22:30</p>
-                    <!-- <p>22:30</p> -->
+                    <p class="Arrival"><strong>Arrives</strong> <%= flight_to_arrival_time.to_datetime.strftime("%H:%M") %></p>
                   </div>
                 </div>
 
@@ -64,15 +62,13 @@
                     <p><strong><%= carrier_return %><%= flight_number_return %></strong></p>
                   </div>
                   <div class="box">
-                    <p><strong>03 Nov</strong> <!-- 2017 --></p>
+                    <p><strong><%= flight_return_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
                   </div>
                   <div class="box">
-                    <p class="Departure"><strong>Departs</strong> 09:00</p>
-                    <!--        <p>09:00</p> -->
+                    <p class="Departure"><strong>Departs</strong> <%= flight_return_departure_time.to_datetime.strftime("%H:%M") %></p>
                   </div>
                   <div class="box">
-                    <p class="Arrival"><strong>Arrives</strong> 11:30</p>
-                    <!-- <p>11:30</p> -->
+                    <p class="Arrival"><strong>Arrives</strong> <%= flight_return_arrival_time.to_datetime.strftime("%H:%M") %></p>
                   </div>
                 </div>
               </div>
@@ -164,6 +160,7 @@
         </div>
       </div>
     </div>
+
 
 <!-- <div id="map" style="width: 100%; height: 600px;"></div>
 -->
