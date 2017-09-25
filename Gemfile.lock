@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: 94fc769914455f6f505b467011649d76b13ea112
+  specs:
+    bootstrap-datepicker-rails (1.7.1.1)
+      railties (>= 3.0)
+
+GIT
   remote: git://github.com/assembler/attachinary.git
   revision: 98a895be22edc74b1928ffa3ae116d24bd9818fd
   specs:
@@ -65,11 +72,11 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-datepicker-rails (1.7.1.1)
-      railties (>= 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (9.1.0)
     cloudinary (1.1.7)
@@ -156,6 +163,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.2)
     multi_xml (0.6.0)
     nested_form (0.3.2)
@@ -290,8 +299,9 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors!
   binding_of_caller
-  bootstrap-datepicker-rails
+  bootstrap-datepicker-rails!
   bootstrap-sass
+  bootstrap3-datetimepicker-rails (~> 4.17.47)
   cloudinary (= 1.1.7)
   coffee-rails
   devise
@@ -305,6 +315,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   listen (~> 3.0.5)
+  momentjs-rails (>= 2.9.0)
   open-weather
   pg
   pry-byebug
