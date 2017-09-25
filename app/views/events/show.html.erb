@@ -18,6 +18,7 @@
 <% check_out_date = @api_info[:return_date] %>
 <% hotel_price =  @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['minRate'] %>
 
+
   <div class="result-header text-center">
     <%= link_to image_tag("logo-color.gif", height: 109, width: 150), root_path %>
     <h1 class="result-headline">Make Your Trip Special</h1>
@@ -135,8 +136,9 @@
         <div class="detail-description">
           <p class="description-header"><%= @event.title %></p>
           <div >
-            <p><%= @event.description %></p>
-            <%= link_to "Visit website", @event.website, class: "btn btn-medium", target: "_blank" %>
+            <p><%= @event.description %>&#160; &#160;<%= link_to "Visit website", @event.website, class: "underline" %><%= social_share_button_tag(@event.title) %>
+</p>
+
           </div>
           <!-- <a href="#"><strong>Visit website</strong></a> -->
         </div>
