@@ -12,5 +12,5 @@ class Event < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  validates_length_of :description, :minimum => 200, :maximum => 350
+  validates_length_of :description, :maximum => 350
 end
