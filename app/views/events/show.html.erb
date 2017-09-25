@@ -112,8 +112,8 @@
         <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
       </div>
       <div class="col-xs-12 col-md-7 no-padding">
-        <div class="detail-description" style="overflow: scroll;">
-          <p class="description-header" style="position: sticky;"><%= @event.title %></p>
+        <div class="detail-description">
+          <p class="description-header"><%= @event.title %></p>
           <div >
             <p><%= @event.description %></p>
             <%= link_to "Visit website", @event.website, class: "btn btn-medium", target: "_blank" %>
@@ -133,7 +133,7 @@
           <div class="detail-info-2">
             <div>
               <p>
-                <strong>Time:</strong> <%= @event.start_time.to_a[0] if @event.start_time.to_a[2].to_s.length == 1 %><%= @event.start_time.to_a[2] %>:<%= @event.start_time.to_a[0] %><%= @event.start_time.to_a[1] %> - <%= @event.end_time.to_a[0] if @event.end_time.to_a[2].to_s.length == 1 %><%= @event.end_time.to_a[2] %>:<%= @event.end_time.to_a[0] %><%= @event.end_time.to_a[1] %>
+                <strong>Time:</strong> <%= 0 if @event.start_time.to_a[2].to_s.length == 1 %><%= @event.start_time.to_a[2] %>:<%= @event.start_time.to_a[0] %><%= @event.start_time.to_a[1] %> - <%= 0 if @event.end_time.to_a[2].to_s.length == 1 %><%= @event.end_time.to_a[2] %>:<%= @event.end_time.to_a[0] %><%= @event.end_time.to_a[1] %>
               </p>
             </div>
             <div><p><strong>Location:</strong> <%= @event.address %></p></div>
