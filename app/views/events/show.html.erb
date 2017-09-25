@@ -26,6 +26,7 @@
         <div class="row">
           <div class="col-xs-12 col-md-6" style="padding-left: 0">
             <div class="travel-card">
+              
               <div class="show-travel-header">
                 <p>FLIGHT</p>
               </div>
@@ -124,35 +125,39 @@
         </div>
       </div>
 
-      <div class="show-container">
-        <div class="detail-card-container">
-          <div class="row">
-            <div class="col-xs-12 col-md-5 no-padding">
-              <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
-            </div>
-            <div class="col-xs-12 col-md-7 no-padding">
-              <div class="detail-description">
-                <p class=description-header>Fiesta de Gracia</p>
-                <p>The biggest street festival in Barcelona is the Gracia festival every year in mid August called the Festa Major de Gracia and also often called the Fiesta de Gracia.  Around 17 streets are decorate by the residents. There are hundreds of activities most of which are for local residents, but tourists and visitors are welcome to the concerts and parades.</p>
-                <a href="#"><strong>Visit website</strong></a>
-              </div>
-            </div>
+<div class="show-container">
+  <div class="detail-card-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-5 no-padding">
+        <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
+      </div>
+      <div class="col-xs-12 col-md-7 no-padding">
+        <div class="detail-description">
+          <p class="description-header"><%= @event.title %></p>
+          <div >
+            <p><%= @event.description %></p>
+            <%= link_to "Visit website", @event.website, class: "btn btn-medium", target: "_blank" %>
           </div>
-          <div class="row">
-            <div class="col-xs-12 no-padding">
-              <div class="detail-info">
-                <div class="detail-info-1">
-                  <div><p><strong>Date:</strong> 12 October</p></div>
-                  <div><p><strong>Fee:</strong> Free</p></div>
-                  <div><p><strong>Avg. Temp:</strong> 30C</p></div>
-                </div>
-                <div class="detail-info-2">
-                  <div><p><strong>Time:</strong> 20h</p></div>
-                  <div><p><strong>Location:</strong> Gracia</p></div>
-                  <div><p><strong>Attendees:</strong> +1m</p></div>
-                </div>
-              </div>
+          <!-- <a href="#"><strong>Visit website</strong></a> -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 no-padding">
+        <div class="detail-info">
+          <div class="detail-info-1">
+            <div><p><strong>Date:</strong> <%= @event.start_date.strftime('%d/%m/%Y') %> - <%= @event.end_date.strftime('%d/%m/%Y') %></p></div>
+            <div><p><strong>Fee:</strong> €<%= @event.entrance_fee %></p></div>
+            <div><p><strong>Avg. Temp:</strong> <%= (@temps_array[0].to_i + @temps_array[1].to_i) / 2 %>&#8451;</p></div>
+          </div>
+          <div class="detail-info-2">
+            <div>
+              <p>
+                <strong>Time:</strong> <%= 0 if @event.start_time.to_a[2].to_s.length == 1 %><%= @event.start_time.to_a[2] %>:<%= @event.start_time.to_a[0] %><%= @event.start_time.to_a[1] %> - <%= 0 if @event.end_time.to_a[2].to_s.length == 1 %><%= @event.end_time.to_a[2] %>:<%= @event.end_time.to_a[0] %><%= @event.end_time.to_a[1] %>
+              </p>
             </div>
+            <div><p><strong>Location:</strong> <%= @event.address %></p></div>
+            <div><p><strong>Attendees:</strong> <%= @event.number_of_attendees %></p></div>
           </div>
         </div>
       </div>

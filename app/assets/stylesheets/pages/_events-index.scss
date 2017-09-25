@@ -4,6 +4,38 @@
   height: 250px;
 }
 
+.no-result-card {
+  margin: 20px 0px;
+  height: 325px;
+  background: linear-gradient(to right, #ff512f, #f09819);
+  margin: 20px 0px;
+  position: relative;
+}
+
+.no-result-card-text {
+  color: rgba(255,255,255,1);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-search-button {
+  border: 1px solid rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.no-search-button:hover {
+  border: 1px solid rgba(255,255,255,1);
+  color: rgba(255,255,255,1);
+  font-size: 12px;
+  font-weight: 300;
+}
+
 .result-card {
   margin: 20px 0px;
   position: relative;
@@ -120,6 +152,14 @@
   border: 1px solid rgba(0,0,0,0.6);
   color: rgba(0,0,0,0.6);
   font-size: 12px;
+  font-weight: 300;
+}
+
+.new-search-button:hover {
+  border: 1px solid rgba(0,0,0,1);
+  color: rgba(0,0,0,1);
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .result-line {
