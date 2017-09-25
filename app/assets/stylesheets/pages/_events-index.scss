@@ -10,6 +10,7 @@
   background: linear-gradient(to right, #ff512f, #f09819);
   margin: 20px 0px;
   position: relative;
+  min-width: 400px;
 }
 
 .no-result-card-text {
@@ -110,6 +111,8 @@
 .result-card-details-left h4 {
   font-weight: bold;
   font-size: 18px;
+  text-align: left;
+  letter-spacing: 2px;
 }
 
 .result-card-details-left p {
@@ -165,6 +168,8 @@
 .result-line {
   display: flex;
   align-items: baseline;
+  margin-top: 50px;
+  margin-bottom: -20px;
 }
 
 .result-text {
