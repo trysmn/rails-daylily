@@ -3,12 +3,15 @@
   padding: 15px 0;
   background: white;
   align-items: center;
-  opacity: 0.95;
+  // opacity: 0.95;
+  justify: center;
 }
 .white-container {
-  // background: url('https://images.pexels.com/photos/54283/pexels-photo-54283.jpeg?w=1500&h=1000'), linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
-  opacity: 0.8;
+  background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FF512F, #F09819);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FF512F, #F09819); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding: 10px;
-  // display: flex;
-  background: url('https://static.pexels.com/photos/431722/pexels-photo-431722.jpeg');
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
