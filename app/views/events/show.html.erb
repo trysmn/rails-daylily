@@ -146,7 +146,7 @@
           <div class="detail-info-1">
             <div><p><strong>Date:</strong> <%= @event.start_date.strftime('%d/%m/%Y') %> - <%= @event.end_date.strftime('%d/%m/%Y') %></p></div>
             <div><p><strong>Fee:</strong> €<%= @event.entrance_fee %></p></div>
-            <div><p><strong>Avg. Temp:</strong> <%= (@temps_array[0].to_i + @temps_array[1].to_i) / 2 %>&#8451;</p></div>
+            <div><p><strong>Avg. Temp:</strong> <%= (@temps_array[0].to_i + @temps_array[1].to_i) / 2 %><!-- &#8451; -->C</p></div>
           </div>
           <div class="detail-info-2">
             <div>
