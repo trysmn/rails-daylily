@@ -1,0 +1,17 @@
+<h1><%= "This is the loading page" %></h1>
+
+<p><%= "LOADING..." %></p>
+
+<div class="loader"></div>
+
+
+<script type="text/javascript">
+  setTimeout(function(){
+    var url = new URL(window.location.href);
+    var c = url.searchParams.get("c")
+    console.log(c)
+    window.location.href="/events?search=<%= c %>";
+  }, 10000);
+    // put your correct path in a string here
+</script>
+

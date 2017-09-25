@@ -3,7 +3,7 @@
   <%= image_tag("logo-white.gif", height: 145, width: 200) %>
     <h1 class="title">Daylily</h1>
     <h3 class="tag">Make your trip special</h3>
-      <%= simple_form_for :search, html: {class: 'form-inline'}, url: "/events" , method: :get do |f| %>
+      <%= simple_form_for :search, html: {class: 'form-inline'}, url: loading_path , method: :get do |f| %>
       <%= f.input :origin_iata, collection: CityAirport.all.order(:city_name), value_method: :iata_code, label_method: :city_name, label: false, include_blank: "Flying from", input_html: {class: "input-lg"} %>
       <%= f.input :departure, label: false, input_html: {class: 'datepicker input-lg', value: Date.today.strftime('%d/%m/%Y')} %>
       <%= f.input :return, label: false, input_html: {class: 'datepicker input-lg', value: Date.tomorrow.strftime('%d/%m/%Y')} %>
