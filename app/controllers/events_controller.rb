@@ -1,6 +1,7 @@
 require 'amadeus_api_service'
 require 'open-uri'
 require 'nokogiri'
+require 'update_user_job'
 
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :search, :show]
@@ -31,8 +32,9 @@ class EventsController < ApplicationController
   # end
 
   def index
+    render '../views/events/_loading_page'
     @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: Date.strptime(params[:search][:departure],'%d/%m/%Y'), return: Date.strptime(params[:search][:return],'%d/%m/%Y')})
-    search = AmadeusApiService.new
+
     origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
     cities = []
     @events.each do |event|
@@ -41,14 +43,8 @@ class EventsController < ApplicationController
       end
     end
     uniq_cities = cities.uniq
-    @result_hash = {}
-    uniq_cities.each do |event|
-      city = event.city_name
-      iata = event.iata_code
-      hotels_res = search.apitude_hotelbeds(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-      flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-      @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
-    end
+    @result_hash = UpdateUserJob.perform_now(params[:search][:origin_iata], uniq_cities, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+    flash[:notice] = "Your search has been performed"
   end
 
   def new

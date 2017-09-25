@@ -25,6 +25,8 @@ gem 'open-weather'
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
