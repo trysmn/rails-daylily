@@ -16,7 +16,7 @@
 }
 .banner-content {
   font-family: 'Roboto', sans-serif;
-  color: white;
+
 }
 .bottom-banner {
   background-size: cover !important;
@@ -25,11 +25,13 @@
 }
 .title {
   font-size: 75px;
+  color: white;
 }
 .tag {
   font-size: 30px;
   font-weight: 100;
   padding-bottom: 30px;
+  color: white;
 }
 .input-lg {
   border-radius: 1px;
@@ -93,4 +95,20 @@
 
 .learn-more {
   align-self: flex-end;
+}
+
+.bootstrap-datetimepicker-widget table td.active.today:before {
+    border-bottom-color: #fff;
+}
+
+.bootstrap-datetimepicker-widget table td.today:before {
+    content: '';
+    display: inline-block;
+    border: solid transparent;
+    border-width: 0 0 7px 7px;
+    border-bottom-color: #337ab7;
+    border-top-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
 }

@@ -4,7 +4,9 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require bootstrap-sprockets
-//= require bootstrap-datepicker
+//= require moment
+//= require bootstrap-datetimepicker
+//= require datetimepicker
 //= require underscore
 //= require gmaps/google
 //= require social-share-button
