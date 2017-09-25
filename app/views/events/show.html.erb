@@ -1,148 +1,167 @@
+<% origin_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['data']['airport'][0]['code'] %>
+<% carrier_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['carrier'] %>
+<% flight_number_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['number'] %>
+<% flight_to_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['departureTime'] %>
+<% flight_to_arrival_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['arrivalTime'] %>
+
+<% destination_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['data']['airport'][1]['code'] %>
+<% carrier_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['carrier'] %>
+<% flight_number_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['number'] %>
+<% flight_return_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['departureTime'] %>
+<% flight_return_arrival_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['arrivalTime'] %>
+
+<% flight_price_string = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['pricing'][0]['saleTotal'] %>
+<% price_flight = flight_price_string.slice! "EUR" %>
+
+<% name_hotel = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['name'] %>
+<% check_in_date = @api_info[:departure_date] %>
+<% check_out_date = @api_info[:return_date] %>
+<% hotel_price =  @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['minRate'] %>
+
   <div class="result-header text-center">
     <%= link_to image_tag("logo-color.gif", height: 109, width: 150), root_path %>
     <h1 class="result-headline">Make Your Trip Special</h1>
-<div class="container">
-<div class="show-container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6" style="padding-left: 0">
-
-      <div class="travel-card">
-        <div class="show-travel-header">
-          <p>FLIGHT</p>
-        </div>
-<div class="show-travel-subheader">
-          <div class="city city-left">
-            <p>BCN</p>
-          </div>
-          <i class="fa fa-exchange" aria-hidden="true"></i>
-          <div class="city city-right">
-            <p>BER</p>
-          </div>
-        </div>
-
-        <div class="show-travel-details">
-          <div class="show-departure">
-            <div class="box">
-              <p><strong>IB3781</strong></p>
+    <div class="container">
+      <div class="show-container">
+        <div class="row">
+          <div class="col-xs-12 col-md-6" style="padding-left: 0">
+            <div class="travel-card">
+              <div class="show-travel-header">
+                <p>FLIGHT</p>
               </div>
-            <div class="box">
-              <p><strong>30 Oct <!-- 2017 --></strong></p>
-            </div>
-            <div class="box">
-              <p class="Departure"><strong>Departs</strong> 20:00</p>
-<!--               <p>20:00</p>
- -->            </div>
-            <div class="box">
-              <p class="Arrival"><strong>Arrives</strong> 22:30</p>
-<!--               <p>22:30</p>
- -->            </div>
-          </div>
-
-          <div class="show-return">
-            <div class="box">
-              <p><strong>IB4682</strong></p>
+              <div class="show-travel-subheader">
+                <div class="city city-left">
+                  <p><%= origin_airport %></p>
+                </div>
+                <i class="fa fa-exchange" aria-hidden="true"></i>
+                <div class="city city-right">
+                  <p><%= destination_airport %></p>
+                </div>
               </div>
-            <div class="box">
-              <p><strong>03 Nov</strong> <!-- 2017 --></p>
+
+              <div class="show-travel-details">
+                <div class="show-departure">
+                  <div class="box">
+                    <p><strong><%= carrier_to %><%= flight_number_to %></strong></p>
+                  </div>
+                  <div class="box">
+                    <p><strong>30 Oct <!-- 2017 --></strong></p>
+                  </div>
+                  <div class="box">
+                    <p class="Departure"><strong>Departs</strong> 20:00</p>
+                    <!-- <p>20:00</p> -->
+                  </div>
+                  <div class="box">
+                    <p class="Arrival"><strong>Arrives</strong> 22:30</p>
+                    <!-- <p>22:30</p> -->
+                  </div>
+                </div>
+
+                <div class="show-return">
+                  <div class="box">
+                    <p><strong><%= carrier_return %><%= flight_number_return %></strong></p>
+                  </div>
+                  <div class="box">
+                    <p><strong>03 Nov</strong> <!-- 2017 --></p>
+                  </div>
+                  <div class="box">
+                    <p class="Departure"><strong>Departs</strong> 09:00</p>
+                    <!--        <p>09:00</p> -->
+                  </div>
+                  <div class="box">
+                    <p class="Arrival"><strong>Arrives</strong> 11:30</p>
+                    <!-- <p>11:30</p> -->
+                  </div>
+                </div>
+              </div>
+              <div class="travel-price">
+                <p>€ <%= flight_price_string %></p>
+              </div>
+              <div class="travel-book">
+                <a href="#" class="btn btn-medium">BOOK</a>
+              </div>
+
             </div>
-            <div class="box">
-              <p class="Departure"><strong>Departs</strong> 09:00</p>
-       <!--        <p>09:00</p> -->
+          </div>
+
+          <div class="col-xs-12 col-md-6" style="padding-right: 0">
+            <div class="travel-card">
+              <div class="show-travel-header">
+                <p>HOTEL</p>
+              </div>
+
+              <div class="show-travel-subheader text-center">
+                <p><%= name_hotel %></p>
+              </div>
+
+              <div class="show-travel-details">
+                <div class="show-checkin flex-item">
+
+                  <p><strong>Check-in</strong></p>
+                  <p><%= check_in_date %></p>
+
+                </div>
+
+                <div class="show-checkout flex-item">
+
+                  <p><strong>Check-out</strong></p>
+                  <p><%= check_out_date %></p>
+
+                </div>
+              </div>
+
+              <div class="show-travel-summary">
+                <div class="travel-price">
+                  <p>€ <%= hotel_price %></p>
+                </div>
+                <div class="travel-book">
+                  <a href="#" class="btn btn-medium">BOOK</a>
+                </div>
+              </div>
             </div>
-            <div class="box">
-              <p class="Arrival"><strong>Arrives</strong> 11:30</p>
-<!--               <p>11:30</p>
- -->            </div>
-          </div>
-        </div>
- <div class="travel-price">
-            <p>€375</p>
-          </div>
-          <div class="travel-book">
-            <a href="#" class="btn btn-medium">BOOK</a>
           </div>
 
         </div>
-        </div>
+      </div>
 
-    <div class="col-xs-12 col-md-6" style="padding-right: 0">
-      <div class="travel-card">
-        <div class="show-travel-header">
-          <p>HOTEL</p>
-        </div>
-
-        <div class="show-travel-subheader text-center">
-          <p>Corinthia Hotel</p>
-        </div>
-
-        <div class="show-travel-details">
-          <div class="show-checkin flex-item">
-
-              <p><strong>Check-in</strong></p>
-              <p>30 Oct 2017</p>
-
+      <div class="show-container">
+        <div class="detail-card-container">
+          <div class="row">
+            <div class="col-xs-12 col-md-5 no-padding">
+              <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
+            </div>
+            <div class="col-xs-12 col-md-7 no-padding">
+              <div class="detail-description">
+                <p class=description-header>Fiesta de Gracia</p>
+                <p>The biggest street festival in Barcelona is the Gracia festival every year in mid August called the Festa Major de Gracia and also often called the Fiesta de Gracia.  Around 17 streets are decorate by the residents. There are hundreds of activities most of which are for local residents, but tourists and visitors are welcome to the concerts and parades.</p>
+                <a href="#"><strong>Visit website</strong></a>
+              </div>
+            </div>
           </div>
-
-          <div class="show-checkout flex-item">
-
-              <p><strong>Check-out</strong></p>
-              <p>Nov 4 2017</p>
-
-          </div>
-        </div>
-
-        <div class="show-travel-summary">
-          <div class="travel-price">
-            <p>€500</p>
-          </div>
-          <div class="travel-book">
-            <a href="#" class="btn btn-medium">BOOK</a>
+          <div class="row">
+            <div class="col-xs-12 no-padding">
+              <div class="detail-info">
+                <div class="detail-info-1">
+                  <div><p><strong>Date:</strong> 12 October</p></div>
+                  <div><p><strong>Fee:</strong> Free</p></div>
+                  <div><p><strong>Avg. Temp:</strong> 30C</p></div>
+                </div>
+                <div class="detail-info-2">
+                  <div><p><strong>Time:</strong> 20h</p></div>
+                  <div><p><strong>Location:</strong> Gracia</p></div>
+                  <div><p><strong>Attendees:</strong> +1m</p></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    </div>
-  </div>
-
-<div class="show-container">
-  <div class="detail-card-container">
-    <div class="row">
-      <div class="col-xs-12 col-md-5 no-padding">
-        <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
-      </div>
-      <div class="col-xs-12 col-md-7 no-padding">
-        <div class="detail-description">
-          <p class=description-header>Fiesta de Gracia</p>
-          <p>The biggest street festival in Barcelona is the Gracia festival every year in mid August called the Festa Major de Gracia and also often called the Fiesta de Gracia.  Around 17 streets are decorate by the residents. There are hundreds of activities most of which are for local residents, but tourists and visitors are welcome to the concerts and parades.</p>
-          <a href="#"><strong>Visit website</strong></a>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 no-padding">
-        <div class="detail-info">
-          <div class="detail-info-1">
-            <div><p><strong>Date:</strong> 12 October</p></div>
-            <div><p><strong>Fee:</strong> Free</p></div>
-            <div><p><strong>Avg. Temp:</strong> 30C</p></div>
-          </div>
-          <div class="detail-info-2">
-            <div><p><strong>Time:</strong> 20h</p></div>
-            <div><p><strong>Location:</strong> Gracia</p></div>
-            <div><p><strong>Attendees:</strong> +1m</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 <!-- <div id="map" style="width: 100%; height: 600px;"></div>
- -->
+-->
 <%# content_for(:after_js) do %>
-  <%#= javascript_tag do %>
+<%#= javascript_tag do %>
     <!-- $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
@@ -156,5 +175,5 @@
         }
       });
     }); -->
-  <%# end %>
-<%# end %>
+    <%# end %>
+    <%# end %>

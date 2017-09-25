@@ -28,12 +28,12 @@ class EventsController < ApplicationController
       flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
       @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
     end
-    s_details = SearchDetail.new
-    s_details.city_airport_id = CityAirport.find_by(iata_code: params[:search][:origin_iata]).id
-    s_details.departure_date = params[:search][:departure]
-    s_details.return_date = params[:search][:return]
-    s_details.incoming_data = @result_hash
-    s_details.save
+    @s_details = SearchDetail.new
+    @s_details.city_airport_id = CityAirport.find_by(iata_code: params[:search][:origin_iata]).id
+    @s_details.departure_date = params[:search][:departure]
+    @s_details.return_date = params[:search][:return]
+    @s_details.incoming_data = @result_hash
+    @s_details.save
   end
 
   def new
@@ -52,6 +52,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @api_info = SearchDetail.find(params[:format])
+
     months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     start_month = months[@event.start_date.mon - 1].downcase
 
