@@ -7,6 +7,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require datetimepicker
+//= require init_datepicker
 //= require underscore
 //= require gmaps/google
 //= require social-share-button
