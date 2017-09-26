@@ -9,20 +9,20 @@
   justify-content: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  // opacity: 0.9;
-  .glyphicon {
-    color: white;
-    text-decoration: none;
-    padding-top: 200px;
-    font-size: 60px;
-  }
 }
+
+.arrow-down {
+  color: white;
+  text-decoration: none;
+  padding-top: 200px;
+  font-size: 60px;
+}
+
 .top-banner h1 {
   font-weight: 400;
 }
 .banner-content {
   font-family: 'Roboto', sans-serif;
-
 }
 .bottom-banner {
   background-size: cover !important;
@@ -154,7 +154,7 @@
     vertical-align: center;
   }
 
-.new  {
+.new-event  {
   border-top: 1px solid transparent;
     -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
     -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
@@ -168,6 +168,6 @@
   margin-top: 40px;
 }
 
-.new-image {
+.new-event-image {
   margin-right: 10px;
 }
