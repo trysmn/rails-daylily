@@ -5,33 +5,32 @@ require 'nokogiri'
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :search, :show]
   before_action :set_event, only: [:show, :edit, :update, :delete]
+  respond_to :html, :js
   def home
     @city_airports = CityAirport.all
   end
 
   def index
-    @events = Event.where("start_date <= :return AND end_date >= :departure", {departure: Date.strptime(params[:search][:departure],'%d/%m/%Y'), return: Date.strptime(params[:search][:return],'%d/%m/%Y')})
-    search = AmadeusApiService.new
     origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
+    @events = Event.where("start_date <= :return AND end_date >= :departure AND status = :status", {departure: params[:search][:departure].to_date, return: params[:search][:return].to_date, status: "approved"}).where.not("city_airport_id = :airport_id", {airport_id: origin_city_obj.id})
+    search = AmadeusApiService.new
     cities = []
     @events.each do |event|
-      if event.city_airport != origin_city_obj
-        cities << event.city_airport
-      end
+      cities << event.city_airport
     end
     uniq_cities = cities.uniq
     @result_hash = {}
     uniq_cities.each do |event|
       city = event.city_name
       iata = event.iata_code
-      hotels_res = search.apitude_hotelbeds(iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
-      flight_res = search.google_flights(params[:search][:origin_iata], iata, parsing_date(params[:search][:departure]), parsing_date(params[:search][:return]))
+      hotels_res = search.apitude_hotelbeds(iata, params[:search][:departure], params[:search][:return])
+      flight_res = search.google_flights(params[:search][:origin_iata], iata, params[:search][:departure], params[:search][:return])
       @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
     end
     @s_details = SearchDetail.new
     @s_details.city_airport_id = CityAirport.find_by(iata_code: params[:search][:origin_iata]).id
-    @s_details.departure_date = params[:search][:departure]
-    @s_details.return_date = params[:search][:return]
+    @s_details.departure_date = params[:search][:departure].to_date
+    @s_details.return_date = params[:search][:return].to_date
     @s_details.incoming_data = @result_hash
     @s_details.save
   end

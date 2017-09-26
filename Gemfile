@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.4'
+# ruby '2.3.4'
 
 gem 'devise'
 gem 'figaro'
@@ -28,6 +28,7 @@ gem 'open-weather'
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
+gem 'owlcarousel-rails'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
@@ -38,6 +39,7 @@ gem 'remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'httparty'
 gem 'social-share-button'
+gem 'turbolinks'
 
 
 group :development, :test do
