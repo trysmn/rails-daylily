@@ -11,4 +11,5 @@
 //= require underscore
 //= require gmaps/google
 //= require social-share-button
+//= require owl.carousel
 //= require_tree .
