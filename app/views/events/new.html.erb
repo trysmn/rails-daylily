@@ -2,7 +2,7 @@
   <div class="new-card">
     <div class="row">
       <div class="col-xs-12 col-md-8">
-       <h2 class="text-center"><strong>Submit an event</strong></h2>
+       <p class="new-event-header">Submit an event</p>
 
         <%= simple_form_for(@event) do |f| %>
           <% if @event.errors.any? %>
@@ -17,32 +17,29 @@
 
 
         <div class="form-inputs">
-          <%= f.input :city_airport_id, collection: CityAirport.all.order(:city_name), value_method: :id, label_method: :city_name, label: false, include_blank: "Select nearest airport", input_html: {class: "form-input-lg"} %>
+          <%= f.input :title, label: "Name of event", label_html: { class: 'my_label_class' },  input_html: {class: "form-input-lg"} %>
+          <%= f.input :description, label: "Description", label_html: { class: 'my_label_class' },  input_html: {class: "form-input-lg"} %>
+          <%= f.input :address, label: "Address, postcode and city", label_html: { class: 'my_label_class' }, input_html: {class: "form-input-lg"} %>
 
-<!--           start datepicker
- -->
-          <%= f.input :start_d, label: 'Event start date', input_html: {class: 'form-input-lg datetimepicker',id: :datetimepicker3,  value: Date.tomorrow.strftime('%Y/%m/%d')} %>
-          <%= f.input :end_d, label: 'Event end date', input_html: {class: 'form-input-lg datetimepicker',id: :datetimepicker4, value: Date.tomorrow.strftime('%Y/%m/%d')} %>
+          <%= f.input :start_d, label: 'Start date',label_html: { class: 'my_label_class' }, input_html: {class: 'form-input-lg datetimepicker',id: :datetimepicker3,  value: Date.tomorrow.strftime('%Y/%m/%d')} %>
+          <%= f.input :end_d, label: 'End date', label_html: { class: 'my_label_class' },  input_html: {class: 'form-input-lg datetimepicker',id: :datetimepicker4, value: Date.tomorrow.strftime('%Y/%m/%d')} %>
 
-<!--           end datepicker
- -->
-          <%= f.input :title, label: false, placeholder: "Event name", input_html: {class: "form-input-lg"} %>
-          <%= f.input :description, label: false, placeholder: "Event description", input_html: {class: "form-input-lg"} %>
-          <%= f.input :address, label: false, placeholder: "Event address and city", input_html: {class: "form-input-lg"} %>
 
-<!--           old datepicker below
- -->
-          <%#= f.input :start_date, label: false, placeholder: "Start Date", input_html: {class: "form-input-lg"} %>
-          <%#= f.input :end_date, label: false, placeholder: "End Date", input_html: {class: "form-input-lg"} %>
 
-          <%= f.input :start_time, label: false, placeholder: "Start time", input_html: {class: "form-input-lg"} %>
-          <%= f.input :end_time, label: false, placeholder: "End time", input_html: {class: "form-input-lg"} %>
+          <%= f.input :start_time, as: :string, label: 'Start time', label_html: { class: 'my_label_class' }, input_html: {class: "timepicker"} %>
+          <%= f.input :end_time, as: :string, label: 'End time', label_html: { class: 'my_label_class' }, input_html: {class: "timepicker"} %>
 
-          <%= f.input :number_of_attendees, label: false, placeholder: "# of attendees", input_html: {class: "form-input-lg"} %>
-          <%= f.input :entrance_fee, label: false, placeholder: "Entry fee", input_html: {class: "form-input-lg"} %>
 
-          <%= f.input :website, label: false, placeholder: "Event website", input_html: {class: "form-input-lg"} %>
-          <%= f.input :photos, as: :attachinary, label: "Upload photos" %>
+
+          <%= f.input :number_of_attendees, label: '# of attendees', label_html: { class: 'my_label_class' }, input_html: {class: "form-input-lg"} %>
+          <%= f.input :entrance_fee, label: 'Entry fee', label_html: { class: 'my_label_class' }, input_html: {class: "form-input-lg"} %>
+
+          <%= f.input :city_airport_id, collection: CityAirport.all.order(:city_name), value_method: :id, label_method: :city_name, label: "Select nearest airport", label_html: { class: 'my_label_class' }, input_html: {class: "form-input-lg"} %>
+
+
+          <%= f.input :website, label: 'Event url', label_html: { class: 'my_label_class' }, input_html: {class: "form-input-lg"} %>
+
+          <%= f.input :photos, as: :attachinary, label: "Upload photos", label_html: { class: 'my_label_class' }  %>
 
         </div>
 

@@ -4,5 +4,12 @@ $( document ).ready(function() {
       format: 'YYYY-MM-DD'
 
    });
-   // $('#datetimepicker4').datetimepicker({});
+
+    $('.timepicker').datetimepicker({
+
+      format: 'HH:mm'
+
+
+   });
+
 });
