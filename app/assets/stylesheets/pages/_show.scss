@@ -155,20 +155,17 @@ body {
   border-image-slice: 1;
   border-top: none;
   font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  padding-top: 10px;
+  max-width: 939.98px;
 }
 .detail-info-1 {
-  padding-top: 5px;
-  padding-right: 10px;
-  padding-left: 10px;
-  display: flex;
-  justify-content: space-between;
+  padding-left: 20px;
 }
-.detail-info-2 {
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-bottom: -10px;
-  display: flex;
-  justify-content: space-between;
+.detail-info-3 {
+  padding-right: 20px;
 }
 a {
   text-decoration: none;

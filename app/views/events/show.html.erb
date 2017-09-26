@@ -19,164 +19,168 @@
 <% hotel_price =  @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['minRate'] %>
 
 
-  <div class="result-header text-center">
-    <%= link_to image_tag("logo-color.gif", height: 109, width: 150), root_path %>
-    <h1 class="result-headline">Make Your Trip Special</h1>
-    <div class="container">
-      <div class="show-container">
-        <div class="row">
-          <div class="col-xs-12 col-md-6" style="padding-left: 0">
-            <div class="travel-card">
+<div class="result-header text-center">
+  <%= link_to image_tag("logo-color.gif", height: 109, width: 150), root_path %>
+  <h1 class="result-headline">Make Your Trip Special</h1>
+  <div class="container">
+    <div class="show-container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6" style="padding-left: 0">
+          <div class="travel-card">
 
-              <div class="show-travel-header">
-                <p>FLIGHT</p>
+            <div class="show-travel-header">
+              <p>FLIGHT</p>
+            </div>
+            <div class="show-travel-subheader">
+              <div class="city city-left">
+                <p><%= origin_airport %></p>
               </div>
-              <div class="show-travel-subheader">
-                <div class="city city-left">
-                  <p><%= origin_airport %></p>
-                </div>
-                <i class="fa fa-exchange" aria-hidden="true"></i>
-                <div class="city city-right">
-                  <p><%= destination_airport %></p>
-                </div>
+              <i class="fa fa-exchange" aria-hidden="true"></i>
+              <div class="city city-right">
+                <p><%= destination_airport %></p>
               </div>
+            </div>
 
-              <div class="show-travel-details">
-                <div class="show-departure">
-                  <div class="box">
-                    <p><strong><%= carrier_to %><%= flight_number_to %></strong></p>
-                  </div>
-                  <div class="box">
-                    <p><strong><%= flight_return_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
-                  </div>
-                  <div class="box">
-                    <p class="Departure"><strong>Departs</strong> <%= flight_return_departure_time.to_datetime.strftime("%H:%M") %></p>
-                  </div>
-                  <div class="box">
-                    <p class="Arrival"><strong>Arrives</strong> <%= flight_to_arrival_time.to_datetime.strftime("%H:%M") %></p>
-                  </div>
+            <div class="show-travel-details">
+              <div class="show-departure">
+                <div class="box">
+                  <p><strong><%= carrier_to %><%= flight_number_to %></strong></p>
                 </div>
-
-                <div class="show-return">
-                  <div class="box">
-                    <p><strong><%= carrier_return %><%= flight_number_return %></strong></p>
-                  </div>
-                  <div class="box">
-                    <p><strong><%= flight_return_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
-                  </div>
-                  <div class="box">
-                    <p class="Departure"><strong>Departs</strong> <%= flight_return_departure_time.to_datetime.strftime("%H:%M") %></p>
-                  </div>
-                  <div class="box">
-                    <p class="Arrival"><strong>Arrives</strong> <%= flight_return_arrival_time.to_datetime.strftime("%H:%M") %></p>
-                  </div>
+                <div class="box">
+                  <p><strong><%= flight_return_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
+                </div>
+                <div class="box">
+                  <p class="Departure"><strong>Departs</strong> <%= flight_return_departure_time.to_datetime.strftime("%H:%M") %></p>
+                </div>
+                <div class="box">
+                  <p class="Arrival"><strong>Arrives</strong> <%= flight_to_arrival_time.to_datetime.strftime("%H:%M") %></p>
                 </div>
               </div>
+
+              <div class="show-return">
+                <div class="box">
+                  <p><strong><%= carrier_return %><%= flight_number_return %></strong></p>
+                </div>
+                <div class="box">
+                  <p><strong><%= flight_return_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
+                </div>
+                <div class="box">
+                  <p class="Departure"><strong>Departs</strong> <%= flight_return_departure_time.to_datetime.strftime("%H:%M") %></p>
+                </div>
+                <div class="box">
+                  <p class="Arrival"><strong>Arrives</strong> <%= flight_return_arrival_time.to_datetime.strftime("%H:%M") %></p>
+                </div>
+              </div>
+            </div>
+            <div class="travel-price">
+              <p>€ <%= flight_price_string %></p>
+            </div>
+            <div class="travel-book">
+              <a href="#" class="btn btn-medium">BOOK</a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6" style="padding-right: 0">
+          <div class="travel-card">
+            <div class="show-travel-header">
+              <p>HOTEL</p>
+            </div>
+
+            <div class="show-travel-subheader text-center">
+              <p><%= name_hotel %></p>
+            </div>
+
+            <div class="show-travel-details">
+              <div class="show-checkin flex-item">
+
+                <p><strong>Check-in</strong></p>
+                <p><%= check_in_date %></p>
+
+              </div>
+
+              <div class="show-checkout flex-item">
+
+                <p><strong>Check-out</strong></p>
+                <p><%= check_out_date %></p>
+
+              </div>
+            </div>
+
+            <div class="show-travel-summary">
               <div class="travel-price">
-                <p>€ <%= flight_price_string %></p>
+                <p>€ <%= hotel_price %></p>
               </div>
               <div class="travel-book">
                 <a href="#" class="btn btn-medium">BOOK</a>
               </div>
-
             </div>
           </div>
-
-          <div class="col-xs-12 col-md-6" style="padding-right: 0">
-            <div class="travel-card">
-              <div class="show-travel-header">
-                <p>HOTEL</p>
-              </div>
-
-              <div class="show-travel-subheader text-center">
-                <p><%= name_hotel %></p>
-              </div>
-
-              <div class="show-travel-details">
-                <div class="show-checkin flex-item">
-
-                  <p><strong>Check-in</strong></p>
-                  <p><%= check_in_date %></p>
-
-                </div>
-
-                <div class="show-checkout flex-item">
-
-                  <p><strong>Check-out</strong></p>
-                  <p><%= check_out_date %></p>
-
-                </div>
-              </div>
-
-              <div class="show-travel-summary">
-                <div class="travel-price">
-                  <p>€ <%= hotel_price %></p>
-                </div>
-                <div class="travel-book">
-                  <a href="#" class="btn btn-medium">BOOK</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-<div class="show-container">
-  <div class="detail-card-container">
-    <div class="row">
-      <div class="col-xs-12 col-md-5 no-padding">
-        <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
-      </div>
-      <div class="col-xs-12 col-md-7 no-padding">
-        <div class="detail-description">
-          <p class="description-header"><%= @event.title %></p>
-          <div >
-            <p><%= @event.description %>&#160; &#160;<%= link_to "Visit website", @event.website, class: "underline" %><%= social_share_button_tag(@event.title) %>
-</p>
-
-          </div>
-          <!-- <a href="#"><strong>Visit website</strong></a> -->
-        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12 no-padding">
-        <div class="detail-info">
-          <div class="detail-info-1">
-            <div><p><strong>Date:</strong> <%= @event.start_date.strftime('%d/%m/%Y') %> - <%= @event.end_date.strftime('%d/%m/%Y') %></p></div>
-            <div><p><strong>Fee:</strong> €<%= @event.entrance_fee %></p></div>
-            <div><p><strong>Avg. Temp:</strong> <%= (@temps_array[0].to_i + @temps_array[1].to_i) / 2 %><!-- &#8451; -->C</p></div>
+
+    <div class="show-container">
+      <div class="detail-card-container">
+        <div class="row">
+          <div class="col-xs-12 col-md-5 no-padding">
+            <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt="">
           </div>
-          <div class="detail-info-2">
-            <div>
-              <p>
-                <strong>Time:</strong> <%= 0 if @event.start_time.to_a[2].to_s.length == 1 %><%= @event.start_time.to_a[2] %>:<%= @event.start_time.to_a[0] %><%= @event.start_time.to_a[1] %> - <%= 0 if @event.end_time.to_a[2].to_s.length == 1 %><%= @event.end_time.to_a[2] %>:<%= @event.end_time.to_a[0] %><%= @event.end_time.to_a[1] %>
-              </p>
-            </div>
-            <div><p><strong>Location:</strong> <%= @event.address %></p></div>
-            <div><p><strong>Attendees:</strong> <%= @event.number_of_attendees %></p></div>
-          </div>
-        </div>
+          <div class="col-xs-12 col-md-7 no-padding">
+            <div class="detail-description">
+              <p class="description-header"><%= @event.title %></p>
+              <div >
+                <p><%= @event.description %>&#160; &#160;<%= link_to "Visit website", @event.website, class: "underline" %><%= social_share_button_tag(@event.title) %></p>
+              </div>
+
+
+    <!--           target="_blank"
+  -->
+
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-xs-12 no-padding">
+    <div class="detail-info">
+      <div class="detail-info-1">
+        <p><strong>Date:</strong> <%= @event.start_date.strftime('%d/%m/%Y') %> - <%= @event.end_date.strftime('%d/%m/%Y') %></p>
+        <p><strong>Location:</strong> <%= @event.address %></p>
+      </div>
+
+      <div class="detail-info-2">
+        <p><strong>Fee:</strong> €<%= @event.entrance_fee %></p>
+        <p><strong>Time:</strong> <%= 0 if @event.start_time.to_a[2].to_s.length == 1 %><%= @event.start_time.to_a[2] %>:<%= @event.start_time.to_a[0] %><%= @event.start_time.to_a[1] %> - <%= 0 if @event.end_time.to_a[2].to_s.length == 1 %><%= @event.end_time.to_a[2] %>:<%= @event.end_time.to_a[0] %><%= @event.end_time.to_a[1] %></p>
+      </div>
+
+      <div class="detail-info-3">
+        <p><strong>Avg Temp:</strong> <%= (@temps_array[0].to_i + @temps_array[1].to_i) / 2 %>C</p>
+        <p><strong>Attendees:</strong> <%= @event.number_of_attendees %></p>
       </div>
     </div>
+  </div>
+</div>
+</div>
+</div>
 
 <div id="map" style="width: 100%; height: 600px;"></div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-   <% end %>
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: { id: 'map' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
+});
+});
+<% end %>
+<% end %>
