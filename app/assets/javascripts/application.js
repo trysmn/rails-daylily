@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-fileupload/basic
+//= require turbolinks
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require bootstrap-sprockets

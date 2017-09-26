@@ -5,6 +5,7 @@ require 'nokogiri'
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :search, :show]
   before_action :set_event, only: [:show, :edit, :update, :delete]
+  respond_to :html, :js
   def home
     @city_airports = CityAirport.all
   end
