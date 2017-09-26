@@ -11,6 +11,7 @@ require 'json'
 
 url = "https://raw.githubusercontent.com/ram-nadella/airport-codes/master/airports.json"
 
+
 puts "Reading the json file..."
 airports_file = open(url).read
 puts "Done!"
@@ -44,6 +45,14 @@ puts "Deleting all current terrains..."
 Terrain.destroy_all
 puts "Done!"
 
+puts "Deleting all current users..."
+User.destroy_all
+puts "Done!"
+
+puts "Seeding User..."
+User.create(email: "one@localhost.dev", password: "one@localhost.dev", password_confirmation: "one@localhost.dev")
+puts "Done!"
+
 puts "Creating all necessary airport cities..."
 iata_codes_array = ["LON","PAR","MIL","BCN","BER","MAD","VIE","DUB","AMS","BRU","BSL"]
 iata_codes_array.each do |iata,index|
@@ -73,7 +82,7 @@ events_array = [ { title: "London Cocktail Week",
   average_temp: 12,
   entrance_fee: 0,
   website: "https://drinkup.london/cocktailweek/",
-  user_id: 1,
+  user_id: User.first.id,
   status: "approved",
   address: "16 Horner Square, London E1 6EW, UK",
   city_airport_id: CityAirport.first.id },
@@ -85,7 +94,7 @@ events_array = [ { title: "London Cocktail Week",
     average_temp: 12,
     entrance_fee: 0,
     website: "https://frieze.com/article/frieze-sculpture-2017-0",
-    user_id: 1,
+    user_id: User.first.id,
     status: "approved",
     address: "Chester Rd, London NW1 4NR, UK",
     city_airport_id: CityAirport.first.id },
@@ -97,7 +106,7 @@ events_array = [ { title: "London Cocktail Week",
     average_temp: 13,
     entrance_fee: 0,
     website: "https://www.cinekid.nl/english/festival",
-    user_id: 1,
+    user_id: User.first.id,
     status: "approved",
     address: "Kattenburgerstraat 5, 1018 JA Amsterdam, Netherlands",
     city_airport_id: CityAirport.all[8].id },
@@ -109,7 +118,7 @@ events_array = [ { title: "London Cocktail Week",
     average_temp: 13,
     entrance_fee: 15,
     website: "http://www.readmyworld.nl/tickets/",
-    user_id: 1,
+    user_id: User.first.id,
     status: "approved",
     address: "Amsterdam, Netherlands",
     city_airport_id: CityAirport.all[8].id },
@@ -121,7 +130,7 @@ events_array = [ { title: "London Cocktail Week",
     average_temp: 21,
     entrance_fee: 0,
     website: "http://www.barcelonayellow.com/bcn-events-calendar/details/761-merce-wine-and-cava-festival",
-    user_id: 1,
+    user_id: User.first.id,
     status: "approved",
     address: "Passeig de Lluís Companys, 08003, Barcelona, Spain",
     city_airport_id: CityAirport.all[3].id },
@@ -133,7 +142,7 @@ events_array = [ { title: "London Cocktail Week",
     average_temp: 21,
     entrance_fee: 0,
     website: "http://www.barcelonayellow.com/bcn-events-calendar/details/89-barcelona-boat-show-salon-nautico",
-    user_id: 1,
+    user_id: User.first.id,
     status: "approved",
     address: "Carrer de l'Escar, 26, 08039 Barcelona",
     city_airport_id: CityAirport.all[3].id } ]
