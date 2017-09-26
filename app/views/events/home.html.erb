@@ -1,44 +1,84 @@
-<div class="top-banner">
+<div class="top-banner" id="section-1">
   <div class="banner-content text-center">
-  <%= image_tag("logo-white.gif", height: 145, width: 200) %>
+    <%= image_tag("logo-white.gif", height: 145, width: 200) %>
     <h1 class="title">Daylily</h1>
     <h3 class="tag">Make your trip special</h3>
-  <div class="container">
+    <div class="container">
       <div class="row">
-      <div class="col-md-12">
-      <%= simple_form_for :search, html: {class: 'form-inline'}, url: "/events" , method: :get do |f| %>
-      <%= f.input :origin_iata, collection: CityAirport.all.order(:city_name), value_method: :iata_code, label_method: :city_name, label: false, include_blank: "Flying from", input_html: {class: "input-lg"} %>
-      <%= f.input :departure, label: false, input_html: {class: 'input-lg',id: :datetimepicker1,  value: Date.tomorrow.strftime('%Y/%m/%d')} %>
-      <%= f.input :return, label: false, input_html: {class: 'input-lg',id: :datetimepicker2, value: Date.tomorrow.strftime('%Y/%m/%d')} %>
-      <%= f.submit "Search", class: "btn btn-lg" %>
-    <% end %>
+        <div class="col-md-12">
+          <%= simple_form_for :search, html: {class: 'form-inline'}, url: "/events" , method: :get do |f| %>
+          <%= f.input :origin_iata, collection: CityAirport.all.order(:city_name), value_method: :iata_code, label_method: :city_name, label: false, include_blank: "Flying from", input_html: {class: "input-lg"} %>
+          <%= f.input :departure, label: false, input_html: {class: 'input-lg',id: :datetimepicker1,  value: Date.tomorrow.strftime('%Y/%m/%d')} %>
+          <%= f.input :return, label: false, input_html: {class: 'input-lg',id: :datetimepicker2, value: Date.tomorrow.strftime('%Y/%m/%d')} %>
+          <%= f.submit "Search", class: "btn btn-lg" %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-
-  <a href="#section-1" class="glyphicon glyphicon-menu-down js-anchor-link"></a>
+    <a href="#section-2" class="glyphicon glyphicon-menu-down js-anchor-link"></a>
   </div>
 </div>
 
-<div class="bottom-banner" id="section-1">
-  <div class="banner2-content text-center">
-    <h1 class="bottom-banner-header">MAKE YOUR TRIP SPECIAL</h1>
-  </div>
-  <div class="b2-card-container">
-    <div class="row text-center">
-      <div class="about-card col-xs-12 col-sm-6 col-lg-4">
-        <p class="about-header">Discover</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+
+
+<div class="container" id="section-2">
+<div class="text-center">
+  <a href="#section-1" class="glyphicon glyphicon-menu-up arrow-up js-anchor-link"></a>
+</div>
+  <div class="explain">
+    <div class="row">
+      <h1 class="bottom-banner-header">MAKE YOUR TRIP SPECIAL</h1>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="bridge">
+          <div class="bridge-image">
+            <%= image_tag("Bridge.gif", height: 100, width: 100) %>
+          </div>
+          <div class="bridge-text">
+            <h3>You like city trips?</h3>
+          </div>
+        </div>
       </div>
-      <div class="about-card col-xs-12 col-sm-6 col-lg-4">
-        <p class="about-header">Experience</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="balloon">
+          <div class="balloon-text">
+            <h3>But you're never there when the best things are happening?</h3>
+          </div>
+          <div class="balloon-image">
+            <%= image_tag("Ballon.gif", height: 100, width: 100) %>
+          </div>
+        </div>
       </div>
-      <div class="about-card col-xs-12 col-sm-6 col-lg-4">
-        <p class="about-header">Share</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="daylily">
+          <div class="daylily-image">
+            <%= image_tag("logo-color.gif", height: 100, width: 140) %>
+          </div>
+          <div class="daylily-text">
+            <h3>Daylily tells where to go as well as your flight and hotel options!</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="new">
+          <div class="new-image">
+            <%= image_tag("Megaphone.gif", height: 60, width: 80) %>
+          </div>
+          <div class="new-text">
+            <h5>You know an event that is not on Daylily yet? Please let us know!</h5>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
