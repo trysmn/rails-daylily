@@ -9,16 +9,28 @@
 require 'open-uri'
 require 'json'
 
-puts "Deleting all current airport cities..."
-CityAirport.destroy_all
-puts "Done!"
-
 puts "Deleting all current terrains..."
 Terrain.destroy_all
 puts "Done!"
 
 puts "Deleting all current categories..."
 Category.destroy_all
+puts "Done!"
+
+puts "Deleting all search details..."
+SearchDetail.destroy_all
+puts "Done!"
+
+puts "Deleting all current events..."
+Event.destroy_all
+puts "Done!"
+
+puts "Deleting all current users..."
+User.destroy_all
+puts "Done!"
+
+puts "Deleting all current airport cities..."
+CityAirport.destroy_all
 puts "Done!"
 
 # puts "Deleting all current event_categories..."
@@ -29,11 +41,6 @@ puts "Done!"
 # EventTerrain.destroy_all
 # puts "Done!"
 
-puts "Deleting all current events..."
-Event.destroy_all
-puts "Done!"
-
-
 url = "https://raw.githubusercontent.com/ram-nadella/airport-codes/master/airports.json"
 
 puts "Reading the json file..."
@@ -42,6 +49,10 @@ puts "Done!"
 
 puts "Storing the content of the json file in a hash..."
 airports_hash = JSON.parse(airports_file)
+puts "Done!"
+
+puts "Seeding User..."
+User.create(email: "one@localhost.dev", password: "one@localhost.dev", password_confirmation: "one@localhost.dev")
 puts "Done!"
 
 
@@ -158,7 +169,7 @@ events_array = [
     average_temp: 10,
     entrance_fee: 0,
     website: "https://www.oktoberfest.de/en/",
-    user_id: User.first,
+    user_id: User.first.id,
     status: "approved",
     address: "Munich, Germany",
     city_airport_id: CityAirport.all[11].id },
@@ -173,7 +184,7 @@ events_array = [
     average_temp: 10,
     entrance_fee: 0,
     website: "http://festival-of-lights.de/en/",
-    user_id: User.first,
+    user_id: User.first.id,
     status: "approved",
     address: "Berlin, Germany",
     city_airport_id: CityAirport.all[4].id },
@@ -188,25 +199,25 @@ events_array = [
     average_temp: 12,
     entrance_fee: 10,
     website: "https://www.cafebudapestfest.hu/events",
-    user_id: User.first,
+    user_id: User.first.id,
     status: "approved",
     address: "Budapest, Hungary",
     city_airport_id: CityAirport.all[12].id } ]
 
-  # { title: "Eurochocolate Festival",
-  #   description: "It’s a fantastic time to experience Budapest. There’s a full program on offer that features jazz, dance, theater, poetry, fine arts, and Fashion Week. The festival is now in its 26th year, and shows no signs of letting up.",
-  #   start_date: Date.parse('6th Oct 2017'),
-  #   end_date: Date.parse('22nd Oct 2017'),
-  #   start_time: Time.new(2017, 10, 6, 10, 0, 0),
-  #   end_time: Time.new(2017, 10, 22, 22, 0, 0),
-  #   number_of_attendees: 1000000,
-  #   average_temp: 12,
-  #   entrance_fee: 10,
-  #   website: "https://www.cafebudapestfest.hu/events",
-  #   user_id: 1,
-  #   status: "approved",
-  #   address: "Budapest, Hungary",
-  #   city_airport_id: CityAirport.all[12].id }, ]
+#   { title: "Eurochocolate Festival",
+#     description: "It’s a fantastic time to experience Budapest. There’s a full program on offer that features jazz, dance, theater, poetry, fine arts, and Fashion Week. The festival is now in its 26th year, and shows no signs of letting up.",
+#     start_date: Date.parse('6th Oct 2017'),
+#     end_date: Date.parse('22nd Oct 2017'),
+#     start_time: Time.new(2017, 10, 6, 10, 0, 0),
+#     end_time: Time.new(2017, 10, 22, 22, 0, 0),
+#     number_of_attendees: 1000000,
+#     average_temp: 12,
+#     entrance_fee: 10,
+#     website: "https://www.cafebudapestfest.hu/events",
+#     user_id: User.first.id,
+#     status: "approved",
+#     address: "Budapest, Hungary",
+#     city_airport_id: CityAirport.all[12].id } ]
 
 urls = {
   "Oktoberfest" => ["http://static4.businessinsider.com/image/55fb1b179dd7cc17008bb316-1190-625/im-from-munich-and-heres-why-i-think-you-should-avoid-oktoberfest.jpg",
@@ -261,4 +272,5 @@ EventTerrain.create!(event_id: Event.all[0].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[1].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[2].id, terrain_id: Terrain.all[9].id)
 puts "Done!"
+
 
