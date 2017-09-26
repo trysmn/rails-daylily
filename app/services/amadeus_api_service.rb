@@ -73,7 +73,11 @@ class AmadeusApiService
       }
     }.to_json
 
-    hotels_hash = response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+    if response.parsed_response.keys.any? {|k| k.include? "error"}
+      then hotels_hash = ['error', 'error']
+    else
+      hotels_hash = response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+    end
     return hotels_hash.first
   end
 
