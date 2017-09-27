@@ -3,7 +3,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :index, :search, :show]
+  skip_before_action :authenticate_user!, only: [:home, :index, :search, :show, :new, :create]
   before_action :set_event, only: [:show, :edit, :update, :delete]
   respond_to :html, :js
   def home
