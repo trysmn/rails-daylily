@@ -11,8 +11,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
-    @events = Event.where("start_date <= :return AND end_date >= :departure AND status = :status", {departure: params[:search][:departure].to_date, return: params[:search][:return].to_date, status: "approved"}).where.not("city_airport_id = :airport_id", {airport_id: origin_city_obj.id})
+    @origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
+    @events = Event.where("start_date <= :return AND end_date >= :departure AND status = :status", {departure: params[:search][:departure].to_date, return: params[:search][:return].to_date, status: "approved"}).where.not("city_airport_id = :airport_id", {airport_id: @origin_city_obj.id})
     search = AmadeusApiService.new
     cities = []
     @events.each do |event|
