@@ -9,15 +9,13 @@
   justify-content: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
+  .arrow-down {
+    color: white;
+    text-decoration: none;
+    padding-top: 200px;
+    font-size: 60px;
 }
-
-.arrow-down {
-  color: white;
-  text-decoration: none;
-  padding-top: 200px;
-  font-size: 60px;
 }
-
 .top-banner h1 {
   font-weight: 400;
 }
@@ -27,7 +25,13 @@
 .bottom-banner {
   background-size: cover !important;
   height: 100vh;
-  padding-top: 85px;
+  // padding-top: 85px;
+   .arrow-up {
+    color: #ff512f;
+    text-decoration: none;
+    font-size: 60px;
+    vertical-align: center;
+  }
 }
 .title {
   font-size: 75px;
@@ -148,11 +152,11 @@
   margin-left: 10px;
 }
 
- .arrow-up {
-    text-decoration: none;
-    font-size: 60px;
-    vertical-align: center;
-  }
+ // .arrow-up {
+ //    text-decoration: none;
+ //    font-size: 60px;
+ //    vertical-align: center;
+ //  }
 
 .new-event  {
   border-top: 1px solid transparent;
