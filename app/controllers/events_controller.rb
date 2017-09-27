@@ -43,7 +43,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.status = "pending"
     if @event.save
-      @event.status = "approved"
       redirect_to event_path(@event)
     else
       render :new
