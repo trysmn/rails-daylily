@@ -72,13 +72,15 @@ class AmadeusApiService
         "code": event_iata
       }
     }.to_json
-
     if response.parsed_response.keys.any? {|k| k.include? "error"}
-      then hotels_hash = ['error', 'error']
+      response.parsed_response['error']
     else
-      hotels_hash = response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+      if response.parsed_response['hotels']['total'] == 0
+        {"error" => "No hotels available"}
+      else
+        response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+      end
     end
-    return hotels_hash.first
   end
 
   # def search_flights(origin_iata, event_iata, departure_date, return_date)
