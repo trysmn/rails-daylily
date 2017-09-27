@@ -6,10 +6,7 @@
     </div>
     <div class="result-line">
       <div class="result-text">
-        <% home_city_index = @origin_city_obj.city_name %>
-        <% departure_date_index = params[:search][:departure].to_date.strftime("%d %B") %>
-        <% return_date_index = params[:search][:return].to_date.strftime("%d %B") %>
-        <p><%= @events.count %> Results: From <%= home_city_index %> on <%= departure_date_index %> to <%= return_date_index %></p>
+        <p><%= @events.count %> Results: From Amsterdam on 30 September to 15 October</p>
       </div>
       <div class="result-button">
         <%= link_to "New Search", root_path, class: "btn btn-sm new-search-button" %>
@@ -19,50 +16,13 @@
   <div class="row">
     <div class="result-card-container">
       <% @events.each do |event| %>
-        <% if @result_hash[event.city_airport.city_name][:flight_api_info].keys.any? {|k| k.include? "error"} || @result_hash[event.city_airport.city_name][:hotel_api_info]["error"].any? %>
-          <div class="col-xs-12 col-md-6">
-            <div class="result-card">
-              <div class="result-card-image">
-                    <%= cl_image_tag event.photos.first.path, class: "card-img" %>
-              </div>
-              </div>
-              <div class="result-card-details">
-                <div class="result-card-details-left">
-                  <h4><%= event.city_airport.city_name %></h4>
-                  <p><%= event.title %></p>
-                </div>
-                <div class="result-card-details-right">
-                  <p>Flight + Hotel</p>
-                  <h4>€ 9999,99 </h4>
-                </div>
-              </div>
-              <div class="result-hover-card">
-                <div class="result-hover-card-details">
-                  <div class="result-card-details-left">
-                    <h4><%= event.city_airport.city_name %></h4>
-                    <p><%= event.title %></p>
-                  </div>
-                  <div class="result-card-details-right">
-                    <p>Flight + Hotel</p>
-                    <h4>€ 9999,99 </h4>
-                  </div>
-                </div>
-                <div>
-                  <p class="result-hover-description"><%= truncate(event.description, :length => 360) %></p>
-                </div>
-                <div>
-                  <%= link_to "BOOK", event_path(event, @s_details.id), class: "btn btn-lg book-button" %>
-                </div>
-              </div>
-            </div>
-          </div>
+        <% if @result_hash[event.city_airport.city_name][:flight_api_info].keys.any? {|k| k.include? "error"} || @result_hash[event.city_airport.city_name][:hotel_api_info] == "error" %>
+        <% then %>
         <% else %>
           <div class="col-xs-12 col-md-6">
             <div class="result-card">
               <div class="result-card-image">
-                    <%= cl_image_tag event.photos.first.path, class: "card-img" %>
-              </div>
-                <img class="card-img" src="http://yourworldcalendar.com/wp-content/uploads/2015/09/human-building.jpg" alt="">
+                <%= cl_image_tag event.photos.first.path, class: "card-img"%>
               </div>
               <div class="result-card-details">
                 <div class="result-card-details-left">
@@ -74,7 +34,7 @@
                   <% hotel_price =  @result_hash[event.city_airport.city_name][:hotel_api_info]['minRate'] %>
                   <% flight_price_string = @result_hash[event.city_airport.city_name][:flight_api_info]['trips']['tripOption'][0]['pricing'][0]['saleTotal'] %>
                   <% price_flight = flight_price_string.slice! "EUR" %>
-                  <h4>€ <%= '%.2f' % ( flight_price_string.to_f + hotel_price.to_f ) %></h4>
+                  <h4>€ <%= price_flight.to_f + hotel_price.to_f %></h4>
                 </div>
               </div>
               <div class="result-hover-card">
@@ -85,7 +45,7 @@
                   </div>
                   <div class="result-card-details-right">
                     <p>Flight + Hotel</p>
-                    <h4>€ <%= '%.2f' % ( flight_price_string.to_f + hotel_price.to_f ) %></h4>
+                    <h4>€ <%= price_flight.to_f + hotel_price.to_f %></h4>
                   </div>
                 </div>
                 <div>
@@ -110,8 +70,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
