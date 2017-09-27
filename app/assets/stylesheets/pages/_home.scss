@@ -25,7 +25,13 @@
 .bottom-banner {
   background-size: cover !important;
   height: 100vh;
-  padding-top: 85px;
+  // padding-top: 85px;
+   .arrow-up {
+    color: #ff512f;
+    text-decoration: none;
+    font-size: 60px;
+    vertical-align: center;
+  }
 }
 .title {
   font-size: 75px;
@@ -146,11 +152,11 @@
   margin-left: 10px;
 }
 
- .arrow-up {
-    text-decoration: none;
-    font-size: 60px;
-    vertical-align: center;
-  }
+ // .arrow-up {
+ //    text-decoration: none;
+ //    font-size: 60px;
+ //    vertical-align: center;
+ //  }
 
 .new-event  {
   border-top: 1px solid transparent;
