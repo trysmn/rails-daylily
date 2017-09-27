@@ -73,9 +73,13 @@ class AmadeusApiService
       }
     }.to_json
     if response.parsed_response.keys.any? {|k| k.include? "error"}
-      response.parsed_response
+      {"error" => response.parsed_response['error']}
     else
-      response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+      if response.parsed_response['hotels']['total'] == 0
+        {"error" => "No hotels available"}
+      else
+        response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+      end
     end
   end
 
