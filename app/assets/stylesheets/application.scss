@@ -1,8 +1,4 @@
-// Graphical variables
-/*
-*= require owl.carousel
-*= require owl.theme
-*/
+
 
 @import "config/fonts";
 @import "config/colors";
@@ -15,9 +11,10 @@
 @import "font-awesome";
 @import 'bootstrap-datetimepicker';
 @import "social-share-button";
+@import "owl.carousel";
+@import "owl.theme";
 
 // Your CSS partials
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
-
