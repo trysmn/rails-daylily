@@ -78,7 +78,7 @@ class AmadeusApiService
       if response.parsed_response['hotels']['total'] == 0
         {"error" => "No hotels available"}
       else
-        response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}
+        response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}.first
       end
     end
   end
