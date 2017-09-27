@@ -28,7 +28,7 @@ gem 'open-weather'
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
-gem 'owlcarousel-rails'
+gem 'light_gallery_rails', git: 'https://github.com/stNicolaas/light-gallery-rails.git'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

@@ -143,24 +143,33 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
- -->
-    <div class="show-container">
-      <div class="detail-card-container">
-        <div class="row">
-          <div class="col-xs-12 col-md-5 no-padding owl-carousel">
-            <% @event.photos.each do |photo| %>
-            <div class="div">
-              # <%= cl_image_tag photo.path, class: "card-img" %>
-            </div>
-            <% end %>
-<!--             <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt=""> -->
+-->
+<div class="show-container">
+  <div class="detail-card-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-5 no-padding ">
+
+        <div id="lightGallery">
+          <div data-src="<%= cl_image_path @event.photos.first.path %>">
+            <%= cl_image_tag @event.photos.first.path, class: "card-img" %>
           </div>
-          <div class="col-xs-12 col-md-7 no-padding">
-            <div class="detail-description">
-              <p class="description-header"><%= @event.title %></p>
-              <div >
-                <p><%= @event.description %>&#160; &#160;<%= link_to "Visit website", @event.website, class: "underline" %><%= social_share_button_tag(@event.title) %></p>
-              </div>
+
+          <% @event.photos.drop(1).each do |photo|  %>
+          <div data-src="<%= cl_image_path photo.path %>">
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-xs-12 col-md-7 no-padding">
+        <div class="detail-description">
+          <p class="description-header"><%= @event.title %></p>
+          <div >
+            <p><%= @event.description %>&#160; &#160;<%= link_to "Visit website", @event.website, class: "underline" %><%= social_share_button_tag(@event.title) %></p>
+          </div>
 
 
     <!--           target="_blank"
