@@ -147,9 +147,11 @@
     <div class="show-container">
       <div class="detail-card-container">
         <div class="row">
-          <div class="col-xs-12 col-md-5 no-padding">
-            <% event.photos.each do |photo| %>
+          <div class="col-xs-12 col-md-5 no-padding owl-carousel">
+            <% @event.photos.each do |photo| %>
+            <div class="div">
               # <%= cl_image_tag photo.path, class: "card-img" %>
+            </div>
             <% end %>
 <!--             <img class="card-img no-padding" src="https://farm6.staticflickr.com/5681/20522919409_25277202d2_z.jpg" alt=""> -->
           </div>
