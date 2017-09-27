@@ -254,9 +254,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    shareable (1.1.4)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -336,7 +333,6 @@ DEPENDENCIES
   redis
   remotipart
   sass-rails
-  shareable
   simple_form
   social-share-button
   spring
