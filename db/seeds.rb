@@ -33,13 +33,6 @@ puts "Deleting all current airport cities..."
 CityAirport.destroy_all
 puts "Done!"
 
-# puts "Deleting all current event_categories..."
-# EventCategory.destroy_all
-# puts "Done!"
-
-# puts "Deleting all current event_terrains..."
-# EventTerrain.destroy_all
-# puts "Done!"
 
 url = "https://raw.githubusercontent.com/ram-nadella/airport-codes/master/airports.json"
 
@@ -52,12 +45,12 @@ airports_hash = JSON.parse(airports_file)
 puts "Done!"
 
 puts "Seeding User..."
-User.create(email: "one@localhost.dev", password: "one@localhost.dev", password_confirmation: "one@localhost.dev")
+User.create(email: "one@localhost.dev", password: "one@localhost.dev", password_confirmation: "one@localhost.dev", admin: true)
 puts "Done!"
 
 
 puts "Creating all necessary airport cities..."
-iata_codes_array = ["LON","PAR","MIL","BCN","BER","MAD","VIE","DUB","AMS","BRU","BSL","MUC","BUD"]
+iata_codes_array = ["LON","PAR","MIL","BCN","BER","MAD","VIE","DUB","AMS","BRU","BSL","MUC","BUD","CPH"]
 iata_codes_array.each do |iata,index|
   CityAirport.create!(city_name: airports_hash[iata]["city"], iata_code: airports_hash[iata]["iata"])
 end
@@ -81,84 +74,6 @@ puts "Done!"
 puts "Seeding events..."
 
 events_array = [
-#   { title: "London Cocktail Week",
-  #   description: "Join a seven-day cocktail party celebrating the capital's top bars, mixologists and cocktail scene during London Cocktail Week (LCW). Hosted by DrinkUp.London, the same team behind London Beer Week and Wine Week, the annual festival features a vibrant cocktail village as well as special offers at more than 250 bars, restaurants and pop-ups all…",
-  #   start_date: Date.parse('2nd Oct 2017'),
-  #   end_date: Date.parse('8th Oct 2017'),
-  #   average_temp: 12,
-  #   entrance_fee: 0,
-  #   website: "https://drinkup.london/cocktailweek/",
-  #   user_id: User.first,
-  #   status: "approved",
-  #   address: "16 Horner Square, London E1 6EW, UK",
-  #   city_airport_id: CityAirport.first.id },
-
-#   { title: "Frieze Sculpture park",
-#     description: "Wander through a stunning outdoor exhibition featuring works by some of the world’s most famous sculptors with Frieze Sculpture 2017 in Regent’s Park's English Gardens. Bringing together 25 sculptures by acclaimed 20th-century and contemporary artists, Frieze Sculpture is a great way to get a taste of Frieze Masters and Frieze London, before…",
-#     start_date: Date.parse('2th Oct 2017'),
-#     end_date: Date.parse('8th Oct 2017'),
-#     average_temp: 12,
-#     entrance_fee: 0,
-#     website: "https://frieze.com/article/frieze-sculpture-2017-0",
-#     user_id: User.first,
-#     status: "approved",
-#     address: "Chester Rd, London NW1 4NR, UK",
-#     city_airport_id: CityAirport.first.id },
-
-#   { title: "Cinekid Festival",
-#     description: "The Cinekid Festival is an annual film, television and new-media festival for children across the Netherlands, attended by more than 50,000 children and (international) guests every year. The festival traditionally takes place at Amsterdam’s Westergasfabriek in September or October, around the autumn school holidays.",
-#     start_date: Date.parse('21st Oct 2017'),
-#     end_date: Date.parse('23rd Oct 2017'),
-#     average_temp: 13,
-#     entrance_fee: 0,
-#     website: "https://www.cinekid.nl/english/festival",
-#     user_id: User.first,
-#     status: "approved",
-#     address: "Kattenburgerstraat 5, 1018 JA Amsterdam, Netherlands",
-#     city_airport_id: CityAirport.all[8].id },
-
-#   { title: "Read My World",
-#     description: "Read My World is the international literature festival of Amsterdam. Going beyond the commonplace, it explores the boundaries of literature and journalism and draws attention to everything in between. It traditionally takes place in October at the Tolhuistuin.",
-#     start_date: Date.parse('12th Oct 2017'),
-#     end_date: Date.parse('14th Oct 2017'),
-#     start_time: Time.new(2017, 10, 12, 10, 0, 0),
-#     end_time: Time.new(2017, 10, 14, 16, 0, 0),
-#     average_temp: 13,
-#     entrance_fee: 15,
-#     website: "http://www.readmyworld.nl/tickets/",
-#     user_id: User.first,
-#     status: "approved",
-#     address: "Amsterdam, Netherlands",
-#     city_airport_id: CityAirport.all[8].id },
-
-#   { title: "Barcelona Wine and Cava Festival",
-#     description: "The Mostra de Vins i Caves de Catalunya is once again at the Arc de Triomf monument on Passeig de Lluis Company.  Taking part are over 70 top wineries present wines from 12 Catalan denominations of origin including DO Alella, Catalonia, Cava, Conca de Barbera, Costers del Segre, Empordà Montsant Penedès Pla de Bages, Priorat, Tarragona and Terra…",
-#     start_date: Date.parse('27th Oct 2017'),
-#     end_date: Date.parse('29th Oct 2017'),
-#     start_time: Time.new(2017, 10, 27, 12, 0, 0),
-#     end_time: Time.new(2017, 10, 29, 20, 0, 0),
-#     average_temp: 21,
-#     entrance_fee: 0,
-#     website: "http://www.barcelonayellow.com/bcn-events-calendar/details/761-merce-wine-and-cava-festival",
-#     user_id: User.first,
-#     status: "approved",
-#     address: "Passeig de Lluís Companys, 08003, Barcelona, Spain",
-#     city_airport_id: CityAirport.all[3].id },
-
-#   { title: "Barcelona Boat Show",
-#     description: "The 2017 Barcelona Boat Show welcomes you to the 55th edition. Barcelona boat show is a 5 day boat show with over 300 Spanish and foreign exhibitors, around 700 boats and more than 1,300 sailors taking part in the annual Catalan Sailing Week. The Barcelona boat show is a floating boat show in Barcelona's marina the Port Vell marina with more than…",
-#     start_date: Date.parse('11th Oct 2017'),
-#     end_date: Date.parse('15th Oct 2017'),
-#     start_time: Time.new(2017, 10, 11, 10, 0, 0),
-#     end_time: Time.new(2017, 10, 15, 19, 0, 0),
-#     average_temp: 21,
-#     entrance_fee: 0,
-#     website: "http://www.barcelonayellow.com/bcn-events-calendar/details/89-barcelona-boat-show-salon-nautico",
-#     user_id: User.first,
-#     status: "approved",
-#     address: "Carrer de l'Escar, 26, 08039 Barcelona",
-#     city_airport_id: CityAirport.all[3].id },
-
   { title: "Oktoberfest",
     description: "Most of Oktoberfest actually takes place in September, but you can still catch the last few days of this famous event. It’s the world’s largest beer festival, which should be enough to have you packing your bags. But it’s also an extravaganza of German food, culture, and revelry. Book early to avoid disappointment.",
     start_date: Date.parse('16th Sep 2017'),
@@ -224,7 +139,7 @@ events_array = [
     start_date: Date.parse('13th Oct 2017'),
     end_date: Date.parse('6th Nov 2017'),
     start_time: Time.new(2017, 10, 13, 18, 0, 0),
-    end_time: Time.new(2017, 11, 6, 23, 0, 0),
+    end_time: Time.new(2017, 11, 5, 23, 0, 0),
     number_of_attendees: 10000,
     average_temp: 9,
     entrance_fee: 0,
@@ -232,7 +147,67 @@ events_array = [
     user_id: User.first.id,
     status: "approved",
     address: "Meath, Ireland",
-    city_airport_id: CityAirport.all[7].id }, ]
+    city_airport_id: CityAirport.all[7].id },
+
+  { title: "Paris Nuit Blanche",
+    description: "White Night, or Paris Nuit Blanche, is an annual art festival, offering visitors in the City of Light a unique cultural experience. Paris’s unrivaled museums, galleries, city halls, cinemas, swimming pools, and other entertainment and cultural institutions will be open (free of charge) to visitors until the early hours of the morning.",
+    start_date: Date.parse('7th Oct 2017'),
+    end_date: Date.parse('8th Oct 2017'),
+    start_time: Time.new(2017, 10, 7, 19, 0, 0),
+    end_time: Time.new(2017, 10, 8, 6, 0, 0),
+    number_of_attendees: 200000,
+    average_temp: 12,
+    entrance_fee: 0,
+    website: "http://quefaire.paris.fr/nuitblanche",
+    user_id: User.first.id,
+    status: "approved",
+    address: "Paris, France",
+    city_airport_id: CityAirport.all[1].id },
+
+  { title: "Alba White Truffle Festival",
+    description: "The city of Alba in Piedmont is the truffle capital of Italy, and each year the town celebrates its beloved produce with a plethora of entertaining events. Many concerts, food markets, races, sports, food fairs, cultural programs, and wine tasting opportunities offer visitors a one-of-a-kind cultural and culinary experience.",
+    start_date: Date.parse('7th Oct 2017'),
+    end_date: Date.parse('26th Nov 2017'),
+    start_time: Time.new(2017, 10, 7, 9, 0, 0),
+    end_time: Time.new(2017, 11, 26, 20, 0, 0),
+    number_of_attendees: 20000,
+    average_temp: 12,
+    entrance_fee: 3,
+    website: "http://www.fieradeltartufo.org/2016/en/evento/white-truffle-market/2-alba-white-truffle-market-albaqualita",
+    user_id: User.first.id,
+    status: "approved",
+    address: "Alba, Italy",
+    city_airport_id: CityAirport.all[2].id },
+
+  { title: "Amsterdam Dance Event",
+    description: "Amsterdam Dance Event, aka ADE, is not only the largest electronic club festival in the world, but also the foremost conference of its kind, where experts in the field discuss about the industry’s future. The festival features no less than 800 artists performing their absorbing sounds in fancy clubs across the city.",
+    start_date: Date.parse('18th Oct 2017'),
+    end_date: Date.parse('22nd Oct 2017'),
+    start_time: Time.new(2017, 10, 18, 9, 0, 0),
+    end_time: Time.new(2017, 10, 23, 5, 0, 0),
+    number_of_attendees: 375000,
+    average_temp: 12,
+    entrance_fee: 300,
+    website: "https://www.amsterdam-dance-event.nl/",
+    user_id: User.first.id,
+    status: "approved",
+    address: "Amsterdam, Netherlands",
+    city_airport_id: CityAirport.all[8].id },
+
+  { title: "Copenhagen Culture Night",
+    description: "Culture vultures, pay attention. Over 600 venues across the Danish capital are going to be dedicated to one evening of culture on October 9th. Highlights include dance shows, film screenings, circus performances, and more.",
+    start_date: Date.parse('13th Oct 2017'),
+    end_date: Date.parse('14th Oct 2017'),
+    start_time: Time.new(2017, 10, 13, 18, 0, 0),
+    end_time: Time.new(2017, 10, 14, 0, 0, 0),
+    number_of_attendees: 10000,
+    average_temp: 12,
+    entrance_fee: 13,
+    website: "https://www.kulturnatten.dk/en/Culture-night",
+    user_id: User.first.id,
+    status: "approved",
+    address: "Copenhagen, Denmark",
+    city_airport_id: CityAirport.all[13].id } ]
 
 urls = {
   "Oktoberfest" => ["http://static4.businessinsider.com/image/55fb1b179dd7cc17008bb316-1190-625/im-from-munich-and-heres-why-i-think-you-should-avoid-oktoberfest.jpg",
@@ -263,7 +238,31 @@ urls = {
     "https://www.irishtimes.com/polopoly_fs/1.2403249.1445599206!/image/image.jpg",
     "http://www.independent.ie/editorial/StoryPlus/storyplus-there-is-something-special-about-irelands-ancient-east-at-halloween/media/festival_of_fire-mr.jpg",
     "http://vibrantireland.com/wp-content/uploads/2015/10/halloween-ireland-spirits-of-meath-by-barry-cronin.jpg",
-    "http://www.discoverboynevalley.ie/sites/default/files/images/heritage-sites/Hill%20of%20Ward%20Torchlit%20Procession.jpg"]
+    "http://www.discoverboynevalley.ie/sites/default/files/images/heritage-sites/Hill%20of%20Ward%20Torchlit%20Procession.jpg"],
+
+  "Paris Nuit Blanche" => ["http://parislanuit.fr/wp-content/uploads/2015/09/mini-burble-paris-by-umbrellium-design-samsung-parvis-de-lhtel-de-ville-paris-nuit-blanche-2014-photo-by-united-states-of-paris-blog-980x480.jpg",
+    "http://uk.france.fr/sites/default/files/imagecache/atf_slider_contentv2/nuit_blanche_2007_cparis_tourist_office_-_photographe_amelie_dupont_-_artiste_compagnie_carabosse_23.10.2017_0.jpg",
+    "http://www.parisselectbook.com/wp-content/uploads/2013/09/blancnuit-gost.jpg",
+    "http://mymodernmet.com/wp/wp-content/uploads/archive/JqOBFxOCA2ovczKWdyX1_1082107909.jpeg",
+    "http://infos.parisattitude.com/wp-content/uploads/2014/03/Credit-Paris-Tourist-Office-Photographe-Amelie-Dupont.png"],
+
+  "Alba White Truffle Festival" => ["http://www.winerist.com/images/uploads/Alba_1.jpg",
+    "http://ef7031277fe0c33ee605-30321d5b89b5271d183a7187e68e2199.r77.cf5.rackcdn.com/wp-content/uploads/2014/10/1405608393.jpg",
+    "http://www.fieradeltartufo.org/cgibin/2015/14537269804_gal.jpg",
+    "http://static.fieradeltartufo.org/cgibin/2015/1495720768.jpg",
+    "http://img.finedininglovers.com/?img=http%3A%2F%2Ffinedininglovers.cdn.crosscast-system.com%2FBlogPost%2FOriginal_11349_Tartuffo-bianco.jpg&w=1200&h=660&lu=1444556075&ext=.jpg"],
+
+  "Amsterdam Dance Event" => ["http://cdn.relentlessbeats.com/wp-content/uploads/2015/10/amsterdam-dance-event-1200x573.jpg",
+    "https://weraveyou.com/wp-content/uploads/2017/07/ADE.jpg",
+    "http://www.creativeapplications.net/wp-content/uploads/2010/10/ADE-NEXT-Overview-credits-MikeBreeuwer.jpg",
+    "https://i.ytimg.com/vi/w6JLlwCgIS0/maxresdefault.jpg",
+    "http://46.32.240.39/globalpublicity.co.uk/wp-content/uploads/2012/10/20121019_Awakenings_-Rebekka_03.jpg"],
+
+  "Copenhagen Culture Night" => ["http://www.cphmuseums.com/sites/default/files/styles/galleries_ratio/public/asp/cphmuseums/Artikler_ENG/Celebrate_Copenhagens_Culture_Night/designmuseum-til-web.gif?itok=549qLwiT",
+    "http://www.cphmuseums.com/sites/default/files/styles/gallery_medium_width_mobile/public/asp/cphmuseums/Artikler_ENG/Celebrate_Copenhagens_Culture_Night/photo-pernille-klemp17.gif?itok=opiPWUOc",
+    "http://www.thisweek.dk/wp-content/uploads/2015/10/PLAKAT_2015.png",
+    "http://www.visitdenmark.co.uk/sites/default/files/VDK_Website_images/Tourist_content/Events/Festivals/culture-night-in-copenhagen.jpg",
+    "https://ourwaytours.com/wp-content/uploads/Kulturnat_2012_687216a.jpg"]
 }
 
 events_array.each do |event|
@@ -277,31 +276,28 @@ end
 puts "Done!"
 
 puts "Adding a category to each event..."
-# EventCategory.create!(event_id: Event.first.id, category_id: Category.all[3].id)
-# EventCategory.create!(event_id: Event.all[1].id, category_id: Category.all[6].id)
-# EventCategory.create!(event_id: Event.all[2].id, category_id: Category.all[7].id)
-# EventCategory.create!(event_id: Event.all[3].id, category_id: Category.all[5].id)
-# EventCategory.create!(event_id: Event.all[4].id, category_id: Category.all[8].id)
-# EventCategory.create!(event_id: Event.all[5].id, category_id: Category.all[4].id)
 EventCategory.create!(event_id: Event.all[0].id, category_id: Category.all[2].id)
 EventCategory.create!(event_id: Event.all[1].id, category_id: Category.all[6].id)
 EventCategory.create!(event_id: Event.all[2].id, category_id: Category.all[6].id)
 EventCategory.create!(event_id: Event.all[3].id, category_id: Category.all[0].id)
 EventCategory.create!(event_id: Event.all[4].id, category_id: Category.all[9].id)
+EventCategory.create!(event_id: Event.all[5].id, category_id: Category.all[0].id)
+EventCategory.create!(event_id: Event.all[6].id, category_id: Category.all[0].id)
+EventCategory.create!(event_id: Event.all[7].id, category_id: Category.all[1].id)
+EventCategory.create!(event_id: Event.all[8].id, category_id: Category.all[9].id)
 puts "Done!"
 
 puts "Adding terrains to each event..."
-# EventTerrain.create!(event_id: Event.first.id, terrain_id: Terrain.all[9].id)
-# EventTerrain.create!(event_id: Event.all[1].id, terrain_id: Terrain.all[12].id)
-# EventTerrain.create!(event_id: Event.all[2].id, terrain_id: Terrain.all[9].id)
-# EventTerrain.create!(event_id: Event.all[3].id, terrain_id: Terrain.all[9].id)
-# EventTerrain.create!(event_id: Event.all[4].id, terrain_id: Terrain.all[9].id)
-# EventTerrain.create!(event_id: Event.all[5].id, terrain_id: Terrain.all[7].id)
 EventTerrain.create!(event_id: Event.all[0].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[1].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[2].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[3].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[4].id, terrain_id: Terrain.all[1].id)
+EventTerrain.create!(event_id: Event.all[5].id, terrain_id: Terrain.all[9].id)
+EventTerrain.create!(event_id: Event.all[6].id, terrain_id: Terrain.all[9].id)
+EventTerrain.create!(event_id: Event.all[6].id, terrain_id: Terrain.all[9].id)
+EventTerrain.create!(event_id: Event.all[7].id, terrain_id: Terrain.all[9].id)
+EventTerrain.create!(event_id: Event.all[8].id, terrain_id: Terrain.all[9].id)
 puts "Done!"
 
 
