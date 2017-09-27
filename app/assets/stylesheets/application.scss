@@ -1,4 +1,8 @@
+/*
 
+*= require light-gallery
+
+*/
 
 @import "config/fonts";
 @import "config/colors";
@@ -11,8 +15,7 @@
 @import "font-awesome";
 @import 'bootstrap-datetimepicker';
 @import "social-share-button";
-@import "owl.carousel";
-@import "owl.theme";
+
 
 // Your CSS partials
 @import "layouts/index";
