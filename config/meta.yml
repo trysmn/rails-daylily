@@ -1,0 +1,5 @@
+meta_product_name: "Daylily"
+meta_title: "Daylily - Make Your Trip Special"
+meta_description: "You like city trips? But you're always missing the best events? Daylily tells you where to the best events are, along with your flight and hotel options!"
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

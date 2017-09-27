@@ -40,8 +40,6 @@ gem 'rails_admin', '>= 1.0.0.rc'
 gem 'httparty'
 gem 'social-share-button'
 gem 'turbolinks'
-gem 'shareable'
-
 
 group :development, :test do
   gem 'pry-byebug'
