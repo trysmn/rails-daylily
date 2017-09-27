@@ -73,7 +73,7 @@ class AmadeusApiService
       }
     }.to_json
     if response.parsed_response.keys.any? {|k| k.include? "error"}
-      response.parsed_response['error']
+      {"error" => response.parsed_response['error']}
     else
       if response.parsed_response['hotels']['total'] == 0
         {"error" => "No hotels available"}
