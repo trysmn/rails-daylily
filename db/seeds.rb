@@ -64,7 +64,7 @@ end
 puts "Done!"
 
 puts "Seeding categories..."
-categories_array = ["Food","Music","Beer","Cocktail","Sport","Book","Art/Design","Film","Wine"]
+categories_array = ["Food","Music","Beer","Cocktail","Sport","Book","Art/Design","Film","Wine","Theme"]
 categories_array.each do |category|
   Category.create!(name: category)
 end
@@ -202,22 +202,37 @@ events_array = [
     user_id: User.first.id,
     status: "approved",
     address: "Budapest, Hungary",
-    city_airport_id: CityAirport.all[12].id } ]
+    city_airport_id: CityAirport.all[12].id },
 
-#   { title: "Eurochocolate Festival",
-#     description: "It’s a fantastic time to experience Budapest. There’s a full program on offer that features jazz, dance, theater, poetry, fine arts, and Fashion Week. The festival is now in its 26th year, and shows no signs of letting up.",
-#     start_date: Date.parse('6th Oct 2017'),
-#     end_date: Date.parse('22nd Oct 2017'),
-#     start_time: Time.new(2017, 10, 6, 10, 0, 0),
-#     end_time: Time.new(2017, 10, 22, 22, 0, 0),
-#     number_of_attendees: 1000000,
-#     average_temp: 12,
-#     entrance_fee: 10,
-#     website: "https://www.cafebudapestfest.hu/events",
-#     user_id: User.first.id,
-#     status: "approved",
-#     address: "Budapest, Hungary",
-#     city_airport_id: CityAirport.all[12].id } ]
+  { title: "Eurochocolate Festival",
+    description: "Italy may mainly be about pizzas and pasta, but the Umbrian capital of Perugia also knows all about chocolate. Aside from satisfying even the most demanding sweet tooth, you’ll also get to see some remarkable chocolate displays, attend workshops, and listen to some of the world’s best chocolatiers waxing lyrical about their trade.",
+    start_date: Date.parse('13th Oct 2017'),
+    end_date: Date.parse('24th Oct 2017'),
+    start_time: Time.new(2017, 10, 13, 9, 0, 0),
+    end_time: Time.new(2017, 10, 24, 17, 0, 0),
+    number_of_attendees: 1000000,
+    average_temp: 13,
+    entrance_fee: 0,
+    website: "http://www.wheremilan.com/events/eurochocolate-festival-2017-perugia-450km-milan/",
+    user_id: User.first.id,
+    status: "approved",
+    address: "Perugia, Italy",
+    city_airport_id: CityAirport.all[2].id },
+
+  { title: "Spirits of Meath Halloween Festival",
+    description: "Some say that Halloween started in this small Irish county. If you’re a fan of celebrating this spooky holiday, then this should be your first stop. There’s a range of events throughout the region, and most visitors get into the spirit by dressing up.",
+    start_date: Date.parse('13th Oct 2017'),
+    end_date: Date.parse('6th Nov 2017'),
+    start_time: Time.new(2017, 10, 13, 18, 0, 0),
+    end_time: Time.new(2017, 11, 6, 23, 0, 0),
+    number_of_attendees: 10000,
+    average_temp: 9,
+    entrance_fee: 0,
+    website: "http://2017.spiritsofmeath.com/",
+    user_id: User.first.id,
+    status: "approved",
+    address: "Meath, Ireland",
+    city_airport_id: CityAirport.all[7].id }, ]
 
 urls = {
   "Oktoberfest" => ["http://static4.businessinsider.com/image/55fb1b179dd7cc17008bb316-1190-625/im-from-munich-and-heres-why-i-think-you-should-avoid-oktoberfest.jpg",
@@ -236,7 +251,19 @@ urls = {
     "https://static1.squarespace.com/static/53ad8891e4b0d11d5eacd15a/583edc80579fb3beb58d162a/583edc93579fb3beb58d1713/1480514746289/hellodesign-cafefesztival-15.jpg",
     "http://gobudapest.com/wp-content/uploads/2015/09/caf%C3%A9-2.jpg",
     "https://dailynewshungary.com/wp-content/uploads/2017/05/jewish-festival-980x640.jpg",
-    "https://res.cloudinary.com/rebbix/image/upload/f_auto,q_auto/fl_progressive.force_strip,w_970/qssycghoqq841qpsyvch"]
+    "https://res.cloudinary.com/rebbix/image/upload/f_auto,q_auto/fl_progressive.force_strip,w_970/qssycghoqq841qpsyvch"],
+
+  "Eurochocolate Festival" => ["https://www.carnifest.com/image/49962105/euro_chocolate_.jpg",
+    "http://www.italybyevents.com/wp-content/uploads/2016/09/Eurochocolate-Perugia-1.jpg",
+    "https://d3rr2gvhjw0wwy.cloudfront.net/uploads/activity_headers/215/1500x1500-0-70-981898627def23f6daa6e1615fcc0b72.jpg",
+    "https://i.pinimg.com/736x/66/52/3b/66523bdec5ad83342d6a13c44235fcf7--chocolate-festival-perugia-italy.jpg",
+    "https://www.eurochocolate.net/wp-content/uploads/2016/09/eurochocolate-eventi.jpg"],
+
+  "Spirits of Meath Halloween Festival" => ["https://yellow.place/file/image/cover/0/0/86/figkwskkrvfgymmk.jpg",
+    "https://www.irishtimes.com/polopoly_fs/1.2403249.1445599206!/image/image.jpg",
+    "http://www.independent.ie/editorial/StoryPlus/storyplus-there-is-something-special-about-irelands-ancient-east-at-halloween/media/festival_of_fire-mr.jpg",
+    "http://vibrantireland.com/wp-content/uploads/2015/10/halloween-ireland-spirits-of-meath-by-barry-cronin.jpg",
+    "http://www.discoverboynevalley.ie/sites/default/files/images/heritage-sites/Hill%20of%20Ward%20Torchlit%20Procession.jpg"]
 }
 
 events_array.each do |event|
@@ -259,6 +286,8 @@ puts "Adding a category to each event..."
 EventCategory.create!(event_id: Event.all[0].id, category_id: Category.all[2].id)
 EventCategory.create!(event_id: Event.all[1].id, category_id: Category.all[6].id)
 EventCategory.create!(event_id: Event.all[2].id, category_id: Category.all[6].id)
+EventCategory.create!(event_id: Event.all[3].id, category_id: Category.all[0].id)
+EventCategory.create!(event_id: Event.all[4].id, category_id: Category.all[9].id)
 puts "Done!"
 
 puts "Adding terrains to each event..."
@@ -271,6 +300,8 @@ puts "Adding terrains to each event..."
 EventTerrain.create!(event_id: Event.all[0].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[1].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[2].id, terrain_id: Terrain.all[9].id)
+EventTerrain.create!(event_id: Event.all[3].id, terrain_id: Terrain.all[9].id)
+EventTerrain.create!(event_id: Event.all[4].id, terrain_id: Terrain.all[1].id)
 puts "Done!"
 
 
