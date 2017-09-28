@@ -6,7 +6,7 @@
     </div>
     <div class="result-line">
       <div class="result-text">
-        <p>Showing <%= @events.count %> results between the dates of 30 September and 15 October</p>
+         <p>Showing <%= pluralize @events.count, "result" %> between <%= @s_details[:departure_date].strftime("%d %B") %> and <%= @s_details[:return_date].strftime("%d %B") %> </p>
       </div>
     </div>
   </div>

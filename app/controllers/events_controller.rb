@@ -15,16 +15,17 @@ class EventsController < ApplicationController
     @origin_city_obj = CityAirport.where("iata_code = :iata", {iata: params[:search][:origin_iata]}).first
     @events = Event.where("start_date <= :return AND end_date >= :departure AND status = :status", {departure: params[:search][:departure].to_date, return: params[:search][:return].to_date, status: "approved"}).where.not("city_airport_id = :airport_id", {airport_id: @origin_city_obj.id})
     search = AmadeusApiService.new
-    cities = []
-    @events.each do |event|
-      cities << event.city_airport
-    end
-    uniq_cities = cities.uniq
+    # cities = []
+    # @events.each do |event|
+    #   cities << event.city_airport
+    # end
+    # uniq_cities = cities.uniq
     @result_hash = {}
-    uniq_cities.each do |event|
-      city = event.city_name
-      iata = event.iata_code
-      hotels_res = search.apitude_hotelbeds(iata, params[:search][:departure], params[:search][:return])
+    @events.each do |event|
+      city = event.city_airport.city_name
+      iata = event.city_airport.iata_code
+      # hotels_res = search.apitude_hotelbeds(iata, params[:search][:departure], params[:search][:return])
+      hotels_res = search.geolocation_hotelbeds(event.latitude, event.longitude, params[:search][:departure], params[:search][:return])
       flight_res = search.google_flights(params[:search][:origin_iata], iata, params[:search][:departure], params[:search][:return])
       @result_hash[city] = {flight_api_info: flight_res, hotel_api_info: hotels_res}
     end
