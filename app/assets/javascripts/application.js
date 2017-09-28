@@ -11,5 +11,4 @@
 //= require underscore
 //= require gmaps/google
 //= require social-share-button
-//= require light-gallery
 //= require_tree .
