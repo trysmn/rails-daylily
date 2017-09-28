@@ -8,8 +8,10 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
-gem 'bundler', '~> 1.16.0.pre.2'
-gem "therubyracer"
+
+gem 'listen', '~> 3.1.5'
+
+
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -47,7 +49,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -55,4 +56,5 @@ end
 group :development do
   gem 'better_errors', git: 'https://github.com/charliesome/better_errors.git', branch: 'master'
   gem "binding_of_caller"
+
 end

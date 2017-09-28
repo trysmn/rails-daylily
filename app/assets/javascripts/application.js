@@ -12,6 +12,4 @@
 //= require gmaps/google
 //= require social-share-button
 //= require light-gallery
-//= require scrollReveal
-//= require scrollreveal
 //= require_tree .
