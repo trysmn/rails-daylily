@@ -81,7 +81,8 @@
               <p>€ <%= flight_price_string %></p>
             </div>
             <div class="travel-book">
-              <a href="#" class="btn btn-medium">BOOK</a>
+              <% airline_url = @flight_url_json[carrier_to] %>
+              <%= link_to "BOOK", airline_url, class: "btn btn-medium", target: :_blank %>
             </div>
 
           </div>
@@ -118,7 +119,10 @@
                 <p>€ <%= hotel_price %></p>
               </div>
               <div class="travel-book">
-                <a href="#" class="btn btn-medium">BOOK</a>
+                <!-- <a href="#" class="btn btn-medium">BOOK</a> -->
+                <% hotel_search = name_hotel+" "+city_hotel %>
+                <% hotel_duck = 'https://duckduckgo.com/?q=!ducky+'+hotel_search %>
+                <%= link_to "BOOK", hotel_duck, class: "btn btn-medium", target: :_blank %>
               </div>
             </div>
           </div>
