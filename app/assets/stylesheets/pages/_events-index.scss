@@ -62,7 +62,7 @@
 }
 
 .result-hover-description {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 15px;
   line-height: 27px;
   text-align: left;
@@ -116,7 +116,7 @@
 
 .result-card-details-left p {
   font-weight: 300;
-  font-size: 13px;
+  font-size: 15px;
   text-align: left;
 }
 
@@ -135,7 +135,7 @@
 
 .result-card-details-right p {
   font-weight: 300;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .search-header p {
@@ -166,7 +166,7 @@
 .result-text {
   margin-bottom: 20px;
   font-size: 15px;
-  font-weight: 100;
+  font-weight: 300;
   margin-left: 14px;
 }
 
@@ -181,4 +181,13 @@
 .result-headline {
 margin: 30px;
 font-weight: 300;
+}
+.h3-text {
+  font-weight: 100;
+}
+.no-search-button {
+  border: 1px solid white;
+  font-style: light;
+  font-size: 18px;
+  margin-top: 15px;
 }
