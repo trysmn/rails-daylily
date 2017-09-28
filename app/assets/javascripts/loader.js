@@ -26,6 +26,10 @@ $(document).ready(function() {
     // Display the loader
     $("#loader-wrapper").fadeIn(200);
 
+     $('html,body').css({
+          overflow: "hidden"
+      });
+
     // do the ajax request to get results:
     var resultURL = `/events?search[origin_iata]=${city}&search[departure]=${departureDate}&search[return]=${returnDate}`;
 
@@ -36,7 +40,9 @@ $(document).ready(function() {
 
         // // hide the loader
         $("#loader-wrapper").fadeOut(200);
-
+        $('html,body').css({
+          overflow: "visible"
+        });
         // change the HTML inside the page:
 
         // 1) parse the HTML response and only take the "body" content
