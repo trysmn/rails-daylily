@@ -22,8 +22,8 @@
               </div>
               <div class="result-card-details">
                 <div class="result-card-details-left">
-                  <h4><%= event.city_airport.city_name %></h4>
-                  <p><%= event.title %></p>
+                  <h4><%= event.title %></h4>
+                  <p><%= event.city_airport.city_name %></p>
                 </div>
                 <div class="result-card-details-right">
                   <p>Flight + Hotel</p>
@@ -45,7 +45,7 @@
                   <p class="result-hover-description"><%= truncate(event.description, :length => 360) %></p>
                 </div>
                 <div>
-                  <%= link_to "BOOK", event_path(event, @s_details.id), class: "btn btn-lg book-button" %>
+                  <%= link_to "Book", event_path(event, @s_details.id), class: "btn btn-lg book-button" %>
                 </div>
               </div>
             </div>
