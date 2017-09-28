@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
 gem 'bundler', '~> 1.16.0.pre.2'
+gem "therubyracer"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
