@@ -310,7 +310,6 @@ DEPENDENCIES
   bootstrap-datepicker-rails!
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.47)
-  bundler (~> 1.16.0.pre.2)
   cloudinary (= 1.1.7)
   coffee-rails
   devise
