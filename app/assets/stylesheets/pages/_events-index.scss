@@ -62,7 +62,7 @@
 }
 
 .result-hover-description {
-  font-weight: 300;
+  font-weight: 100;
   font-size: 15px;
   line-height: 27px;
   text-align: left;
@@ -138,14 +138,6 @@
   font-size: 13px;
 }
 
-// .search-header h1 {
-//   font-style: 100;
-//   font-size: 48px;
-//   background: linear-gradient(to right, #F09819, #FF512F);
-//   -webkit-background-clip: text;
-//   -webkit-text-fill-color: transparent;
-// }
-
 .search-header p {
   opacity: 0.6;
 }
@@ -174,7 +166,8 @@
 .result-text {
   margin-bottom: 20px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 100;
+  margin-left: 14px;
 }
 
 .result-button {
