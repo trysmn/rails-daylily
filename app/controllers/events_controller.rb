@@ -50,13 +50,17 @@ class EventsController < ApplicationController
   end
 
   def show
+    city_airport_id = @event.city_airport_id
+    @event_city_name = CityAirport.find(city_airport_id).city_name
+    @event_iata_code = CityAirport.find(city_airport_id).iata_code
+
     @api_info = SearchDetail.find(params[:format])
 
     months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     start_month = months[@event.start_date.mon - 1].downcase
 
-    city_airport_id = @event.city_airport_id
-    @city_name = CityAirport.find(city_airport_id).city_name
+    @origin_city_name = CityAirport.find(SearchDetail.last.city_airport_id).city_name
+    @origin_iata_code = CityAirport.find(SearchDetail.last.city_airport_id).iata_code
 
     # Scraping for Temperature:
     temp_url = "https://www.currentresults.com/Weather/Europe/Cities/temperature-#{start_month}.php"
@@ -65,7 +69,7 @@ class EventsController < ApplicationController
     temp_html_doc = Nokogiri::HTML(temp_html_file)
 
     temp_html_doc.search('.articletable.tablecol-3-left.revcolr tbody tr').each do |td|
-      if td.text.split("\n")[3].split(",").include?(@city_name)
+      if td.text.split("\n")[3].split(",").include?(@event_city_name)
         @temps_array = []
         @temps_array << td.text.split("\n")[4]
         @temps_array << td.text.split("\n")[5]
@@ -80,7 +84,7 @@ class EventsController < ApplicationController
     precip_html_doc = Nokogiri::HTML(precip_html_file)
 
     precip_html_doc.search('.articletable.tablecol-2-left.revcolr tbody tr').each do |td|
-      if td.text.split("\n")[2].split(",").include?(@city_name)
+      if td.text.split("\n")[2].split(",").include?(@event_city_name)
         @precips_array = []
         @precips_array << td.text.split("\n")[1]
         @precips_array << td.text.split("\n")[4]
@@ -95,7 +99,7 @@ class EventsController < ApplicationController
     sun_html_doc = Nokogiri::HTML(sun_html_file)
 
     sun_html_doc.search('.articletable.tablecol-1-left.revcolr tbody tr').each do |td|
-      if td.text.split("\n")[1].split(",").include?(@city_name)
+      if td.text.split("\n")[1].split(",").include?(@event_city_name)
         @sun_array = []
         @sun_array << td.text.split("\n")[2]
       end

@@ -13,12 +13,14 @@ class AmadeusApiService
                        {
                          origin: origin_iata,
                          destination: event_iata,
-                         date: departure_date
+                         date: departure_date,
+                         maxStops: 0
                        },
                        {
                          origin: event_iata,
                          destination: origin_iata,
-                         date: return_date
+                         date: return_date,
+                         maxStops: 0
                        }
                      ],
                      "solutions": "1"
