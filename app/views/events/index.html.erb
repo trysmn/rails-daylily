@@ -6,10 +6,7 @@
     </div>
     <div class="result-line">
       <div class="result-text">
-        <p><%= @events.count %> Results: From Amsterdam on 30 September to 15 October</p>
-      </div>
-      <div class="result-button">
-        <%= link_to "New Search", root_path, class: "btn btn-sm new-search-button" %>
+        <p>Showing <%= @events.count %> results between the dates of 30 September and 15 October</p>
       </div>
     </div>
   </div>
@@ -18,6 +15,7 @@
       <% @events.each do |event| %>
         <% if @result_hash[event.city_airport.city_name][:flight_api_info].keys.any? {|k| k.include? "error"} || @result_hash[event.city_airport.city_name][:hotel_api_info].keys.any? {|k| k.include? "error"} %>
         <div class="col-xs-12 col-md-6">
+    <%= scroll_reveal(animation: "enter bottom and move 40px over 1s" ) do %>
             <div class="result-card">
               <div class="result-card-image">
                 <%= cl_image_tag event.photos.first.path, class: "card-img" %>
@@ -51,6 +49,7 @@
                 </div>
               </div>
             </div>
+            <%end  %>
           </div>
         <% else %>
           <div class="col-xs-12 col-md-6">
@@ -93,14 +92,18 @@
           </div>
         <% end %>
       <% end %>
+
         <div class="col-xs-12 col-md-6">
+          <%= scroll_reveal(animation: "enter bottom and move 40px over 1s" ) do %>
           <div class="no-result-card">
             <div class="no-result-card-text">
               <h3>Not what you're looking for?</h3>
               <%= link_to "New Search", root_path, class: "btn btn-lg no-search-button" %>
             </div>
           </div>
+          <% end %>
         </div>
     </div>
   </div>
 </div>
+
