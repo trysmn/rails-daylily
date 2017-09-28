@@ -15,6 +15,7 @@ gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
+gem 'coffee-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
@@ -39,7 +40,6 @@ gem 'remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'httparty'
 gem 'social-share-button'
-gem 'turbolinks'
 gem 'scrollreveal-rails'
 
 group :development, :test do
