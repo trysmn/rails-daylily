@@ -10,6 +10,11 @@
     background: linear-gradient(to right, #FF512F, #F09819); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.overflow-hidden {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 .hidden {
   display: none;
 }
@@ -146,6 +151,16 @@
     .no-js h1 {
         color: #222222;
     }
+
+
+.loading-text {
+  position: absolute;
+  top: 70%;
+  color: white;
+        left: 0;
+      right: 0;
+      margin: 0 auto;
+}
 
 
 // START OF PAPER PLANE CSS
