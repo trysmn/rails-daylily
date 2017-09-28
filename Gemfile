@@ -22,7 +22,6 @@ gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'geocoder'
-gem 'coffee-rails'
 gem 'gmaps4rails'
 gem 'open-weather'
 gem 'cloudinary', '1.1.7'

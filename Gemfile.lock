@@ -314,7 +314,6 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.47)
   cloudinary (= 1.1.7)
-  coffee-rails
   devise
   figaro
   font-awesome-sass
