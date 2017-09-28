@@ -15,7 +15,7 @@
       <% @events.each do |event| %>
         <% if @result_hash[event.city_airport.city_name][:flight_api_info].keys.any? {|k| k.include? "error"} || @result_hash[event.city_airport.city_name][:hotel_api_info].keys.any? {|k| k.include? "error"} %>
         <div class="col-xs-12 col-md-6">
-    <%= scroll_reveal(animation: "enter bottom and move 40px over 1s" ) do %>
+    <%= scroll_reveal(animation: "enter bottom and ease-in-out 50px" ) do %>
             <div class="result-card">
               <div class="result-card-image">
                 <%= cl_image_tag event.photos.first.path, class: "card-img" %>
@@ -94,7 +94,7 @@
       <% end %>
 
         <div class="col-xs-12 col-md-6">
-          <%= scroll_reveal(animation: "enter bottom and move 40px over 1s" ) do %>
+          <%= scroll_reveal(animation: "enter bottom and ease-in-out 50px" ) do %>
           <div class="no-result-card">
             <div class="no-result-card-text">
               <h3>Not what you're looking for?</h3>
