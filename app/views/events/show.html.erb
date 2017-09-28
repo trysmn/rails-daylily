@@ -14,6 +14,7 @@
 <% price_flight = flight_price_string.slice! "EUR" %>
 
 <% name_hotel = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['name'] %>
+<% city_hotel = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['destinationName'] %>
 <% check_in_date = @api_info[:departure_date] %>
 <% check_out_date = @api_info[:return_date] %>
 <% hotel_price =  @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['minRate'] %>
@@ -76,7 +77,8 @@
               <p>€ <%= flight_price_string %></p>
             </div>
             <div class="travel-book">
-              <a href="#" class="btn btn-medium">BOOK</a>
+              <% airline_url = @flight_url_json[carrier_to] %>
+              <%= link_to "BOOK", airline_url, class: "btn btn-medium", target: :_blank %>
             </div>
 
           </div>
@@ -113,7 +115,10 @@
                 <p>€ <%= hotel_price %></p>
               </div>
               <div class="travel-book">
-                <a href="#" class="btn btn-medium">BOOK</a>
+                <!-- <a href="#" class="btn btn-medium">BOOK</a> -->
+                <% hotel_search = name_hotel+" "+city_hotel %>
+                <% hotel_duck = 'https://duckduckgo.com/?q=!ducky+'+hotel_search %>
+                <%= link_to "BOOK", hotel_duck, class: "btn btn-medium", target: :_blank %>
               </div>
             </div>
           </div>

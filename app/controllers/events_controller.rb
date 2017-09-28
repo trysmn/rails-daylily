@@ -1,4 +1,5 @@
 require 'amadeus_api_service'
+require 'Constants'
 require 'open-uri'
 require 'nokogiri'
 
@@ -58,6 +59,9 @@ class EventsController < ApplicationController
     city_airport_id = @event.city_airport_id
     @city_name = CityAirport.find(city_airport_id).city_name
 
+    #link to airline
+    @flight_url_json = Constants::AIRLINE_WEBSITES
+
     # Scraping for Temperature:
     temp_url = "https://www.currentresults.com/Weather/Europe/Cities/temperature-#{start_month}.php"
 
@@ -102,6 +106,7 @@ class EventsController < ApplicationController
     end
     # Done
 
+    #google maps
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
@@ -119,8 +124,8 @@ class EventsController < ApplicationController
       airport_iata = short_flight_info[1]['code']
       airport_name = short_flight_info[1]['name']
     end
-    url_airport = "http://iatageo.com/getLatLng/#{airport_iata}"
-    result_airport = HTTParty.get(url_airport)
+    url_iatageo = "http://iatageo.com/getLatLng/#{airport_iata}"
+    result_airport = HTTParty.get(url_iatageo)
     pars_airport = result_airport.parsed_response
     @hash << {lat: pars_airport["latitude"].to_f, lng: pars_airport["longitude"].to_f, infowindow: airport_name}
   end
