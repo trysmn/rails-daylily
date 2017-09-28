@@ -1,10 +1,12 @@
-<% origin_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['data']['airport'][0]['code'] %>
+
+
+<% origin_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['origin'] %>
 <% carrier_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['carrier'] %>
 <% flight_number_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['number'] %>
 <% flight_to_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['departureTime'] %>
 <% flight_to_arrival_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['arrivalTime'] %>
 
-<% destination_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['data']['airport'][1]['code'] %>
+<% destination_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['destination'] %>
 <% carrier_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['carrier'] %>
 <% flight_number_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['number'] %>
 <% flight_return_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['departureTime'] %>
@@ -14,10 +16,11 @@
 <% price_flight = flight_price_string.slice! "EUR" %>
 
 <% name_hotel = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['name'] %>
-<% city_hotel = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['destinationName'] %>
+<% name_hotel_city = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['destinationName'] %>
 <% check_in_date = @api_info[:departure_date] %>
 <% check_out_date = @api_info[:return_date] %>
 <% hotel_price =  @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['minRate'] %>
+
 
 
 <div class="result-header text-center">
@@ -34,11 +37,12 @@
             </div>
             <div class="show-travel-subheader">
               <div class="city city-left">
-                <p><%= origin_airport %></p>
+                <p> <%= @origin_city_name %> (<%= origin_airport %>) &#160;</p>
               </div>
               <i class="fa fa-exchange" aria-hidden="true"></i>
               <div class="city city-right">
-                <p><%= destination_airport %></p>
+                <p>&#160; <%= @event_city_name %> (<%= destination_airport %>)</p>
+
               </div>
             </div>
 
@@ -48,10 +52,10 @@
                   <p><strong><%= carrier_to %><%= flight_number_to %></strong></p>
                 </div>
                 <div class="box">
-                  <p><strong><%= flight_return_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
+                  <p><strong><%= flight_to_departure_time.to_datetime.strftime("%d %^b") %></strong></p>
                 </div>
                 <div class="box">
-                  <p class="Departure"><strong>Departs</strong> <%= flight_return_departure_time.to_datetime.strftime("%H:%M") %></p>
+                  <p class="Departure"><strong>Departs</strong> <%= flight_to_departure_time.to_datetime.strftime("%H:%M") %></p>
                 </div>
                 <div class="box">
                   <p class="Arrival"><strong>Arrives</strong> <%= flight_to_arrival_time.to_datetime.strftime("%H:%M") %></p>
@@ -91,7 +95,7 @@
             </div>
 
             <div class="show-travel-subheader text-center">
-              <p><%= name_hotel %></p>
+              <p><%= name_hotel %>, <%= name_hotel_city %></p>
             </div>
 
             <div class="show-travel-details">
