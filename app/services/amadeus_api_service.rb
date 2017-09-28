@@ -29,7 +29,12 @@ class AmadeusApiService
                    }
                  }.to_json,
                   :headers => { 'Content-Type' => 'application/json' }
-    return response
+
+    if response['trips']['data'].size < 2
+      return {"error"=>{"error"=>"No flights available", "qpx_error"=>response}}
+    else
+      return response
+    end
   end
 
 
@@ -74,6 +79,63 @@ class AmadeusApiService
       },
       "destination": {
         "code": event_iata
+      }
+    }.to_json
+    if response.parsed_response.keys.any? {|k| k.include? "error"}
+      {"error" => response.parsed_response['error']}
+    else
+      if response.parsed_response['hotels']['total'] == 0
+        {"error" => "No hotels available"}
+      else
+        response.parsed_response["hotels"]["hotels"].sort_by {|k| k["minRate"].to_i}.first
+      end
+    end
+  end
+
+  def geolocation_hotelbeds(lat_event, lon_event, check_in_date, check_out_date)
+    start_date = Date.parse(check_in_date)
+    end_date = Date.parse(check_out_date)
+    total = end_date - start_date
+    total_s = total.to_i
+
+    response = HTTParty.post'http://testapi.hotelbeds.com/hotel-api/1.0/hotels',
+    :headers =>{
+      "Api-Key": ENV['HOTELBEDS_API_KEY'],
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    :body =>{
+      "stay": {
+        "checkIn": check_in_date,
+        "checkOut": check_out_date,
+      },
+      "occupancies": [
+        {
+          "rooms": 1,
+          "adults": 2,
+          "children": 0,
+          "paxes": [
+            {
+              "type": "AD",
+              "age": "30"
+            }
+          ]
+        }
+      ],
+      "filter": {
+        "maxHotels": 10,
+        "maxRooms": 1,
+        "maxRatesPerRoom": 1,
+        "minCategory": 1,
+        "maxCategory": 5,
+        "paymentType": "BOTH",
+        "maxRate": (total_s * 150).to_s
+      },
+      "geolocation": {
+      "latitude": lat_event,
+      "longitude": lon_event,
+      "radius": 10,
+      "unit": "km"
       }
     }.to_json
     if response.parsed_response.keys.any? {|k| k.include? "error"}
