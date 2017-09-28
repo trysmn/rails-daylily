@@ -21,7 +21,9 @@ class AmadeusApiService
                          date: return_date
                        }
                      ],
-                     "solutions": "1"
+                     saleCountry: "NL",
+                     ticketingCountry: "NL",
+                     solutions: "1"
                    }
                  }.to_json,
                   :headers => { 'Content-Type' => 'application/json' }

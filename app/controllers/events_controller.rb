@@ -105,8 +105,24 @@ class EventsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      marker.infowindow event.title
     end
+    hotel_maps = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']
+    @hash << {lat: hotel_maps["latitude"].to_f, lng: hotel_maps["longitude"].to_f, infowindow: hotel_maps["name"]}
+
+    short_flight_info = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['data']['airport']
+    city_iata = CityAirport.find(city_airport_id).iata_code
+    if short_flight_info[0]['city'] == city_iata
+      airport_iata = short_flight_info[0]['code']
+      airport_name = short_flight_info[0]['name']
+    else
+      airport_iata = short_flight_info[1]['code']
+      airport_name = short_flight_info[1]['name']
+    end
+    url_airport = "http://iatageo.com/getLatLng/#{airport_iata}"
+    result_airport = HTTParty.get(url_airport)
+    pars_airport = result_airport.parsed_response
+    @hash << {lat: pars_airport["latitude"].to_f, lng: pars_airport["longitude"].to_f, infowindow: airport_name}
   end
 
   def edit
