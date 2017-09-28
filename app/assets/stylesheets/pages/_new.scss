@@ -21,17 +21,14 @@
 .new-event-header {
   margin-bottom: 20px;
   font-size: 40px;
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 .form-inputs-new {
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 400 !important;
   text-align: left;
 }
-.form-input-lg {
-  // font-size: 16px;
-  // font-weight: lighter;
-}
+
 
 .bootstrap-datetimepicker-widget table td.active.today:before {
     border-bottom-color: #fff;
@@ -52,21 +49,18 @@
   font-weight: 400 !important;
 }
 .btn-custom {
-  background: linear-gradient(to right, #FF512F, #F09819);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;  padding: 10px 15px;
-  border-radius: 25px;
-  font-weight: lighter;
-  opacity: 1;
-  border: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
   border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
   border-image-slice: 1;
-  padding: 10px 25px;
-  font-weight: 300;
-  letter-spacing: 1.5;
+  font-style: light;
+  font-size: 18px;
+  background: linear-gradient(to right, #F09819, #FF512F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 20px;
+  padding: 10px 25px;
 }
 .btn-custom:hover {
   opacity: 0.8;
