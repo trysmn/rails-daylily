@@ -80,16 +80,16 @@
 }
 
 .book-button {
-  border-bottom: 1px solid transparent;
-  -moz-border-image: -moz-linear-gradient(top left, #F09819 0%, #FF512F 100%);
-  -webkit-border-image: -webkit-linear-gradient(top left, #F09819 0%, #FF512F 100%);
-  border-image: linear-gradient(to bottom right, #F09819 0%, #FF512F 100%);
-  border-image-slice: 1;
-  font-style: light;
+  -moz-background-image: -moz-linear-gradient(left, #FF512F 0%, #F09819 100%);
+  -webkit-border-image: -webkit-linear-gradient(left, #FF512F 0%, #F09819 100%);
+  background-image: linear-gradient(to right, #FF512F 0%, #F09819 100%);
+  background-image-slice: 1;
   font-size: 18px;
-  background: linear-gradient(to right, #F09819, #FF512F);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
+  // background: #FF512F;
+  // background: linear-gradient(to right, #F09819, #FF512F);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
 }
 
 .result-card-details {
@@ -166,7 +166,7 @@
 .result-text {
   margin-bottom: 20px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   margin-left: 14px;
 }
 
