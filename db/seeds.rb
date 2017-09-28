@@ -50,7 +50,7 @@ puts "Done!"
 
 
 puts "Creating all necessary airport cities..."
-iata_codes_array = ["LON","PAR","MIL","BCN","BER","MAD","VIE","DUB","AMS","BRU","BSL","MUC","BUD","CPH"]
+iata_codes_array = ["LON","PAR","MIL","BCN","BER","MAD","VIE","DUB","AMS","BRU","BSL","MUC","BUD","CPH","PRG"]
 iata_codes_array.each do |iata,index|
   CityAirport.create!(city_name: airports_hash[iata]["city"], iata_code: airports_hash[iata]["iata"])
 end
@@ -207,7 +207,22 @@ events_array = [
     user_id: User.first.id,
     status: "approved",
     address: "Copenhagen, Denmark",
-    city_airport_id: CityAirport.all[13].id } ]
+    city_airport_id: CityAirport.all[13].id },
+
+  { title: "Bloody Sexy Halloween",
+    description: "Prague is another European city that gets into the swing of Halloween celebrations. There are several parties throughout the capital, but Bloody Sexy Halloween is the largest. Expect DJs, visual displays, pyrotechnics to take you late into the night.",
+    start_date: Date.parse('28th Oct 2017'),
+    end_date: Date.parse('29th Oct 2017'),
+    start_time: Time.new(2017, 10, 28, 21, 0, 0),
+    end_time: Time.new(2017, 10, 29, 5, 0, 0),
+    number_of_attendees: 5000,
+    average_temp: 11,
+    entrance_fee: 15,
+    website: "http://bloodysexy.cz/en/",
+    user_id: User.first.id,
+    status: "approved",
+    address: "Prague, Czech Republic",
+    city_airport_id: CityAirport.all[14].id } ]
 
 urls = {
   "Oktoberfest" => ["http://static4.businessinsider.com/image/55fb1b179dd7cc17008bb316-1190-625/im-from-munich-and-heres-why-i-think-you-should-avoid-oktoberfest.jpg",
@@ -262,7 +277,13 @@ urls = {
     "http://www.cphmuseums.com/sites/default/files/styles/gallery_medium_width_mobile/public/asp/cphmuseums/Artikler_ENG/Celebrate_Copenhagens_Culture_Night/photo-pernille-klemp17.gif?itok=opiPWUOc",
     "http://www.thisweek.dk/wp-content/uploads/2015/10/PLAKAT_2015.png",
     "http://www.visitdenmark.co.uk/sites/default/files/VDK_Website_images/Tourist_content/Events/Festivals/culture-night-in-copenhagen.jpg",
-    "https://ourwaytours.com/wp-content/uploads/Kulturnat_2012_687216a.jpg"]
+    "https://ourwaytours.com/wp-content/uploads/Kulturnat_2012_687216a.jpg"],
+
+  "Bloody Sexy Halloween" => ["http://www.forceproduction.eu/userfiles/photogallery/big/bloody-sexy-halloween__mi001-468.jpg",
+    "https://i.ytimg.com/vi/12M_ebnu0Z0/maxresdefault.jpg",
+    "http://www.forceproduction.eu/userfiles/photogallery/big/bloody-sexy-halloween__mi001-470.jpg",
+    "http://travelcalendar.ru/wp-content/uploads/2015/08/Vecherinka-Bloody-Sexy-Halloween-v-Prage_glav1.jpg",
+    "https://i.ytimg.com/vi/dB9emuHa9yM/maxresdefault.jpg"]
 }
 
 events_array.each do |event|
@@ -285,6 +306,7 @@ EventCategory.create!(event_id: Event.all[5].id, category_id: Category.all[0].id
 EventCategory.create!(event_id: Event.all[6].id, category_id: Category.all[0].id)
 EventCategory.create!(event_id: Event.all[7].id, category_id: Category.all[1].id)
 EventCategory.create!(event_id: Event.all[8].id, category_id: Category.all[9].id)
+EventCategory.create!(event_id: Event.all[9].id, category_id: Category.all[9].id)
 puts "Done!"
 
 puts "Adding terrains to each event..."
@@ -298,6 +320,7 @@ EventTerrain.create!(event_id: Event.all[6].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[6].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[7].id, terrain_id: Terrain.all[9].id)
 EventTerrain.create!(event_id: Event.all[8].id, terrain_id: Terrain.all[9].id)
+EventTerrain.create!(event_id: Event.all[9].id, terrain_id: Terrain.all[9].id)
 puts "Done!"
 
 
