@@ -82,7 +82,7 @@
             </div>
             <div class="travel-book">
               <% airline_url = @flight_url_json[carrier_to] %>
-              <%= link_to "BOOK FLIGHT", airline_url, class: "btn btn-medium", target: :_blank %>
+              <%= link_to "BOOK FLIGHT", airline_url, class: "btn btn-medium btn-flotel", target: :_blank %>
             </div>
 
           </div>
@@ -122,7 +122,7 @@
                 <!-- <a href="#" class="btn btn-medium">BOOK</a> -->
                 <% hotel_search = name_hotel+" "+name_hotel_city %>
                 <% hotel_duck = 'https://duckduckgo.com/?q=!ducky+'+hotel_search %>
-                <%= link_to "BOOK HOTEL", hotel_duck, class: "btn btn-medium", target: :_blank %>
+                <%= link_to "BOOK HOTEL", hotel_duck, class: "btn btn-medium btn-flotel", target: :_blank %>
               </div>
             </div>
           </div>
