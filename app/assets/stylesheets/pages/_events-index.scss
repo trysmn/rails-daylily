@@ -63,7 +63,7 @@
 
 .result-hover-description {
   font-weight: 300;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 27px;
   text-align: left;
   padding: 10px;
@@ -78,20 +78,25 @@
   border-image-slice: 1;
   height: 75px;
 }
-
-.book-button {
+.book-btn {
+  font-weight: lighter;
+  opacity: 1;
+  padding: 10px 25px;
+  letter-spacing: 1.5;
+  margin-bottom: 10px;
   -moz-background-image: -moz-linear-gradient(left, #FF512F 0%, #F09819 100%);
-  -webkit-border-image: -webkit-linear-gradient(left, #FF512F 0%, #F09819 100%);
   background-image: linear-gradient(to right, #FF512F 0%, #F09819 100%);
   background-image-slice: 1;
   font-size: 18px;
   color: white;
-  // background: #FF512F;
-  // background: linear-gradient(to right, #F09819, #FF512F);
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
+  border: white;
+  border-radius: 1px;
 }
-
+.book-btn:hover {
+  opacity: 0.8;
+  text-decoration: none;
+  color: white;
+}
 .result-card-details {
   position: relative;
   border: 1px solid transparent;
@@ -165,7 +170,7 @@
 
 .result-text {
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
   margin-left: 14px;
 }
