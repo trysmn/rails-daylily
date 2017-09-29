@@ -27,7 +27,7 @@
                 </div>
                 <div class="result-card-details-right">
                   <p>Flight + Hotel</p>
-                  <h4>€ 9999.99</h4>
+                  <h4>Unavailable</h4>
                 </div>
               </div>
               <div class="result-hover-card">
@@ -38,14 +38,14 @@
                   </div>
                   <div class="result-card-details-right">
                     <p>Flight + Hotel</p>
-                    <h4>€ 9999.99</h4>
+                    <h4>Unavailable</h4>
                   </div>
                 </div>
                 <div>
                   <p class="result-hover-description"><%= truncate(event.description, :length => 360) %></p>
                 </div>
                 <div>
-                  <%= link_to "BOOK TRIP", event_path(event, @s_details.id), class: "btn btn-medium book-btn" %>
+                  <%= link_to "Unavailable", event_path(event, @s_details.id), class: "btn btn-medium book-btn" %>
                 </div>
               </div>
             </div>
@@ -67,7 +67,7 @@
                   <% hotel_price =  @result_hash[event.city_airport.city_name][:hotel_api_info]['minRate'] %>
                   <% flight_price_string = @result_hash[event.city_airport.city_name][:flight_api_info]['trips']['tripOption'][0]['pricing'][0]['saleTotal'] %>
                   <% price_flight = flight_price_string.slice! "EUR" %>
-                  <h4>€ <%= flight_price_string.to_f + hotel_price.to_f %></h4>
+                  <h4>€ <%= '%.2f' % (flight_price_string.to_f + hotel_price.to_f) %></h4>
                 </div>
               </div>
               <div class="result-hover-card">
@@ -78,7 +78,7 @@
                   </div>
                   <div class="result-card-details-right">
                     <p>Flight + Hotel</p>
-                    <h4>€ <%= flight_price_string.to_f + hotel_price.to_f %></h4>
+                    <h4>€ <%= '%.2f' % (flight_price_string.to_f + hotel_price.to_f) %></h4>
                   </div>
                 </div>
                 <div>

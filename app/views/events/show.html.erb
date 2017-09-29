@@ -1,19 +1,35 @@
+<% if @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info'].keys[0] == "error" %>
+  <% origin_airport = "N/A" %>
+  <% carrier_to = "N/A" %>
+  <% flight_number_to = "" %>
+  <% flight_to_departure_time = "2017-10-15T18:40+02:00" %>
+  <% flight_to_arrival_time = "2017-10-15T18:40+02:00" %>
 
+  <% destination_airport = "N/A" %>
+  <% carrier_return = "N/A" %>
+  <% flight_number_return = "" %>
+  <% flight_return_departure_time = "2017-10-15T18:40+02:00" %>
+  <% flight_return_arrival_time = "2017-10-15T18:40+02:00" %>
 
-<% origin_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['origin'] %>
-<% carrier_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['carrier'] %>
-<% flight_number_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['number'] %>
-<% flight_to_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['departureTime'] %>
-<% flight_to_arrival_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['arrivalTime'] %>
+  <% flight_price_string = "" %>
+  <% price_flight = "" %>
+<% else %>
+  <% origin_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['origin'] %>
+  <% carrier_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['carrier'] %>
+  <% flight_number_to = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['number'] %>
+  <% flight_to_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['departureTime'] %>
+  <% flight_to_arrival_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['arrivalTime'] %>
 
-<% destination_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['destination'] %>
-<% carrier_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['carrier'] %>
-<% flight_number_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['number'] %>
-<% flight_return_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['departureTime'] %>
-<% flight_return_arrival_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['arrivalTime'] %>
+  <% destination_airport = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['destination'] %>
+  <% carrier_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['carrier'] %>
+  <% flight_number_return = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['number'] %>
+  <% flight_return_departure_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['departureTime'] %>
+  <% flight_return_arrival_time = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['arrivalTime'] %>
 
-<% flight_price_string = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['pricing'][0]['saleTotal'] %>
-<% price_flight = flight_price_string.slice! "EUR" %>
+  <% flight_price_string = @api_info[:incoming_data][@event.city_airport.city_name]['flight_api_info']['trips']['tripOption'][0]['pricing'][0]['saleTotal'] %>
+  <% price_flight = flight_price_string.slice! "EUR" %>
+<% end %>
+
 
 <% name_hotel = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['name'] %>
 <% name_hotel_city = @api_info[:incoming_data][@event.city_airport.city_name]['hotel_api_info']['destinationName'] %>
