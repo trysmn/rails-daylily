@@ -29,10 +29,14 @@ class AmadeusApiService
                    }
                  }.to_json,
                   :headers => { 'Content-Type' => 'application/json' }
-    if response['trips']['data'].size < 2
+    if response['trips'].nil?
       return {"error"=>{"error"=>"No flights available", "qpx_error"=>response}}
     else
-      return response
+      if response['trips']['data'].size < 2
+        return {"error"=>{"error"=>"No flights available", "qpx_error"=>response}}
+      else
+        return response
+      end
     end
   end
 
@@ -133,7 +137,7 @@ class AmadeusApiService
       "geolocation": {
       "latitude": lat_event,
       "longitude": lon_event,
-      "radius": 20,
+      "radius": 50,
       "unit": "km"
       }
     }.to_json
