@@ -95,7 +95,11 @@
             </div>
 
             <div class="show-travel-subheader text-center">
-              <p><%= name_hotel %>, <%= name_hotel_city %></p>
+              <% if name_hotel.nil? %>
+                  <p><%= hotel_search = "No hotels available" %></p>
+                <% else %>
+                  <p><%= name_hotel %>, <%= name_hotel_city %></p>
+                <% end %>
             </div>
 
             <div class="show-travel-details">
@@ -119,8 +123,11 @@
                 <p>€ <%= hotel_price %></p>
               </div>
               <div class="travel-book">
-                <!-- <a href="#" class="btn btn-medium">BOOK</a> -->
-                <% hotel_search = name_hotel+" "+name_hotel_city %>
+                <% if name_hotel.nil? %>
+                  <% hotel_search = "Grand Budapest Hotel" %>
+                <% else %>
+                  <% hotel_search = name_hotel+" "+name_hotel_city %>
+                <% end %>
                 <% hotel_duck = 'https://duckduckgo.com/?q=!ducky+'+hotel_search %>
                 <%= link_to "BOOK HOTEL", hotel_duck, class: "btn btn-medium btn-flotel", target: :_blank %>
               </div>
