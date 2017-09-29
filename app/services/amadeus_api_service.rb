@@ -133,7 +133,7 @@ class AmadeusApiService
       "geolocation": {
       "latitude": lat_event,
       "longitude": lon_event,
-      "radius": 10,
+      "radius": 15,
       "unit": "km"
       }
     }.to_json

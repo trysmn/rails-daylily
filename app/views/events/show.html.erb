@@ -82,7 +82,7 @@
             </div>
             <div class="travel-book">
               <% airline_url = @flight_url_json[carrier_to] %>
-              <%= link_to "BOOK FLIGHT", airline_url, class: "btn btn-medium", target: :_blank %>
+              <%= link_to "BOOK FLIGHT", airline_url, class: "btn btn-medium btn-flotel", target: :_blank %>
             </div>
 
           </div>
@@ -185,10 +185,10 @@
     </div>
   </div>
 </div>
+  <div id="map" style="width: 100%; height: 600px;"></div>
 </div>
 </div>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

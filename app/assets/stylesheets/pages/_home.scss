@@ -35,9 +35,10 @@
 }
 .input-lg {
   border-radius: 1px;
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 19px;
+  font-weight: 400;
   color: #c9c9c9;
+  opacity: 0.9;
   text-align: center;
 }
 .form-inline .form-control {
@@ -102,7 +103,7 @@
   margin: 20px 230px;
 }
 .bridge-image {
-  margin-right: 10px;
+  margin-right: 25px;
 }
 .balloon  {
   display: flex;
@@ -112,7 +113,7 @@
   font-weight: 100;
 }
 .balloon-image {
-  margin-left: 10px;
+  margin-left: 25px;
 }
 .daylily  {
   display: flex;
