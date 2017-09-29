@@ -57,7 +57,7 @@
 }
 .bottom-banner {
   background-size: cover !important;
-  height: 100vh;
+  height: calc(100vh - 50px);
   padding-top: 40px;
    .arrow-up {
     color: #ff512f;
@@ -65,6 +65,7 @@
     font-size: 60px;
     vertical-align: center;
     margin-bottom: 50px;
+    margin-top: 50px;
   }
 }
 .bottom-banner-header {
