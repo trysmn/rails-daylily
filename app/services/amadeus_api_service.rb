@@ -132,7 +132,7 @@ class AmadeusApiService
         "minCategory": 1,
         "maxCategory": 5,
         "paymentType": "BOTH",
-        "maxRate": (total_s * 150).to_s
+        "maxRate": (total_s * 200).to_s
       },
       "geolocation": {
       "latitude": lat_event,
